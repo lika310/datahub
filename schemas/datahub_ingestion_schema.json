@@ -2455,7 +2455,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-11-29T02:54:01.463507+00:00",
+                        "end_time": "2024-11-29T16:12:41.554858+00:00",
                         "start_time": "2024-11-28T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -7611,7 +7611,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-11-29T02:54:16.801869+00:00",
+                        "end_time": "2024-11-29T16:12:56.137709+00:00",
                         "start_time": "2024-11-28T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -11708,7 +11708,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-11-29T02:54:17.378649+00:00",
+                        "end_time": "2024-11-29T16:12:56.670039+00:00",
                         "start_time": "2024-11-28T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -11912,7 +11912,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-11-29T02:54:06.991367+00:00",
+                        "end_time": "2024-11-29T16:12:46.860366+00:00",
                         "start_time": "2024-11-28T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -11993,6 +11993,12 @@
                     "title": "Include Query Lineage",
                     "description": "Whether to include query-based lineage information.",
                     "default": false,
+                    "type": "boolean"
+                },
+                "ingest_owner": {
+                    "title": "Ingest Owner",
+                    "description": "Ingest Owner from source. This will override Owner info entered from UI",
+                    "default": true,
                     "type": "boolean"
                 }
             },
