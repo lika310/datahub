@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-10T00:52:02.574857+00:00",
+                        "end_time": "2024-12-10T17:32:43.199183+00:00",
                         "start_time": "2024-12-09T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-10T00:52:02.025893+00:00",
+                        "end_time": "2024-12-10T17:32:42.581892+00:00",
                         "start_time": "2024-12-09T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -11182,7 +11182,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-10T00:51:46.976930+00:00",
+                        "end_time": "2024-12-10T17:32:26.942003+00:00",
                         "start_time": "2024-12-09T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -13872,12 +13872,6 @@
                     "default": false,
                     "type": "boolean"
                 },
-                "sql_parser": {
-                    "title": "Sql Parser",
-                    "description": "custom SQL parser. See note below for details.",
-                    "default": "datahub.utilities.sql_parser.DefaultSQLParser",
-                    "type": "string"
-                },
                 "env": {
                     "title": "Env",
                     "description": "Environment to use in namespace when constructing URNs.",
@@ -14773,7 +14767,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-10T00:51:52.398174+00:00",
+                        "end_time": "2024-12-10T17:32:32.697251+00:00",
                         "start_time": "2024-12-09T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
