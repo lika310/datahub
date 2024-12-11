@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T13:25:14.421465+00:00",
+                        "end_time": "2024-12-11T16:15:14.783230+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T13:25:13.840901+00:00",
+                        "end_time": "2024-12-11T16:15:14.220099+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -8520,6 +8520,12 @@
                     "description": "Disables the utilization of the TopicRecordNameStrategy for Schema Registry subjects. For more information, visit: https://docs.confluent.io/platform/current/schema-registry/serdes-develop/index.html#handling-differences-between-preregistered-and-client-derived-schemas:~:text=io.confluent.kafka.serializers.subject.TopicRecordNameStrategy",
                     "default": false,
                     "type": "boolean"
+                },
+                "ingest_schemas_as_entities": {
+                    "title": "Ingest Schemas As Entities",
+                    "description": "Enables ingesting schemas from schema registry as separate entities, in addition to the topics",
+                    "default": false,
+                    "type": "boolean"
                 }
             },
             "additionalProperties": false
@@ -11188,7 +11194,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T13:24:57.564021+00:00",
+                        "end_time": "2024-12-11T16:14:57.413647+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -14773,7 +14779,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T13:25:03.140858+00:00",
+                        "end_time": "2024-12-11T16:15:03.405466+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
