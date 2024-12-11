@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T10:58:14.735317+00:00",
+                        "end_time": "2024-12-11T13:25:14.421465+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T10:58:14.125467+00:00",
+                        "end_time": "2024-12-11T13:25:13.840901+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -11188,7 +11188,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T10:57:58.266461+00:00",
+                        "end_time": "2024-12-11T13:24:57.564021+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -14773,7 +14773,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T10:58:03.721038+00:00",
+                        "end_time": "2024-12-11T13:25:03.140858+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -17126,7 +17126,7 @@
                 "limit_entities_delete": {
                     "title": "Limit Entities Delete",
                     "description": "Max number of entities to delete.",
-                    "default": 10000,
+                    "default": 25000,
                     "type": "integer"
                 },
                 "runtime_limit_seconds": {
