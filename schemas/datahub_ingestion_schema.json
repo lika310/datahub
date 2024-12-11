@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T00:45:44.066061+00:00",
+                        "end_time": "2024-12-11T10:58:14.735317+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T00:45:43.511875+00:00",
+                        "end_time": "2024-12-11T10:58:14.125467+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -5625,6 +5625,12 @@
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
+                "incremental_properties": {
+                    "title": "Incremental Properties",
+                    "description": "When enabled, emits dataset properties as incremental to existing dataset properties in DataHub. When disabled, re-states dataset properties on each run.",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "classification": {
                     "title": "Classification",
                     "description": "For details, refer to [Classification](../../../../metadata-ingestion/docs/dev_guides/classification.md).",
@@ -11182,7 +11188,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T00:45:28.581658+00:00",
+                        "end_time": "2024-12-11T10:57:58.266461+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -14767,7 +14773,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-11T00:45:33.994652+00:00",
+                        "end_time": "2024-12-11T10:58:03.721038+00:00",
                         "start_time": "2024-12-10T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
