@@ -116,7 +116,7 @@ export default function UserListItem({ user, canManageUserCredentials, selectRol
                         <CustomAvatar
                             size={32}
                             name={displayName}
-                            photoUrl={user.editableProperties?.pictureLink || undefined}
+                            photoUrl={user?.editableProperties?.pictureLink || undefined}
                         />
                         <div style={{ marginLeft: 16, marginRight: 20 }}>
                             <div>

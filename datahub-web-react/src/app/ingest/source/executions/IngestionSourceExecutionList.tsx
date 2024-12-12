@@ -19,7 +19,7 @@ const ListContainer = styled.div`
 `;
 
 export function isExecutionRequestActive(executionRequest: ExecutionRequest) {
-    return executionRequest.result?.status === RUNNING || executionRequest.result?.status === ROLLING_BACK;
+    return executionRequest?.result?.status === RUNNING || executionRequest?.result?.status === ROLLING_BACK;
 }
 
 type Props = {
@@ -49,7 +49,7 @@ export const IngestionSourceExecutionList = ({ urn, isExpanded, lastRefresh, onR
     };
 
     function hasActiveExecution() {
-        return !!data?.ingestionSource?.executions?.executionRequests.find((request) =>
+        return !!data?.ingestionSource?.executions?.executionRequests?.find((request) =>
             isExecutionRequestActive(request as ExecutionRequest),
         );
     }

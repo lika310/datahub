@@ -48,7 +48,7 @@ const meta = {
         allowClear: {
             description: 'Whether clear button should be present.',
             table: {
-                defaultValue: { summary: searchBarDefaults.allowClear?.toString() },
+                defaultValue: { summary: searchBarDefaults?.allowClear?.toString() },
             },
             control: {
                 type: 'boolean',

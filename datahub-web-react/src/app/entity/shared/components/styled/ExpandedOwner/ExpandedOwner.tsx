@@ -45,7 +45,7 @@ export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly
         ownershipTypeName = getNameFromType(owner.type);
     }
     const pictureLink =
-        (owner.owner.__typename === 'CorpUser' && owner.owner.editableProperties?.pictureLink) || undefined;
+        (owner.owner.__typename === 'CorpUser' && owner?.owner?.editableProperties?.pictureLink) || undefined;
     const onDelete = async () => {
         if (!entityUrn) {
             return;
@@ -55,7 +55,7 @@ export const ExpandedOwner = ({ entityUrn, owner, hidePopOver, refetch, readOnly
                 variables: {
                     input: {
                         ownerUrn: owner.owner.urn,
-                        ownershipTypeUrn: owner.ownershipType?.urn,
+                        ownershipTypeUrn: owner?.ownershipType?.urn,
                         resourceUrn: entityUrn,
                     },
                 },

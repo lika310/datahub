@@ -114,7 +114,7 @@ export const LogIn: React.VFC<LogInProps> = () => {
             )}
             <div className={styles.login_box}>
                 <div className={styles.login_logo_box}>
-                    <Image wrapperClassName={styles.logo_image} src={themeConfig.assets?.logoUrl} preview={false} />
+                    <Image wrapperClassName={styles.logo_image} src={themeConfig?.assets?.logoUrl} preview={false} />
                 </div>
                 <div className={styles.login_form_box}>
                     {loading && <Message type="loading" content="Logging in..." />}

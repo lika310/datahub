@@ -4,10 +4,10 @@ function getAssertionsSummary(dataset: Dataset) {
     let numAssertionsFailing = 0;
     let numAssertionsPassing = 0;
 
-    dataset.assertions?.assertions?.forEach((assertion) => {
-        const totalRunEvents = assertion.runEvents?.total;
+    dataset?.assertions?.assertions?.forEach((assertion) => {
+        const totalRunEvents = assertion?.runEvents?.total;
         if (totalRunEvents) {
-            const failingForDataset = assertion.runEvents?.failed;
+            const failingForDataset = assertion?.runEvents?.failed;
             if (failingForDataset) {
                 numAssertionsFailing += 1;
             } else {
@@ -53,8 +53,8 @@ export function extractUpstreamSummary(upstreams: Entity[]) {
 export function getNumAssertionsFailing(dataset: Dataset) {
     let numFailing = 0;
 
-    dataset.assertions?.assertions.forEach((assertion) => {
-        if (assertion.runEvents?.failed) {
+    dataset?.assertions?.assertions?.forEach((assertion) => {
+        if (assertion?.runEvents?.failed) {
             numFailing += 1;
         }
     });

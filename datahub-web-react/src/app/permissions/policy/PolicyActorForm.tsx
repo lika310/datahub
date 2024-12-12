@@ -58,9 +58,9 @@ export default function PolicyActorForm({ policyType, actors, setActors }: Props
         },
     });
     const ownershipTypes =
-        ownershipData?.listOwnershipTypes?.ownershipTypes.filter((type) => type.urn !== 'urn:li:ownershipType:none') ||
+        ownershipData?.listOwnershipTypes?.ownershipTypes?.filter((type) => type.urn !== 'urn:li:ownershipType:none') ||
         [];
-    const ownershipTypesMap = Object.fromEntries(ownershipTypes.map((type) => [type.urn, type.info?.name]));
+    const ownershipTypesMap = Object.fromEntries(ownershipTypes.map((type) => [type.urn, type?.info?.name]));
     // Toggle the "Owners" switch
     const onToggleAppliesToOwners = (value: boolean) => {
         setActors({
@@ -79,7 +79,7 @@ export default function PolicyActorForm({ policyType, actors, setActors }: Props
     };
 
     const onDeselectOwnershipTypeActor = (type: string) => {
-        const newResourceOwnersTypes: Maybe<string[]> = actors.resourceOwnersTypes?.filter((u: string) => u !== type);
+        const newResourceOwnersTypes: Maybe<string[]> = actors?.resourceOwnersTypes?.filter((u: string) => u !== type);
         setActors({
             ...actors,
             resourceOwnersTypes: newResourceOwnersTypes?.length ? newResourceOwnersTypes : null,
@@ -110,7 +110,7 @@ export default function PolicyActorForm({ policyType, actors, setActors }: Props
                 allUsers: false,
             });
         } else {
-            const newUserActors = actors.users?.filter((u) => u !== user);
+            const newUserActors = actors?.users?.filter((u) => u !== user);
             setActors({
                 ...actors,
                 users: newUserActors,
@@ -142,7 +142,7 @@ export default function PolicyActorForm({ policyType, actors, setActors }: Props
                 allGroups: false,
             });
         } else {
-            const newGroupActors = actors.groups?.filter((g) => g !== group);
+            const newGroupActors = actors?.groups?.filter((g) => g !== group);
             setActors({
                 ...actors,
                 groups: newGroupActors,

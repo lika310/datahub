@@ -41,7 +41,7 @@ export default function useSchemaTitleRenderer(
 
     return (fieldPath: string, record: ExtendedSchemaFields): JSX.Element => {
         const fieldPathWithoutAnnotations = translateFieldPath(fieldPath);
-        const parentPathWithoutAnnotations = translateFieldPath(record.parent?.fieldPath || '');
+        const parentPathWithoutAnnotations = translateFieldPath(record?.parent?.fieldPath || '');
         let pathToDisplay = fieldPathWithoutAnnotations;
 
         // if the parent path is a prefix of the field path, remove it for display purposes
@@ -69,7 +69,7 @@ export default function useSchemaTitleRenderer(
                         ?.filter(
                             (constraint) =>
                                 (constraint?.sourceFields?.filter(
-                                    (sourceField) => sourceField?.fieldPath.trim() === fieldPath.trim(),
+                                    (sourceField) => sourceField?.fieldPath?.trim() === fieldPath.trim(),
                                 ).length || 0) > 0,
                         )
                         .map((constraint) => (

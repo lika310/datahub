@@ -25,5 +25,5 @@ export function getEntityPlatforms(entityType: EntityType | null, entityData: Ge
 }
 
 export function filterForAssetBadge(prop: StructuredPropertiesEntry) {
-    return prop.structuredProperty.settings?.showAsAssetBadge && !prop.structuredProperty.settings?.isHidden;
+    return prop?.structuredProperty?.settings?.showAsAssetBadge && !prop?.structuredProperty?.settings?.isHidden;
 }

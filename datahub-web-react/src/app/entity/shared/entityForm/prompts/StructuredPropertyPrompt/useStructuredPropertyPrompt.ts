@@ -32,7 +32,7 @@ export default function useStructuredPropertyPrompt({ prompt, submitResponse, fi
         setHasEdited,
     } = useEditStructuredProperty();
 
-    const structuredProperty = prompt.structuredPropertyParams?.structuredProperty;
+    const structuredProperty = prompt?.structuredPropertyParams?.structuredProperty;
 
     const previousEntityUrn = usePrevious(entityData?.urn);
     useEffect(() => {

@@ -38,7 +38,7 @@ export default function LineageEntityColumns({ node, onHover }: Props) {
 
     const fields =
         columnsByUrn[node.data.urn || ''] ||
-        node.data.schemaMetadata?.fields ||
+        node?.data?.schemaMetadata?.fields ||
         convertInputFieldsToSchemaFields(node.data.inputFields);
 
     const displayedFields = fields?.slice(
@@ -67,8 +67,8 @@ export default function LineageEntityColumns({ node, onHover }: Props) {
     }, [displayedFields, node?.data?.urn, setVisibleColumnsByUrn, previousDisplayedFields]);
 
     const hasColumnPagination =
-        (node.data.schemaMetadata?.fields && node.data.schemaMetadata?.fields.length > NUM_COLUMNS_PER_PAGE) ||
-        (node.data.inputFields?.fields && node.data.inputFields.fields.length > NUM_COLUMNS_PER_PAGE);
+        (node?.data?.schemaMetadata?.fields && node?.data?.schemaMetadata?.fields?.length > NUM_COLUMNS_PER_PAGE) ||
+        (node?.data?.inputFields?.fields && node.data.inputFields.fields.length > NUM_COLUMNS_PER_PAGE);
 
     return (
         <>

@@ -28,7 +28,7 @@ export const convertStateToUpdateInput = (state: ViewBuilderState) => {
             entityTypes: state?.definition?.entityTypes,
             filter: {
                 operator: state?.definition?.filter?.operator,
-                filters: state?.definition?.filter?.filters.map((filter) => ({
+                filters: state?.definition?.filter?.filters?.map((filter) => ({
                     field: filter.field,
                     condition: filter.condition,
                     values: filter.values,
@@ -53,7 +53,7 @@ export const convertStateToView = (urn: string, state: ViewBuilderState): DataHu
         name: state.name as string,
         description: state.description,
         definition: {
-            entityTypes: state.definition?.entityTypes || [],
+            entityTypes: state?.definition?.entityTypes || [],
             filter: {
                 operator: state?.definition?.filter?.operator as LogicalOperator,
                 filters: state?.definition?.filter?.filters?.map((filter) => ({
@@ -77,7 +77,7 @@ export const convertStateToView = (urn: string, state: ViewBuilderState): DataHu
 export const searchViews = (views: Array<DataHubView>, q?: string) => {
     if (q && q.length > 0) {
         const qLower = q.toLowerCase();
-        return views.filter((view) => view.name.toLowerCase().includes(qLower) || view.description?.includes(qLower));
+        return views.filter((view) => view.name.toLowerCase().includes(qLower) || view?.description?.includes(qLower));
     }
     return views;
 };

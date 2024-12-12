@@ -20,8 +20,8 @@ const getAssertionsStatusSummary = (assertions: Array<Assertion>) => {
         totalAssertions: assertions.length,
     };
     assertions.forEach((assertion) => {
-        if ((assertion.runEvents?.runEvents?.length || 0) > 0) {
-            const mostRecentRun = assertion.runEvents?.runEvents?.[0];
+        if ((assertion?.runEvents?.runEvents?.length || 0) > 0) {
+            const mostRecentRun = assertion?.runEvents?.runEvents?.[0];
             const resultType = mostRecentRun?.result?.type;
             if (AssertionResultType.Success === resultType) {
                 summary.succeededRuns++;
@@ -59,7 +59,7 @@ export const Assertions = () => {
     });
     const contract = contractData?.dataset?.contract as any;
     const assertions =
-        (combinedData && combinedData.dataset?.assertions?.assertions?.map((assertion) => assertion as Assertion)) ||
+        (combinedData && combinedData?.dataset?.assertions?.assertions?.map((assertion) => assertion as Assertion)) ||
         [];
     const filteredAssertions = assertions.filter((assertion) => !removedUrns.includes(assertion.urn));
 

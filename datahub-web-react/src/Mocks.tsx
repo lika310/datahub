@@ -734,7 +734,7 @@ export const dataset5 = {
         origin: 'PROD',
         customProperties: [{ key: 'propertyAKey', value: 'propertyAValue', associatedUrn: 'urn:li:dataset:5' }],
         externalUrl: 'https://data.hub',
-        lastModified: dataset3.properties?.lastModified,
+        lastModified: dataset3?.properties?.lastModified,
     },
 };
 
@@ -749,7 +749,7 @@ export const dataset6 = {
         origin: 'PROD',
         customProperties: [{ key: 'propertyAKey', value: 'propertyAValue', associatedUrn: 'urn:li:dataset:6' }],
         externalUrl: 'https://data.hub',
-        lastModified: dataset3.properties?.lastModified,
+        lastModified: dataset3?.properties?.lastModified,
     },
 };
 

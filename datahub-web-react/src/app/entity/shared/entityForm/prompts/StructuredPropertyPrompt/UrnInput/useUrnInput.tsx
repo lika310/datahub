@@ -43,7 +43,7 @@ export default function useUrnInput({ structuredProperty, selectedValues, update
     const [searchAcrossEntities, { data: searchData, loading }] = useGetSearchResultsForMultipleLazyQuery();
     const searchResults =
         searchData?.searchAcrossEntities?.searchResults?.map((searchResult) => searchResult.entity) || [];
-    const allowedEntityTypes = structuredProperty.definition.typeQualifier?.allowedTypes?.map(
+    const allowedEntityTypes = structuredProperty?.definition?.typeQualifier?.allowedTypes?.map(
         (allowedType) => allowedType.info.type,
     );
     const entityTypeNames: string[] | undefined = allowedEntityTypes?.map(

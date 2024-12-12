@@ -71,7 +71,7 @@ export class BusinessAttributeEntity implements Entity<BusinessAttribute> {
 
     getOverridePropertiesFromEntity = (data: BusinessAttribute) => {
         return {
-            name: data.properties?.name,
+            name: data?.properties?.name,
         };
     };
 
@@ -89,8 +89,8 @@ export class BusinessAttributeEntity implements Entity<BusinessAttribute> {
                 previewType={previewType}
                 urn={data.urn}
                 name={this.displayName(data)}
-                description={data.properties?.description || ''}
-                owners={data.ownership?.owners}
+                description={data?.properties?.description || ''}
+                owners={data?.ownership?.owners}
             />
         );
     };

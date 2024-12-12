@@ -53,7 +53,7 @@ export const useHasFilterValue = (field: string, value: string | undefined, { pr
                 filter.field === field &&
                 filter.condition === FilterOperator.Equal &&
                 !filter.negated &&
-                (prefix ? filter.values?.some((f) => f.startsWith(value)) : filter.values?.includes(value)),
+                (prefix ? filter?.values?.some((f) => f.startsWith(value)) : filter?.values?.includes(value)),
         )
     );
 };

@@ -66,17 +66,17 @@ const StructuredPropsTable = ({
     const entityRegistry = useEntityRegistry();
     const client = useApolloClient();
     const me = useUserContext();
-    const canEditProps = me.platformPrivileges?.manageStructuredProperties;
+    const canEditProps = me?.platformPrivileges?.manageStructuredProperties;
 
     const structuredProperties = data?.searchAcrossEntities?.searchResults || [];
 
     // Filter the table data based on the search query
     const filteredProperties = structuredProperties
-        .filter((prop: any) => prop.entity.definition?.displayName?.toLowerCase().includes(searchQuery.toLowerCase()))
+        .filter((prop: any) => prop?.entity?.definition?.displayName?.toLowerCase().includes(searchQuery.toLowerCase()))
         .sort(
             (propA, propB) =>
-                ((propB.entity as StructuredPropertyEntity).definition.created?.time || 0) -
-                ((propA.entity as StructuredPropertyEntity).definition.created?.time || 0),
+                ((propB.entity as StructuredPropertyEntity).definition?.created?.time || 0) -
+                ((propA.entity as StructuredPropertyEntity).definition?.created?.time || 0),
         );
 
     const [deleteStructuredProperty] = useDeleteStructuredPropertyMutation();
@@ -100,17 +100,17 @@ const StructuredPropsTable = ({
                     propertyType: deleteEntity.definition.valueType.urn,
                     appliesTo: deleteEntity.definition.entityTypes.map((type) => type.urn),
                     qualifiedName: deleteEntity.definition.qualifiedName,
-                    showInFilters: deleteEntity.settings?.showInSearchFilters,
-                    allowedAssetTypes: deleteEntity.definition.typeQualifier?.allowedTypes?.map(
+                    showInFilters: deleteEntity?.settings?.showInSearchFilters,
+                    allowedAssetTypes: deleteEntity?.definition?.typeQualifier?.allowedTypes?.map(
                         (allowedType) => allowedType.urn,
                     ),
                     allowedValues: deleteEntity.definition.allowedValues || undefined,
                     cardinality: deleteEntity.definition.cardinality || undefined,
-                    isHidden: deleteEntity.settings?.isHidden ?? false,
-                    showInSearchFilters: deleteEntity.settings?.showInSearchFilters ?? false,
-                    showAsAssetBadge: deleteEntity.settings?.showAsAssetBadge ?? false,
-                    showInAssetSummary: deleteEntity.settings?.showInAssetSummary ?? false,
-                    showInColumnsTable: deleteEntity.settings?.showInColumnsTable ?? false,
+                    isHidden: deleteEntity?.settings?.isHidden ?? false,
+                    showInSearchFilters: deleteEntity?.settings?.showInSearchFilters ?? false,
+                    showAsAssetBadge: deleteEntity?.settings?.showAsAssetBadge ?? false,
+                    showInAssetSummary: deleteEntity?.settings?.showInAssetSummary ?? false,
+                    showInColumnsTable: deleteEntity?.settings?.showInColumnsTable ?? false,
                 });
                 showToastMessage(ToastType.SUCCESS, 'Structured property deleted successfully!', 3);
                 removeFromPropertiesList(client, inputs, property.entity.urn, searchAcrossEntities);
@@ -209,7 +209,7 @@ const StructuredPropsTable = ({
             title: 'Creation Date',
             key: 'creationDate',
             render: (record) => {
-                const createdTime = record.entity.definition.created?.time;
+                const createdTime = record?.entity?.definition?.created?.time;
                 return (
                     <Tooltip title={toLocalDateString(createdTime)} showArrow={false}>
                         {createdTime ? toRelativeTimeString(createdTime) : '-'}
@@ -217,8 +217,8 @@ const StructuredPropsTable = ({
                 );
             },
             sorter: (sourceA, sourceB) => {
-                const timeA = sourceA.entity.definition.created?.time || Number.MAX_SAFE_INTEGER;
-                const timeB = sourceB.entity.definition.created?.time || Number.MAX_SAFE_INTEGER;
+                const timeA = sourceA?.entity?.definition?.created?.time || Number.MAX_SAFE_INTEGER;
+                const timeB = sourceB?.entity?.definition?.created?.time || Number.MAX_SAFE_INTEGER;
 
                 return timeA - timeB;
             },
@@ -228,7 +228,7 @@ const StructuredPropsTable = ({
             title: 'Created By',
             key: 'createdBy',
             render: (record) => {
-                const createdByUser = record.entity.definition?.created?.actor;
+                const createdByUser = record?.entity?.definition?.created?.actor;
                 const name = createdByUser && entityRegistry.getDisplayName(EntityType.CorpUser, createdByUser);
                 const avatarUrl = createdByUser?.editableProperties?.pictureLink || undefined;
 
@@ -255,9 +255,9 @@ const StructuredPropsTable = ({
                 );
             },
             sorter: (sourceA, sourceB) => {
-                const createdByUserA = sourceA.entity.definition?.created?.actor;
+                const createdByUserA = sourceA?.entity?.definition?.created?.actor;
                 const nameA = createdByUserA && entityRegistry.getDisplayName(EntityType.CorpUser, createdByUserA);
-                const createdByUserB = sourceB.entity.definition?.created?.actor;
+                const createdByUserB = sourceB?.entity?.definition?.created?.actor;
                 const nameB = createdByUserB && entityRegistry.getDisplayName(EntityType.CorpUser, createdByUserB);
 
                 return nameA?.localeCompare(nameB);

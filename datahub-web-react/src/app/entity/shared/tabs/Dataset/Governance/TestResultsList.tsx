@@ -41,7 +41,7 @@ type Props = {
 
 export const TestResultsList = ({ title, results }: Props) => {
     const resultsTableData = results.map((result) => ({
-        urn: result.test?.urn,
+        urn: result?.test?.urn,
         name: result?.test?.name,
         category: result?.test?.category,
         description: result?.test?.description,

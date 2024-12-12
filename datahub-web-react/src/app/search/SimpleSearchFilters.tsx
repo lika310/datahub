@@ -44,10 +44,10 @@ export const SimpleSearchFilters = ({ facets, selectedFilters, onFilterSelect, l
             : selectedFilters
                   .map((filter) =>
                       filter.field === field
-                          ? { ...filter, values: filter.values?.filter((val) => val !== value) }
+                          ? { ...filter, values: filter?.values?.filter((val) => val !== value) }
                           : filter,
                   )
-                  .filter((filter) => filter.field !== field || !(filter.values?.length === 0));
+                  .filter((filter) => filter.field !== field || !(filter?.values?.length === 0));
 
         // Do not let user unselect all degree filters
         if (field === DEGREE_FILTER_NAME && !selected) {

@@ -46,9 +46,9 @@ export default function QueriesTab() {
         filterText,
         (highlightedQueriesData?.listQueries?.queries || []).map((queryEntity) => ({
             urn: queryEntity.urn,
-            title: queryEntity.properties?.name || undefined,
-            description: queryEntity.properties?.description || undefined,
-            query: queryEntity.properties?.statement?.value || '',
+            title: queryEntity?.properties?.name || undefined,
+            description: queryEntity?.properties?.description || undefined,
+            query: queryEntity?.properties?.statement?.value || '',
             createdTime: queryEntity?.properties?.created?.time,
         })),
     );
@@ -127,7 +127,7 @@ export default function QueriesTab() {
             </Content>
             {showQueryBuilder && (
                 <QueryBuilderModal
-                    datasetUrn={baseEntity.dataset?.urn}
+                    datasetUrn={baseEntity?.dataset?.urn}
                     onClose={() => setShowQueryBuilder(false)}
                     onSubmit={onQueryCreated}
                 />

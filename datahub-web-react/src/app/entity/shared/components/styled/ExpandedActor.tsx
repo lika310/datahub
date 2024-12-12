@@ -32,7 +32,7 @@ export const ExpandedActor = ({ actor, popOver, closable, onClose }: Props) => {
         name = entityRegistry.getDisplayName(EntityType.CorpUser, actor);
     }
 
-    const pictureLink = (actor.__typename === 'CorpUser' && actor.editableProperties?.pictureLink) || undefined;
+    const pictureLink = (actor.__typename === 'CorpUser' && actor?.editableProperties?.pictureLink) || undefined;
 
     return (
         <ActorTag onClose={onClose} closable={closable}>

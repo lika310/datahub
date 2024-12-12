@@ -87,13 +87,13 @@ export const ViewSelect = ({ dropdownStyle = {} }: Props) => {
         DEFAULT_VIEW_BUILDER_DISPLAY_STATE,
     );
     const [selectedUrn, setSelectedUrn] = useState<string | undefined>(
-        userContext.localState?.selectedViewUrn || undefined,
+        userContext?.localState?.selectedViewUrn || undefined,
     );
     const [hoverViewUrn, setHoverViewUrn] = useState<string | undefined>(undefined);
 
     useEffect(() => {
-        setSelectedUrn(userContext.localState?.selectedViewUrn || undefined);
-    }, [userContext.localState?.selectedViewUrn, setSelectedUrn]);
+        setSelectedUrn(userContext?.localState?.selectedViewUrn || undefined);
+    }, [userContext?.localState?.selectedViewUrn, setSelectedUrn]);
 
     const selectRef = useRef(null);
 
@@ -249,7 +249,7 @@ export const ViewSelect = ({ dropdownStyle = {} }: Props) => {
             </SelectStyled>
             {viewBuilderDisplayState.visible && (
                 <ViewBuilder
-                    urn={viewBuilderDisplayState.view?.urn || undefined}
+                    urn={viewBuilderDisplayState?.view?.urn || undefined}
                     initialState={viewBuilderDisplayState.view}
                     mode={viewBuilderDisplayState.mode}
                     onSubmit={onCloseViewBuilder}

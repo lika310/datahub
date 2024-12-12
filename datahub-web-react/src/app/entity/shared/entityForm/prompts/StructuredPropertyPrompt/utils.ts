@@ -9,7 +9,7 @@ import {
 } from '../../../../../../types.generated';
 
 export function getInitialValues(prompt: FormPrompt, entityData: GenericEntityProperties | null, field?: SchemaField) {
-    const structuredProperty = prompt.structuredPropertyParams?.structuredProperty;
+    const structuredProperty = prompt?.structuredPropertyParams?.structuredProperty;
     let structuredPropertyAssignment: StructuredPropertiesEntry | undefined;
     if (field) {
         structuredPropertyAssignment = field?.schemaFieldEntity?.structuredProperties?.properties?.find(
@@ -20,7 +20,7 @@ export function getInitialValues(prompt: FormPrompt, entityData: GenericEntityPr
             (propAssignment) => propAssignment.structuredProperty.urn === structuredProperty?.urn,
         );
     }
-    return structuredPropertyAssignment?.values.map((value) => getStructuredPropertyValue(value as PropertyValue));
+    return structuredPropertyAssignment?.values?.map((value) => getStructuredPropertyValue(value as PropertyValue));
 }
 
 export function getInitialEntitiesForUrnPrompt(

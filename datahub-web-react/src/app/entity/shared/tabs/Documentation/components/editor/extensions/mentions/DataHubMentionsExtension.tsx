@@ -86,7 +86,7 @@ class DataHubMentionsExtension extends NodeExtension<DataHubMentionsOptions> {
                         }
 
                         const urn = node.getAttribute(DATAHUB_MENTION_ATTRS.urn);
-                        const name = node.textContent?.replace(/^@/, '') || urn;
+                        const name = node?.textContent?.replace(/^@/, '') || urn;
 
                         return { ...extra.parse(node), urn, name };
                     },

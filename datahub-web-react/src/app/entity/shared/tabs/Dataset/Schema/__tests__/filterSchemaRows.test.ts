@@ -137,7 +137,7 @@ describe('filterSchemaRows', () => {
                 { fieldPath: 'shipment', globalTags: null, glossaryTerms: { terms: [{ term: glossaryTerm1 }] } },
             ],
         };
-        const filterText = glossaryTerm1.properties?.name as string;
+        const filterText = glossaryTerm1?.properties?.name as string;
         const { filteredRows, expandedRowsFromFilter } = filterSchemaRows(
             rows,
             editableSchemaMetadata,
@@ -224,7 +224,7 @@ describe('filterSchemaRows', () => {
             { fieldPath: 'shipment', glossaryTerms: { terms: [{ term: glossaryTerm1 }] } },
         ] as SchemaField[];
         const editableSchemaMetadata = { editableSchemaFieldInfo: [] };
-        const filterText = glossaryTerm1.properties?.name as string;
+        const filterText = glossaryTerm1?.properties?.name as string;
         const { filteredRows, expandedRowsFromFilter } = filterSchemaRows(
             rowsWithTerms,
             editableSchemaMetadata,

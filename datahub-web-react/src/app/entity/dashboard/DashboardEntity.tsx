@@ -149,10 +149,10 @@ export class DashboardEntity implements Entity<Dashboard> {
                     display: {
                         visible: (_, dashboard: GetDashboardQuery) =>
                             !!dashboard?.dashboard?.embed?.renderUrl &&
-                            dashboard?.dashboard?.platform.urn === LOOKER_URN,
+                            dashboard?.dashboard?.platform?.urn === LOOKER_URN,
                         enabled: (_, dashboard: GetDashboardQuery) =>
                             !!dashboard?.dashboard?.embed?.renderUrl &&
-                            dashboard?.dashboard?.platform.urn === LOOKER_URN,
+                            dashboard?.dashboard?.platform?.urn === LOOKER_URN,
                     },
                 },
                 {
@@ -170,7 +170,7 @@ export class DashboardEntity implements Entity<Dashboard> {
                     name: 'Incidents',
                     component: IncidentTab,
                     getDynamicName: (_, dashboard) => {
-                        const activeIncidentCount = dashboard?.dashboard?.activeIncidents.total;
+                        const activeIncidentCount = dashboard?.dashboard?.activeIncidents?.total;
                         return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
                     },
                 },
@@ -197,23 +197,23 @@ export class DashboardEntity implements Entity<Dashboard> {
             <DashboardPreview
                 urn={data.urn}
                 platform={data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)}
-                name={data.properties?.name}
-                description={data.editableProperties?.description || data.properties?.description}
-                access={data.properties?.access}
+                name={data?.properties?.name}
+                description={data?.editableProperties?.description || data?.properties?.description}
+                access={data?.properties?.access}
                 tags={data.globalTags || undefined}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 glossaryTerms={data?.glossaryTerms}
                 logoUrl={data?.platform?.properties?.logoUrl}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 container={data.container}
                 parentContainers={data.parentContainers}
                 deprecation={data.deprecation}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 statsSummary={data.statsSummary}
-                lastUpdatedMs={data.properties?.lastModified?.time}
-                createdMs={data.properties?.created?.time}
-                subtype={data.subTypes?.typeNames?.[0]}
+                lastUpdatedMs={data?.properties?.lastModified?.time}
+                createdMs={data?.properties?.created?.time}
+                subtype={data?.subTypes?.typeNames?.[0]}
                 health={data.health}
             />
         );
@@ -227,31 +227,31 @@ export class DashboardEntity implements Entity<Dashboard> {
             <DashboardPreview
                 urn={data.urn}
                 platform={data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)}
-                name={data.properties?.name}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
-                description={data.editableProperties?.description || data.properties?.description}
-                access={data.properties?.access}
+                name={data?.properties?.name}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
+                description={data?.editableProperties?.description || data?.properties?.description}
+                access={data?.properties?.access}
                 tags={data.globalTags || undefined}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 glossaryTerms={data?.glossaryTerms}
                 insights={result.insights}
                 logoUrl={data?.platform?.properties?.logoUrl || ''}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 container={data.container}
                 parentContainers={data.parentContainers}
                 deprecation={data.deprecation}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 statsSummary={data.statsSummary}
-                lastUpdatedMs={data.properties?.lastModified?.time}
-                createdMs={data.properties?.created?.time}
+                lastUpdatedMs={data?.properties?.lastModified?.time}
+                createdMs={data?.properties?.created?.time}
                 snippet={
                     <MatchedFieldList
                         customFieldRenderer={(matchedField) => matchedInputFieldRenderer(matchedField, data)}
                         matchSuffix="on a contained chart"
                     />
                 }
-                subtype={data.subTypes?.typeNames?.[0]}
+                subtype={data?.subTypes?.typeNames?.[0]}
                 degree={(result as any).degree}
                 paths={(result as any).paths}
                 health={data.health}
@@ -262,7 +262,7 @@ export class DashboardEntity implements Entity<Dashboard> {
     getLineageVizConfig = (entity: Dashboard) => {
         return {
             urn: entity.urn,
-            name: entity.properties?.name || entity.urn,
+            name: entity?.properties?.name || entity.urn,
             type: EntityType.Dashboard,
             subtype: entity?.subTypes?.typeNames?.[0] || undefined,
             icon: entity?.platform?.properties?.logoUrl || undefined,
@@ -272,7 +272,7 @@ export class DashboardEntity implements Entity<Dashboard> {
     };
 
     displayName = (data: Dashboard) => {
-        return data.properties?.name || data.urn;
+        return data?.properties?.name || data.urn;
     };
 
     getGenericEntityProperties = (data: Dashboard) => {

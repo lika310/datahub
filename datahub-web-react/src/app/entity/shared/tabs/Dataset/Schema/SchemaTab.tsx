@@ -80,7 +80,7 @@ export const SchemaTab = ({ properties }: { properties?: any }) => {
         () =>
             entityWithSchema?.schemaMetadata?.fields?.some(
                 (schemaField) =>
-                    !!schemaField.schemaFieldEntity?.structuredProperties?.properties?.filter(
+                    !!schemaField?.schemaFieldEntity?.structuredProperties?.properties?.filter(
                         (prop) => prop.structuredProperty.exists,
                     )?.length,
             ),

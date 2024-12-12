@@ -40,8 +40,8 @@ type NameColumnProps = {
 
 export function NameColumn({ name, record, onEditView }: NameColumnProps) {
     const userContext = useUserContext();
-    const maybePersonalDefaultViewUrn = userContext.state?.views?.personalDefaultViewUrn;
-    const maybeGlobalDefaultViewUrn = userContext.state?.views?.globalDefaultViewUrn;
+    const maybePersonalDefaultViewUrn = userContext?.state?.views?.personalDefaultViewUrn;
+    const maybeGlobalDefaultViewUrn = userContext?.state?.views?.globalDefaultViewUrn;
 
     const isUserDefault = record.urn === maybePersonalDefaultViewUrn;
     const isGlobalDefault = record.urn === maybeGlobalDefaultViewUrn;

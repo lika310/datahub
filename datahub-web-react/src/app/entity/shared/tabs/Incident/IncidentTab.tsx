@@ -66,7 +66,7 @@ export const IncidentTab = () => {
         (combinedData && (combinedData as any).entity?.incidents?.incidents?.map((incident) => incident as Incident)) ||
         [];
     const filteredIncidents = allIncidents.filter(
-        (incident) => !selectedIncidentState || incident.status?.state === selectedIncidentState,
+        (incident) => !selectedIncidentState || incident?.status?.state === selectedIncidentState,
     );
     const incidentList = filteredIncidents?.map((incident) => ({
         urn: incident?.urn,

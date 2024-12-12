@@ -21,7 +21,7 @@ type Props = {
 };
 
 export const DataContractAssertionStatus = ({ assertion }: Props) => {
-    const latestRun = (assertion.runEvents?.runEvents?.length && assertion.runEvents?.runEvents[0]) || undefined;
+    const latestRun = (assertion?.runEvents?.runEvents?.length && assertion?.runEvents?.runEvents[0]) || undefined;
     const latestResultType = latestRun?.result?.type || undefined;
 
     return (

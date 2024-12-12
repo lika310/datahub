@@ -61,7 +61,7 @@ export default function FormItem({ formAssociation, selectFormUrn }: Props) {
         ? isVerificationComplete(entityData, form.urn)
         : allRequiredPromptsAreComplete;
     const isUserAssigned = useIsUserAssigned(form.urn);
-    const owners = form.ownership?.owners;
+    const owners = form?.ownership?.owners;
 
     return (
         <FormItemWrapper>

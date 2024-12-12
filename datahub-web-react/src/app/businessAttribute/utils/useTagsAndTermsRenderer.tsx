@@ -17,10 +17,10 @@ export default function useTagsAndTermsRenderer(
 
     const tagAndTermRender = (tags: GlobalTags, record: BusinessAttribute) => {
         return (
-            <div data-testid={`schema-field-${record.properties?.name}-${options.showTags ? 'tags' : 'terms'}`}>
+            <div data-testid={`schema-field-${record?.properties?.name}-${options.showTags ? 'tags' : 'terms'}`}>
                 <TagTermGroup
                     editableTags={options.showTags ? tags : null}
-                    editableGlossaryTerms={options.showTerms ? record.properties?.glossaryTerms : null}
+                    editableGlossaryTerms={options.showTerms ? record?.properties?.glossaryTerms : null}
                     canRemove
                     buttonProps={{ size: 'small' }}
                     canAddTag={tagHoveredUrn === record.urn && options.showTags}

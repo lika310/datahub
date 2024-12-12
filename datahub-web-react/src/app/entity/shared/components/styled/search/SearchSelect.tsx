@@ -80,7 +80,7 @@ export const SearchSelect = ({
     );
     const entityFilters: Array<EntityType> = filters
         .filter((filter) => filter.field === ENTITY_FILTER_NAME)
-        .flatMap((filter) => filter.values?.map((value) => value.toUpperCase() as EntityType) || []);
+        .flatMap((filter) => filter?.values?.map((value) => value.toUpperCase() as EntityType) || []);
     const finalEntityTypes = (entityFilters.length > 0 && entityFilters) || fixedEntityTypes || [];
 
     const finalEntityFilter: FacetFilterInput = {

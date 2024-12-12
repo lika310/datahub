@@ -66,7 +66,7 @@ export const CompactEntityNameList = ({ entities, onClick, linkUrlParams, showTo
                                         url={url}
                                         platformLogoUrl={platformLogoUrl || undefined}
                                         platformLogoUrls={genericProps?.siblingPlatforms?.map(
-                                            (platform) => platform.properties?.logoUrl,
+                                            (platform) => platform?.properties?.logoUrl,
                                         )}
                                         logoComponent={fallbackIcon}
                                         onClick={() => onClick?.(index)}

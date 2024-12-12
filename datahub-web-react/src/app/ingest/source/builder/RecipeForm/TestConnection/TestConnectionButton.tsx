@@ -58,7 +58,7 @@ function TestConnectionButton(props: Props) {
 
     useEffect(() => {
         if (!loading && resultData) {
-            const result = resultData.executionRequest?.result;
+            const result = resultData?.executionRequest?.result;
             if (result && result.status !== RUNNING) {
                 if (result.status === FAILURE) {
                     message.error(
@@ -88,7 +88,7 @@ function TestConnectionButton(props: Props) {
             createTestConnectionRequest({ variables: { input: { recipe: recipeJson, version } } })
                 .then((res) =>
                     getIngestionExecutionRequest({
-                        variables: { urn: res.data?.createTestConnectionRequest as string },
+                        variables: { urn: res?.data?.createTestConnectionRequest as string },
                     }),
                 )
                 .catch(() => {

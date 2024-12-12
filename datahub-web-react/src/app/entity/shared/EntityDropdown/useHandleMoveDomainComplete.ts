@@ -13,7 +13,7 @@ export function useHandleMoveDomainComplete() {
         if (!entityData) return;
 
         const domain = entityData as Domain;
-        const oldParentUrn = domain.parentDomains?.domains.length ? domain.parentDomains.domains[0].urn : undefined;
+        const oldParentUrn = domain?.parentDomains?.domains?.length ? domain.parentDomains.domains[0].urn : undefined;
 
         analytics.event({
             type: EventType.MoveDomainEvent,
@@ -26,8 +26,8 @@ export function useHandleMoveDomainComplete() {
             client,
             domain.urn,
             undefined,
-            domain.properties?.name ?? '',
-            domain.properties?.description ?? '',
+            domain?.properties?.name ?? '',
+            domain?.properties?.description ?? '',
             newParentUrn,
         );
         const newParentDomainsToUpdate = [...parentDomainsToUpdate];

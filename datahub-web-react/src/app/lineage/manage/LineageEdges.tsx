@@ -51,11 +51,11 @@ export default function LineageEdges({
             : fetchedEntity?.downstreamRelationships;
     const urnsToRemove = entitiesToRemove.map((entityToRemove) => entityToRemove.urn);
     const filteredRelationships = lineageRelationships?.filter(
-        (relationship) => !urnsToRemove.includes(relationship.entity?.urn || ''),
+        (relationship) => !urnsToRemove.includes(relationship?.entity?.urn || ''),
     );
 
     function removeEntity(removedEntity: Entity) {
-        if (lineageRelationships?.find((relationship) => relationship.entity?.urn === removedEntity.urn)) {
+        if (lineageRelationships?.find((relationship) => relationship?.entity?.urn === removedEntity.urn)) {
             setEntitiesToRemove((existingEntitiesToRemove) => [...existingEntitiesToRemove, removedEntity]);
         } else {
             setEntitiesToAdd((existingEntitiesToAdd) =>

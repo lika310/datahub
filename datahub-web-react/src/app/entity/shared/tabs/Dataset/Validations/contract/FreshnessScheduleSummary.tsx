@@ -14,7 +14,7 @@ type Props = {
 
 export const FreshnessScheduleSummary = ({ definition, evaluationSchedule }: Props) => {
     let scheduleText = '';
-    const cronStr = definition.cron?.cron ?? evaluationSchedule?.cron;
+    const cronStr = definition?.cron?.cron ?? evaluationSchedule?.cron;
     switch (definition.type) {
         case FreshnessAssertionScheduleType.Cron:
             scheduleText = cronStr
@@ -28,8 +28,8 @@ export const FreshnessScheduleSummary = ({ definition, evaluationSchedule }: Pro
             break;
         case FreshnessAssertionScheduleType.FixedInterval:
             scheduleText = `In the past ${
-                definition.fixedInterval?.multiple
-            } ${definition.fixedInterval?.unit.toLocaleLowerCase()}s${
+                definition?.fixedInterval?.multiple
+            } ${definition?.fixedInterval?.unit?.toLocaleLowerCase()}s${
                 cronStr ? `, as of ${cronstrue.toString(cronStr).toLowerCase()}` : ''
             }`;
             break;

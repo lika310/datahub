@@ -55,7 +55,7 @@ export default function UserEditProfileModal({ open, onClose, onSave, editModalD
                     displayName: data.name,
                     title: data.title,
                     pictureLink: data.image,
-                    teams: data.team?.split(','),
+                    teams: data?.team?.split(','),
                     email: data.email,
                     slack: data.slack,
                     phone: data.phone,

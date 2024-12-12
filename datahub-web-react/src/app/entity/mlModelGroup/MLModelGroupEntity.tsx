@@ -133,7 +133,7 @@ export class MLModelGroupEntity implements Entity<MlModelGroup> {
             urn: entity.urn,
             name: entity.name,
             type: EntityType.MlmodelGroup,
-            icon: entity.platform?.properties?.logoUrl || undefined,
+            icon: entity?.platform?.properties?.logoUrl || undefined,
             platform: entity.platform,
         };
     };

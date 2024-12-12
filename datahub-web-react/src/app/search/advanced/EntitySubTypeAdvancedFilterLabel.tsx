@@ -53,11 +53,11 @@ interface Props {
 export default function EntitySubTypeAdvancedFilterLabel({ filter, isCompact, disabled, onClose }: Props) {
     const entityRegistry = useEntityRegistry();
     const entityTypes = useMemo(
-        () => filter.values?.filter((value) => !value.includes(FILTER_DELIMITER)),
+        () => filter?.values?.filter((value) => !value.includes(FILTER_DELIMITER)),
         [filter.values],
     );
     const nestedSubTypes = useMemo(
-        () => filter.values?.filter((value) => value.includes(FILTER_DELIMITER)),
+        () => filter?.values?.filter((value) => value.includes(FILTER_DELIMITER)),
         [filter.values],
     );
     const entityTypeToSubTypes = useMemo(() => getEntityTypeToSubType(nestedSubTypes), [nestedSubTypes]);

@@ -21,7 +21,7 @@ type Props = {
 
 export const PlatformList = ({ content, onClick }: Props) => {
     const platformsWithCounts: Array<{ platform: DataPlatform; count?: number }> = content
-        .map((cnt) => ({ platform: cnt.entity, count: cnt.params?.contentParams?.count }))
+        .map((cnt) => ({ platform: cnt.entity, count: cnt?.params?.contentParams?.count }))
         .filter(
             (platformWithCount) => platformWithCount.platform !== null && platformWithCount !== undefined,
         ) as Array<{ platform: DataPlatform; count?: number }>;
@@ -38,11 +38,11 @@ export const PlatformList = ({ content, onClick }: Props) => {
                 >
                     <LogoCountCard
                         name={
-                            platform.platform.properties?.displayName ||
+                            platform?.platform?.properties?.displayName ||
                             capitalizeFirstLetterOnly(platform.platform.name) ||
                             ''
                         }
-                        logoUrl={platform.platform.properties?.logoUrl || ''}
+                        logoUrl={platform?.platform?.properties?.logoUrl || ''}
                         count={platform.count}
                     />
                 </Link>

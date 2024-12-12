@@ -62,7 +62,7 @@ export function extendColumnLineage(
 ) {
     if (lineageVizConfig.fineGrainedLineages && lineageVizConfig.fineGrainedLineages.length > 0) {
         lineageVizConfig.fineGrainedLineages.forEach((fineGrainedLineage) => {
-            fineGrainedLineage.upstreams?.forEach((upstream) => {
+            fineGrainedLineage?.upstreams?.forEach((upstream) => {
                 const [upstreamEntityUrn, upstreamField] = breakFieldUrn(upstream);
 
                 if (lineageVizConfig.type === EntityType.DataJob) {
@@ -76,7 +76,7 @@ export function extendColumnLineage(
                     );
                 }
 
-                fineGrainedLineage.downstreams?.forEach((downstream) => {
+                fineGrainedLineage?.downstreams?.forEach((downstream) => {
                     const [downstreamEntityUrn, downstreamField] = breakFieldUrn(downstream);
 
                     if (lineageVizConfig.type === EntityType.DataJob) {
@@ -130,8 +130,8 @@ export function extendColumnLineage(
                     });
                 });
             });
-            if (lineageVizConfig.type === EntityType.DataJob && !fineGrainedLineage.upstreams?.length) {
-                fineGrainedLineage.downstreams?.forEach((downstream) => {
+            if (lineageVizConfig.type === EntityType.DataJob && !fineGrainedLineage?.upstreams?.length) {
+                fineGrainedLineage?.downstreams?.forEach((downstream) => {
                     const [downstreamEntityUrn, downstreamField] = breakFieldUrn(downstream);
                     updateFineGrainedMap(
                         fineGrainedMap,
@@ -147,7 +147,7 @@ export function extendColumnLineage(
 
     // if we've seen fineGrainedMappings for this current entity's siblings, update the
     // fine grained map with the rendered urn instead of the "hidden" sibling urn
-    lineageVizConfig.siblings?.siblings?.forEach((sibling) => {
+    lineageVizConfig?.siblings?.siblings?.forEach((sibling) => {
         if (sibling && fineGrainedMapForSiblings[sibling.urn]) {
             fineGrainedMapForSiblings[sibling.urn].forEach((entry) => {
                 updateFineGrainedMap(
@@ -162,7 +162,7 @@ export function extendColumnLineage(
     });
 
     // below is to update the fineGrainedMap for Data Jobs
-    if (lineageVizConfig.inputFields?.fields && lineageVizConfig.inputFields.fields.length > 0) {
+    if (lineageVizConfig?.inputFields?.fields && lineageVizConfig.inputFields.fields.length > 0) {
         lineageVizConfig.inputFields.fields.forEach((inputField) => {
             if (inputField?.schemaFieldUrn && inputField.schemaField) {
                 const sourceUrn = getSourceUrnFromSchemaFieldUrn(inputField.schemaFieldUrn);

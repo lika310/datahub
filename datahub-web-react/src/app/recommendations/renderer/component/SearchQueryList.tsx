@@ -30,7 +30,7 @@ export const SearchQueryList = ({ content, onClick }: Props) => {
     const history = useHistory();
 
     const queryParams = content
-        .map((cnt) => cnt.params?.searchParams)
+        .map((cnt) => cnt?.params?.searchParams)
         .filter((params) => params !== null && params !== undefined) as Array<SearchParams>;
 
     const onClickQuery = (query: string, types: Array<EntityType>, filters: Array<FacetFilterInput>, index: number) => {

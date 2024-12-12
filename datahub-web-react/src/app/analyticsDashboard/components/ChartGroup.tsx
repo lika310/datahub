@@ -32,7 +32,7 @@ type Props = {
 export const ChartGroup = ({ chartGroup }: Props) => {
     return (
         <Container>
-            {chartGroup.title?.length > 0 && (
+            {chartGroup?.title?.length > 0 && (
                 <TitleContainer>
                     <GroupTitle level={3}>{chartGroup.title}</GroupTitle>
                     <Divider />

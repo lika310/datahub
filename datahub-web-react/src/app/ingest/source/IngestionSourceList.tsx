@@ -153,7 +153,7 @@ export const IngestionSourceList = () => {
 
     function hasActiveExecution() {
         return !!filteredSources.find((source) =>
-            source.executions?.executionRequests.find((request) => isExecutionRequestActive(request)),
+            source?.executions?.executionRequests?.find((request) => isExecutionRequestActive(request)),
         );
     }
     useRefreshIngestionData(onRefresh, hasActiveExecution);
@@ -210,7 +210,7 @@ export const IngestionSourceList = () => {
                     analytics.event({
                         type: EventType.UpdateIngestionSourceEvent,
                         sourceType: input.type,
-                        interval: input.schedule?.interval,
+                        interval: input?.schedule?.interval,
                     });
                     message.success({
                         content: `Successfully updated ingestion source!`,
@@ -238,8 +238,8 @@ export const IngestionSourceList = () => {
                         type: input.type,
                         config: null,
                         schedule: {
-                            interval: input.schedule?.interval || null,
-                            timezone: input.schedule?.timezone || null,
+                            interval: input?.schedule?.interval || null,
+                            timezone: input?.schedule?.timezone || null,
                         },
                         platform: null,
                         executions: null,
@@ -250,13 +250,13 @@ export const IngestionSourceList = () => {
                         analytics.event({
                             type: EventType.CreateIngestionSourceEvent,
                             sourceType: input.type,
-                            interval: input.schedule?.interval,
+                            interval: input?.schedule?.interval,
                         });
                         message.success({
                             content: `Successfully created ingestion source!`,
                             duration: 3,
                         });
-                        if (shouldRun && result.data?.createIngestionSource) {
+                        if (shouldRun && result?.data?.createIngestionSource) {
                             executeIngestionSource(result.data.createIngestionSource);
                         }
                     }, 2000);
@@ -309,21 +309,21 @@ export const IngestionSourceList = () => {
                 type: recipeBuilderState.type as string,
                 name: recipeBuilderState.name as string,
                 config: {
-                    recipe: recipeBuilderState.config?.recipe as string,
+                    recipe: recipeBuilderState?.config?.recipe as string,
                     version:
-                        (recipeBuilderState.config?.version?.length &&
-                            (recipeBuilderState.config?.version as string)) ||
+                        (recipeBuilderState?.config?.version?.length &&
+                            (recipeBuilderState?.config?.version as string)) ||
                         undefined,
                     executorId:
-                        (recipeBuilderState.config?.executorId?.length &&
-                            (recipeBuilderState.config?.executorId as string)) ||
+                        (recipeBuilderState?.config?.executorId?.length &&
+                            (recipeBuilderState?.config?.executorId as string)) ||
                         DEFAULT_EXECUTOR_ID,
-                    debugMode: recipeBuilderState.config?.debugMode || false,
-                    extraArgs: formatExtraArgs(recipeBuilderState.config?.extraArgs || []),
+                    debugMode: recipeBuilderState?.config?.debugMode || false,
+                    extraArgs: formatExtraArgs(recipeBuilderState?.config?.extraArgs || []),
                 },
                 schedule: recipeBuilderState.schedule && {
-                    interval: recipeBuilderState.schedule?.interval as string,
-                    timezone: recipeBuilderState.schedule?.timezone as string,
+                    interval: recipeBuilderState?.schedule?.interval as string,
+                    timezone: recipeBuilderState?.schedule?.timezone as string,
                 },
             },
             resetState,
@@ -468,7 +468,7 @@ export const IngestionSourceList = () => {
                 onSubmit={onSubmit}
                 onCancel={onCancel}
             />
-            {isViewingRecipe && <RecipeViewerModal recipe={focusSource?.config.recipe} onCancel={onCancel} />}
+            {isViewingRecipe && <RecipeViewerModal recipe={focusSource?.config?.recipe} onCancel={onCancel} />}
             {focusExecutionUrn && (
                 <ExecutionDetailsModal urn={focusExecutionUrn} open onClose={() => setFocusExecutionUrn(undefined)} />
             )}

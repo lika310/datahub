@@ -29,9 +29,9 @@ interface Props {
 }
 
 export default function DomainEntitiesSnippet({ domain }: Props) {
-    const entityCount = domain.entities?.total || 0;
-    const subDomainCount = domain.children?.total || 0;
-    const dataProductCount = domain.dataProducts?.total || 0;
+    const entityCount = domain?.entities?.total || 0;
+    const subDomainCount = domain?.children?.total || 0;
+    const dataProductCount = domain?.dataProducts?.total || 0;
 
     return (
         <Wrapper>

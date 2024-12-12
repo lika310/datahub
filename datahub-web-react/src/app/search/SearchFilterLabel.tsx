@@ -82,7 +82,7 @@ export const SearchFilterLabel = ({ field, value, entity, count, hideCount }: Pr
                 <CustomAvatar
                     size={18}
                     name={truncatedDisplayName}
-                    photoUrl={user.editableProperties?.pictureLink || undefined}
+                    photoUrl={user?.editableProperties?.pictureLink || undefined}
                     useDefaultAvatar={false}
                     style={{
                         marginRight: 8,
@@ -127,15 +127,15 @@ export const SearchFilterLabel = ({ field, value, entity, count, hideCount }: Pr
     if (entity?.type === EntityType.DataPlatform) {
         const platform = entity as DataPlatform;
         const displayName =
-            platform.properties?.displayName ||
-            platform.info?.displayName ||
+            platform?.properties?.displayName ||
+            platform?.info?.displayName ||
             capitalizeFirstLetterOnly(platform.name) ||
             '';
         const truncatedDisplayName = displayName.length > 25 ? `${displayName.slice(0, 25)}...` : displayName;
         return (
             <Tooltip title={displayName}>
-                {!!platform.properties?.logoUrl && (
-                    <PreviewImage src={platform.properties?.logoUrl} alt={displayName} />
+                {!!platform?.properties?.logoUrl && (
+                    <PreviewImage src={platform?.properties?.logoUrl} alt={displayName} />
                 )}
                 <span>
                     {truncatedDisplayName}
@@ -164,12 +164,15 @@ export const SearchFilterLabel = ({ field, value, entity, count, hideCount }: Pr
         const truncatedDisplayName = displayName.length > 25 ? `${displayName.slice(0, 25)}...` : displayName;
         return (
             <Tooltip title={displayName}>
-                {!!container.platform?.properties?.logoUrl && (
+                {!!container?.platform?.properties?.logoUrl && (
                     <>
                         <ParentWrapper style={{ width: '200px' }}>
                             <ParentEntities parentEntities={parentEntities} />
                         </ParentWrapper>
-                        <PreviewImage src={container.platform?.properties?.logoUrl} alt={container.properties?.name} />
+                        <PreviewImage
+                            src={container?.platform?.properties?.logoUrl}
+                            alt={container?.properties?.name}
+                        />
                     </>
                 )}
                 <span>

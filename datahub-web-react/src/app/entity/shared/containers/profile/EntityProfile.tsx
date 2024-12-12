@@ -231,11 +231,11 @@ export const EntityProfile = <T, U>({
 
     const autoRenderTabs: EntityTab[] =
         entityData?.autoRenderAspects?.map((aspect) => ({
-            name: aspect.renderSpec?.displayName || aspect.aspectName,
+            name: aspect?.renderSpec?.displayName || aspect.aspectName,
             component: () => (
                 <DynamicTab
                     renderSpec={aspect.renderSpec}
-                    type={aspect.renderSpec?.displayType}
+                    type={aspect?.renderSpec?.displayType}
                     payload={aspect.payload}
                 />
             ),
@@ -247,11 +247,11 @@ export const EntityProfile = <T, U>({
         })) || [];
 
     const visibleTabs = [...sortedTabs, ...autoRenderTabs].filter((tab) =>
-        tab.display?.visible(entityData, dataPossiblyCombinedWithSiblings),
+        tab?.display?.visible(entityData, dataPossiblyCombinedWithSiblings),
     );
 
     const enabledAndVisibleTabs = visibleTabs.filter((tab) =>
-        tab.display?.enabled(entityData, dataPossiblyCombinedWithSiblings),
+        tab?.display?.enabled(entityData, dataPossiblyCombinedWithSiblings),
     );
 
     const routedTab = useRoutedTab(enabledAndVisibleTabs);

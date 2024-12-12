@@ -31,8 +31,8 @@ export default function ProfilingRunsChart({ profiles }: Props) {
         const profileDate = new Date(profile.timestampMillis);
         return {
             timestamp: `${profileDate.toLocaleDateString()} at ${profileDate.toLocaleTimeString()}`,
-            rowCount: profile.rowCount?.toString() || 'unknown',
-            columnCount: profile.columnCount?.toString() || 'unknown',
+            rowCount: profile?.rowCount?.toString() || 'unknown',
+            columnCount: profile?.columnCount?.toString() || 'unknown',
         };
     });
 

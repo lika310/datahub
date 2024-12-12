@@ -13,7 +13,7 @@ const TermName = ({ term }: { term: GlossaryTerm }) => {
 
 export const matchedInputFieldRenderer = (matchedField: MatchedField, entity: Chart | Dashboard) => {
     if (matchedField?.name === LABEL_INDEX_NAME) {
-        const matchedSchemaField = entity.inputFields?.fields?.find(
+        const matchedSchemaField = entity?.inputFields?.fields?.find(
             (field) => field?.schemaField?.label === matchedField.value,
         );
         const matchedGlossaryTerm = matchedSchemaField?.schemaField?.glossaryTerms?.terms?.find(
@@ -22,7 +22,7 @@ export const matchedInputFieldRenderer = (matchedField: MatchedField, entity: Ch
 
         if (matchedGlossaryTerm) {
             let termType = 'term';
-            const typeProperty = matchedGlossaryTerm.term.properties?.customProperties?.find(
+            const typeProperty = matchedGlossaryTerm?.term?.properties?.customProperties?.find(
                 (property) => property.key === TYPE_PROPERTY_KEY_NAME,
             );
             if (typeProperty) {

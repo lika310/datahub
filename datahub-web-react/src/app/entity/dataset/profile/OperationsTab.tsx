@@ -195,14 +195,14 @@ export const OperationsTab = () => {
             status: run?.state?.[0]?.status,
             resultType: run?.state?.[0]?.result?.resultType,
             duration: run?.state?.[0]?.durationMillis,
-            inputs: run?.inputs?.relationships.map((relationship) => relationship.entity),
-            outputs: run?.outputs?.relationships.map((relationship) => relationship.entity),
+            inputs: run?.inputs?.relationships?.map((relationship) => relationship.entity),
+            outputs: run?.outputs?.relationships?.map((relationship) => relationship.entity),
             externalUrl: run?.externalUrl,
             parentTemplate: run?.parentTemplate?.relationships?.[0]?.entity,
         }));
 
     // If the table contains jobs, we need to show the job-related columns. Otherwise we can simplify the table.
-    const containsJobs = tableData?.some((run) => run.parentTemplate?.type !== EntityType.Dataset);
+    const containsJobs = tableData?.some((run) => run?.parentTemplate?.type !== EntityType.Dataset);
     const simplifiedColumns = containsJobs
         ? columns
         : columns.filter((column) => !['name', 'inputs', 'outputs'].includes(column.key));

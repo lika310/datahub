@@ -125,15 +125,15 @@ export const DatasetAssertionsList = ({
 
     const assertionsTableData = assertions.map((assertion) => ({
         urn: assertion.urn,
-        type: assertion.info?.type,
+        type: assertion?.info?.type,
         platform: assertion.platform,
-        datasetAssertionInfo: assertion.info?.datasetAssertion,
-        description: assertion.info?.description,
-        lastExecTime: assertion.runEvents?.runEvents?.length && assertion.runEvents.runEvents[0].timestampMillis,
+        datasetAssertionInfo: assertion?.info?.datasetAssertion,
+        description: assertion?.info?.description,
+        lastExecTime: assertion?.runEvents?.runEvents?.length && assertion.runEvents.runEvents[0].timestampMillis,
         lastExecResult:
-            assertion.runEvents?.runEvents?.length &&
+            assertion?.runEvents?.runEvents?.length &&
             assertion.runEvents.runEvents[0].status === AssertionRunStatus.Complete &&
-            assertion.runEvents.runEvents[0].result?.type,
+            assertion?.runEvents?.runEvents[0]?.result?.type,
     }));
 
     const assertionMenuItems = (urn: string) => {
@@ -230,21 +230,21 @@ export const DatasetAssertionsList = ({
                         <ActionButtonContainer>
                             <Tooltip
                                 title={
-                                    record.platform.properties?.displayName ||
+                                    record?.platform?.properties?.displayName ||
                                     capitalizeFirstLetterOnly(record.platform.name)
                                 }
                             >
                                 <PlatformContainer>
-                                    {(record.platform.properties?.logoUrl && (
+                                    {(record?.platform?.properties?.logoUrl && (
                                         <Image
                                             preview={false}
                                             height={20}
                                             width={20}
-                                            src={record.platform.properties?.logoUrl}
+                                            src={record?.platform?.properties?.logoUrl}
                                         />
                                     )) || (
                                         <Typography.Text>
-                                            {record.platform.properties?.displayName ||
+                                            {record?.platform?.properties?.displayName ||
                                                 capitalizeFirstLetterOnly(record.platform.name)}
                                         </Typography.Text>
                                     )}

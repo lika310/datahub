@@ -92,7 +92,7 @@ export class DataFlowEntity implements Entity<DataFlow> {
                     name: 'Incidents',
                     component: IncidentTab,
                     getDynamicName: (_, dataFlow) => {
-                        const activeIncidentCount = dataFlow?.dataFlow?.activeIncidents.total;
+                        const activeIncidentCount = dataFlow?.dataFlow?.activeIncidents?.total;
                         return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
                     },
                 },
@@ -144,17 +144,17 @@ export class DataFlowEntity implements Entity<DataFlow> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.properties?.name || ''}
-                description={data.editableProperties?.description || data.properties?.description}
+                name={data?.properties?.name || ''}
+                description={data?.editableProperties?.description || data?.properties?.description}
                 platformName={
                     data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)
                 }
                 platformLogo={data?.platform?.properties?.logoUrl || ''}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 globalTags={data.globalTags}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 health={data.health}
             />
         );
@@ -166,19 +166,19 @@ export class DataFlowEntity implements Entity<DataFlow> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.properties?.name || ''}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
-                description={data.editableProperties?.description || data.properties?.description || ''}
+                name={data?.properties?.name || ''}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
+                description={data?.editableProperties?.description || data?.properties?.description || ''}
                 platformName={
                     data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)
                 }
                 platformLogo={data?.platform?.properties?.logoUrl || ''}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 globalTags={data.globalTags}
                 insights={result.insights}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 jobCount={(data as any).childJobs?.total}
                 deprecation={data.deprecation}
                 degree={(result as any).degree}
@@ -189,7 +189,7 @@ export class DataFlowEntity implements Entity<DataFlow> {
     };
 
     displayName = (data: DataFlow) => {
-        return data.properties?.name || data.urn;
+        return data?.properties?.name || data.urn;
     };
 
     getGenericEntityProperties = (data: DataFlow) => {

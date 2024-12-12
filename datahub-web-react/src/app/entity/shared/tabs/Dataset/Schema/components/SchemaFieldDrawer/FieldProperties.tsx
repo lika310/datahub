@@ -51,7 +51,7 @@ export default function FieldProperties({ expandedField, schemaColumnProperties 
         schemaFieldEntity?.structuredProperties?.properties?.filter(
             (prop) =>
                 prop.structuredProperty.exists &&
-                !prop.structuredProperty.settings?.isHidden &&
+                !prop?.structuredProperty?.settings?.isHidden &&
                 !schemaColumnProperties?.find((p) => p.entity.urn === prop.structuredProperty.urn),
         ) || [];
 
@@ -74,7 +74,7 @@ export default function FieldProperties({ expandedField, schemaColumnProperties 
             <PropertiesWrapper>
                 {properties.map((structuredProp) => {
                     const isRichText =
-                        structuredProp.structuredProperty.definition.valueType?.info.type === StdDataType.RichText;
+                        structuredProp?.structuredProperty?.definition?.valueType?.info?.type === StdDataType.RichText;
                     const valuesData = mapStructuredPropertyValues(structuredProp);
                     const hasMultipleValues = valuesData.length > 1;
 

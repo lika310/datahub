@@ -33,16 +33,16 @@ export default function SourcesView() {
     const sources = useMemo(
         () =>
             features?.reduce((accumulator: Array<Dataset>, feature) => {
-                if (feature.__typename === 'MLFeature' && feature.properties?.sources) {
+                if (feature.__typename === 'MLFeature' && feature?.properties?.sources) {
                     // eslint-disable-next-line array-callback-return
-                    feature.properties?.sources.map((source: Dataset | null) => {
+                    feature?.properties?.sources?.map((source: Dataset | null) => {
                         if (source && accumulator.findIndex((dataset) => dataset.urn === source?.urn) === -1) {
                             accumulator.push(source);
                         }
                     });
-                } else if (feature.__typename === 'MLPrimaryKey' && feature.properties?.sources) {
+                } else if (feature.__typename === 'MLPrimaryKey' && feature?.properties?.sources) {
                     // eslint-disable-next-line array-callback-return
-                    feature.properties?.sources.map((source: Dataset | null) => {
+                    feature?.properties?.sources?.map((source: Dataset | null) => {
                         if (source && accumulator.findIndex((dataset) => dataset.urn === source?.urn) === -1) {
                             accumulator.push(source);
                         }

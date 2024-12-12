@@ -21,7 +21,7 @@ const DescriptionWrapper = styled.span`
 export function getDisplayedColumns(paths: EntityPath[], resultEntityUrn: string) {
     return paths
         .map((path) =>
-            path.path?.filter(
+            path?.path?.filter(
                 (entity) =>
                     entity?.type === EntityType.SchemaField &&
                     (entity as SchemaFieldEntity).parent.urn === resultEntityUrn,

@@ -6,7 +6,7 @@ import { useUserContext } from '../app/context/useUserContext';
 
 export default function QuickFiltersProvider({ children }: { children: React.ReactNode }) {
     const userContext = useUserContext();
-    const viewUrn = userContext.localState?.selectedViewUrn;
+    const viewUrn = userContext?.localState?.selectedViewUrn;
 
     const { data, refetch } = useGetQuickFiltersQuery({ variables: { input: { viewUrn } } });
     const [quickFilters, setQuickFilters] = useState<QuickFilter[] | null>(null);
@@ -21,7 +21,7 @@ export default function QuickFiltersProvider({ children }: { children: React.Rea
     // refetch and update quick filters whenever viewUrn changes
     useEffect(() => {
         refetch({ input: { viewUrn } }).then((result) => {
-            if (result.data.getQuickFilters?.quickFilters) {
+            if (result?.data?.getQuickFilters?.quickFilters) {
                 setQuickFilters(result.data.getQuickFilters.quickFilters as QuickFilter[]);
             }
         });

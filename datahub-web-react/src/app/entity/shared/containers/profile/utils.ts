@@ -46,7 +46,7 @@ export function getDataForEntityType<T>({
     const anyEntityData = entityData as any;
     let modifiedEntityData = entityData;
     // Bring 'customProperties' field to the root level.
-    const customProperties = anyEntityData.properties?.customProperties || anyEntityData.info?.customProperties;
+    const customProperties = anyEntityData?.properties?.customProperties || anyEntityData?.info?.customProperties;
     if (customProperties) {
         modifiedEntityData = {
             ...entityData,
@@ -230,8 +230,8 @@ function sortTabsWithDefaultTabId(tabs: EntityTab[], defaultTabId: string) {
 export function sortEntityProfileTabs(appConfig: AppConfig, entityType: EntityType, tabs: EntityTab[]) {
     const sortedTabs = [...tabs];
 
-    if (entityType === EntityType.Domain && appConfig.visualConfig.entityProfiles?.domain?.defaultTab) {
-        const defaultTabId = appConfig.visualConfig.entityProfiles?.domain.defaultTab;
+    if (entityType === EntityType.Domain && appConfig?.visualConfig?.entityProfiles?.domain?.defaultTab) {
+        const defaultTabId = appConfig?.visualConfig?.entityProfiles?.domain?.defaultTab;
         sortTabsWithDefaultTabId(sortedTabs, defaultTabId);
     }
 

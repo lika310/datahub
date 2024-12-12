@@ -59,10 +59,10 @@ export function getNewFilters(filterField: string, activeFilters: FacetFilterInp
     if (activeFilters.find((activeFilter) => activeFilter.field === filterField)) {
         newFilters = activeFilters
             .map((f) => (f.field === filterField ? { ...f, values: selectedFilterValues } : f))
-            .filter((f) => !(f.values?.length === 0));
+            .filter((f) => !(f?.values?.length === 0));
     } else {
         newFilters = [...activeFilters, { field: filterField, values: selectedFilterValues }].filter(
-            (f) => !(f.values?.length === 0),
+            (f) => !(f?.values?.length === 0),
         );
     }
     return newFilters;
@@ -103,7 +103,7 @@ function getDataPlatformInstanceIconAndLabel(
 ) {
     let icon: React.ReactNode = null;
     let label: React.ReactNode = null;
-    const logoUrl = (filterEntity as DataPlatformInstance)?.platform.properties?.logoUrl;
+    const logoUrl = (filterEntity as DataPlatformInstance)?.platform?.properties?.logoUrl;
     icon = logoUrl ? (
         <PlatformIcon src={logoUrl} size={size} />
     ) : (
@@ -266,7 +266,7 @@ export function combineAggregations(
 export function filterEmptyAggregations(aggregations: AggregationMetadata[], activeFilters: FacetFilterInput[]) {
     return aggregations.filter((agg) => {
         if (agg.count === 0) {
-            return activeFilters.find((activeFilter) => activeFilter.values?.includes(agg.value));
+            return activeFilters.find((activeFilter) => activeFilter?.values?.includes(agg.value));
         }
         return true;
     });
@@ -319,7 +319,7 @@ export function getFilterOptions(
         ...agg,
     }));
 
-    const searchResults = autoCompleteResults?.autoCompleteForMultiple?.suggestions.find((suggestion) =>
+    const searchResults = autoCompleteResults?.autoCompleteForMultiple?.suggestions?.find((suggestion) =>
         FACETS_TO_ENTITY_TYPES[filterField]?.includes(suggestion.type),
     );
     const searchFilterOptions = searchResults?.entities
@@ -355,8 +355,8 @@ export const createBrowseV2SearchFilter = (path: Array<string>) => `${UNIT_SEPAR
 export function canCreateViewFromFilters(activeFilters: FacetFilterInput[]) {
     const nestedSubTypeFilter = activeFilters.find((f) => f.field === ENTITY_SUB_TYPE_FILTER_NAME);
     if (nestedSubTypeFilter) {
-        const entityTypes = nestedSubTypeFilter.values?.filter((value) => !value.includes(FILTER_DELIMITER));
-        const subTypes = nestedSubTypeFilter.values?.filter((value) => value.includes(FILTER_DELIMITER));
+        const entityTypes = nestedSubTypeFilter?.values?.filter((value) => !value.includes(FILTER_DELIMITER));
+        const subTypes = nestedSubTypeFilter?.values?.filter((value) => value.includes(FILTER_DELIMITER));
 
         if (entityTypes?.length && subTypes?.length) {
             return false;

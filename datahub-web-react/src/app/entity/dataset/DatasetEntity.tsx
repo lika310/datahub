@@ -217,7 +217,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     name: 'Incidents',
                     component: IncidentTab,
                     getDynamicName: (_, dataset) => {
-                        const activeIncidentCount = dataset?.dataset?.activeIncidents.total;
+                        const activeIncidentCount = dataset?.dataset?.activeIncidents?.total;
                         return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
                     },
                 },
@@ -291,22 +291,22 @@ export class DatasetEntity implements Entity<Dataset> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.editableProperties?.name || data.properties?.name || data.name}
+                name={data?.editableProperties?.name || data?.properties?.name || data.name}
                 origin={data.origin}
-                subtype={data.subTypes?.typeNames?.[0]}
-                description={data.editableProperties?.description || data.properties?.description}
+                subtype={data?.subTypes?.typeNames?.[0]}
+                description={data?.editableProperties?.description || data?.properties?.description}
                 platformName={
                     data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)
                 }
-                platformLogo={data.platform.properties?.logoUrl}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
-                owners={data.ownership?.owners}
+                platformLogo={data?.platform?.properties?.logoUrl}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
+                owners={data?.ownership?.owners}
                 globalTags={data.globalTags}
                 glossaryTerms={data.glossaryTerms}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 container={data.container}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 health={data.health}
             />
         );
@@ -319,30 +319,30 @@ export class DatasetEntity implements Entity<Dataset> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.editableProperties?.name || data.properties?.name || data.name}
+                name={data?.editableProperties?.name || data?.properties?.name || data.name}
                 origin={data.origin}
-                description={data.editableProperties?.description || data.properties?.description}
+                description={data?.editableProperties?.description || data?.properties?.description}
                 platformName={
                     data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)
                 }
-                platformLogo={data.platform.properties?.logoUrl}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
+                platformLogo={data?.platform?.properties?.logoUrl}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
                 platformNames={genericProperties?.siblingPlatforms?.map(
-                    (platform) => platform.properties?.displayName || capitalizeFirstLetterOnly(platform.name),
+                    (platform) => platform?.properties?.displayName || capitalizeFirstLetterOnly(platform.name),
                 )}
-                platformLogos={genericProperties?.siblingPlatforms?.map((platform) => platform.properties?.logoUrl)}
-                owners={data.ownership?.owners}
+                platformLogos={genericProperties?.siblingPlatforms?.map((platform) => platform?.properties?.logoUrl)}
+                owners={data?.ownership?.owners}
                 globalTags={data.globalTags}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 deprecation={data.deprecation}
                 glossaryTerms={data.glossaryTerms}
-                subtype={data.subTypes?.typeNames?.[0]}
+                subtype={data?.subTypes?.typeNames?.[0]}
                 container={data.container}
                 parentContainers={data.parentContainers}
                 snippet={<MatchedFieldList customFieldRenderer={matchedFieldPathsRenderer} />}
                 insights={result.insights}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 statsSummary={data.statsSummary}
                 rowCount={(data as any).lastProfile?.length && (data as any).lastProfile[0].rowCount}
                 columnCount={(data as any).lastProfile?.length && (data as any).lastProfile[0].columnCount}
@@ -373,7 +373,7 @@ export class DatasetEntity implements Entity<Dataset> {
     };
 
     platformLogoUrl = (data: Dataset) => {
-        return data.platform.properties?.logoUrl || undefined;
+        return data?.platform?.properties?.logoUrl || undefined;
     };
 
     getGenericEntityProperties = (data: Dataset) => {

@@ -65,7 +65,7 @@ export const ValidationsTab = () => {
         },
     ];
 
-    if (appConfig.config.featureFlags?.dataContractsEnabled) {
+    if (appConfig?.config?.featureFlags?.dataContractsEnabled) {
         // If contracts feature is enabled, add to list.
         tabs.push({
             title: (

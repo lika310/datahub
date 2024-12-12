@@ -67,7 +67,7 @@ function ActiveFilter({
           };
 
     function removeFilter() {
-        const newFilterValues = filterFacet.values?.filter((value) => value !== filterValue) || [];
+        const newFilterValues = filterFacet?.values?.filter((value) => value !== filterValue) || [];
         onChangeFilters(getNewFilters(filterFacet.field, activeFilters, newFilterValues));
     }
 
@@ -97,7 +97,7 @@ interface Props {
 export default function ActiveFilterContainer({ filter, availableFilters, activeFilters, onChangeFilters }: Props) {
     return (
         <>
-            {filter.values?.map((value) => (
+            {filter?.values?.map((value) => (
                 <ActiveFilter
                     key={value}
                     filterFacet={filter}

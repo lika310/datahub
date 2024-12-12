@@ -24,7 +24,7 @@ export const MentionsComponent = () => {
     const [getAutoComplete, { data: autocompleteData, loading }] = useGetAutoCompleteMultipleResultsLazyQuery();
     const { active, range, filter: query } = useDataHubMentions({});
     const [suggestions, setSuggestions] = useState<any[]>([]);
-    const viewUrn = userContext.localState?.selectedViewUrn;
+    const viewUrn = userContext?.localState?.selectedViewUrn;
 
     useEffect(() => {
         if (query) {

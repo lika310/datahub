@@ -61,11 +61,11 @@ export const SelectPlatformModal = ({ onCloseModal, defaultValues, onOk, titleOv
 
     // Renders a search result in the select dropdown.
     const renderSearchResult = (entity: DataPlatform) => {
-        const displayName = entity.properties?.displayName || entity.name;
+        const displayName = entity?.properties?.displayName || entity.name;
         const truncatedDisplayName = displayName.length > 25 ? `${displayName.slice(0, 25)}...` : displayName;
         return (
             <Tooltip title={displayName}>
-                {!!entity.properties?.logoUrl && <PreviewImage src={entity?.properties?.logoUrl} alt={entity?.name} />}
+                {!!entity?.properties?.logoUrl && <PreviewImage src={entity?.properties?.logoUrl} alt={entity?.name} />}
                 <span>{truncatedDisplayName}</span>
             </Tooltip>
         );

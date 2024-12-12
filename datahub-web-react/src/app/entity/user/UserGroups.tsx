@@ -88,7 +88,7 @@ export default function UserGroups({ urn, initialRelationships, pageSize }: Prop
         getGroups({ variables: { urn, start, count: pageSize } });
     };
 
-    const relationships = groupsData ? groupsData.corpUser?.relationships?.relationships : initialRelationships;
+    const relationships = groupsData ? groupsData?.corpUser?.relationships?.relationships : initialRelationships;
     const total = relationships?.length || 0;
     const userGroups = relationships?.map((rel) => rel.entity as CorpGroup) || [];
 
@@ -102,16 +102,16 @@ export default function UserGroups({ urn, initialRelationships, pageSize }: Prop
                                 <Link to={entityRegistry.getEntityUrl(EntityType.CorpGroup, item.urn)}>
                                     <GroupItem>
                                         <Row className="title-row">
-                                            <GroupTitle>{item.info?.displayName || item.name}</GroupTitle>
+                                            <GroupTitle>{item?.info?.displayName || item.name}</GroupTitle>
                                             <GroupMember>
-                                                {item.relationships?.total}
-                                                {item.relationships?.total === 1 ? ' member' : ' members'}
+                                                {item?.relationships?.total}
+                                                {item?.relationships?.total === 1 ? ' member' : ' members'}
                                             </GroupMember>
                                         </Row>
                                         <Row className="description-row">
                                             <GroupDescription>
-                                                <Tooltip title={item.info?.description}>
-                                                    {item.info?.description}
+                                                <Tooltip title={item?.info?.description}>
+                                                    {item?.info?.description}
                                                 </Tooltip>
                                             </GroupDescription>
                                         </Row>

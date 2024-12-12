@@ -39,7 +39,7 @@ export const SearchRoutes = (): JSX.Element => {
 
     const showStructuredProperties =
         config?.featureFlags?.showManageStructuredProperties &&
-        (me.platformPrivileges?.manageStructuredProperties || me.platformPrivileges?.viewStructuredPropertiesPage);
+        (me?.platformPrivileges?.manageStructuredProperties || me?.platformPrivileges?.viewStructuredPropertiesPage);
 
     return (
         <SearchablePage>

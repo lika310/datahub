@@ -135,12 +135,12 @@ const AddPropertyButton = ({ fieldUrn, refetch, fieldProperties, isV1Drawer }: P
                         label: (
                             <Option key={entity.urn} onClick={() => handleOptionClick(entity)}>
                                 <Text weight="semiBold" color="gray">
-                                    {entity.definition?.displayName}
+                                    {entity?.definition?.displayName}
                                 </Text>
                             </Option>
                         ),
                         key: entity.urn,
-                        name: entity.definition?.displayName || entity.urn,
+                        name: entity?.definition?.displayName || entity.urn,
                     };
                 }),
         [data, fieldUrn, fieldPropertiesUrns, entityPropertiesUrns],
@@ -152,13 +152,13 @@ const AddPropertyButton = ({ fieldUrn, refetch, fieldProperties, isV1Drawer }: P
     if (!canEditProperties) return null;
 
     // Filter items based on search query
-    const filteredItems = properties?.filter((prop) => prop.name?.toLowerCase().includes(searchQuery.toLowerCase()));
+    const filteredItems = properties?.filter((prop) => prop?.name?.toLowerCase().includes(searchQuery.toLowerCase()));
 
     const noDataText =
         properties?.length === 0 ? (
             <>
                 It looks like there are no structured properties for this asset type.
-                {me.platformPrivileges?.manageStructuredProperties && (
+                {me?.platformPrivileges?.manageStructuredProperties && (
                     <span>
                         {' '}
                         <Link to={PageRoutes.STRUCTURED_PROPERTIES}>Manage custom properties</Link>

@@ -73,13 +73,13 @@ export const getContractSummaryMessage = (state: DataContractState, summary: Ass
  * Returns true if a given assertion is part of a given contract, false otherwise.
  */
 export const isAssertionPartOfContract = (assertion: Assertion, contract: DataContract) => {
-    if (contract.properties?.dataQuality?.some((c) => c.assertion.urn === assertion.urn)) {
+    if (contract?.properties?.dataQuality?.some((c) => c.assertion.urn === assertion.urn)) {
         return true;
     }
-    if (contract.properties?.schema?.some((c) => c.assertion.urn === assertion.urn)) {
+    if (contract?.properties?.schema?.some((c) => c.assertion.urn === assertion.urn)) {
         return true;
     }
-    if (contract.properties?.freshness?.some((c) => c.assertion.urn === assertion.urn)) {
+    if (contract?.properties?.freshness?.some((c) => c.assertion.urn === assertion.urn)) {
         return true;
     }
     return false;
@@ -90,17 +90,17 @@ export const isAssertionPartOfContract = (assertion: Assertion, contract: DataCo
  */
 export const getDataContractCategoryFromAssertion = (assertion: Assertion) => {
     if (
-        assertion.info?.type === AssertionType.Dataset ||
-        assertion.info?.type === AssertionType.Volume ||
-        assertion.info?.type === AssertionType.Field ||
-        assertion.info?.type === AssertionType.Sql
+        assertion?.info?.type === AssertionType.Dataset ||
+        assertion?.info?.type === AssertionType.Volume ||
+        assertion?.info?.type === AssertionType.Field ||
+        assertion?.info?.type === AssertionType.Sql
     ) {
         return DataContractCategoryType.DATA_QUALITY;
     }
-    if (assertion.info?.type === AssertionType.Freshness) {
+    if (assertion?.info?.type === AssertionType.Freshness) {
         return DataContractCategoryType.FRESHNESS;
     }
-    if (assertion.info?.type === AssertionType.DataSchema) {
+    if (assertion?.info?.type === AssertionType.DataSchema) {
         return DataContractCategoryType.SCHEMA;
     }
     return DataContractCategoryType.DATA_QUALITY;

@@ -155,13 +155,13 @@ export class GlossaryTermEntity implements Entity<GlossaryTerm> {
                 name={this.displayName(data)}
                 description={data?.properties?.description || ''}
                 owners={data?.ownership?.owners}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
             />
         );
     };
 
     displayName = (data: GlossaryTerm) => {
-        return data.properties?.name || data.name || data.urn;
+        return data?.properties?.name || data.name || data.urn;
     };
 
     platformLogoUrl = (_: GlossaryTerm) => {

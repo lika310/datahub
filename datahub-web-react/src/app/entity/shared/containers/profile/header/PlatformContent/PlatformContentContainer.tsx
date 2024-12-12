@@ -40,9 +40,9 @@ function PlatformContentContainer() {
             platformName={platformName}
             platformLogoUrl={platformLogoUrl}
             platformNames={entityData?.siblingPlatforms?.map(
-                (platform) => platform.properties?.displayName || capitalizeFirstLetterOnly(platform.name),
+                (platform) => platform?.properties?.displayName || capitalizeFirstLetterOnly(platform.name),
             )}
-            platformLogoUrls={entityData?.siblingPlatforms?.map((platform) => platform.properties?.logoUrl)}
+            platformLogoUrls={entityData?.siblingPlatforms?.map((platform) => platform?.properties?.logoUrl)}
             entityLogoComponent={entityLogoComponent}
             instanceId={instanceId}
             typeIcon={typeIcon}

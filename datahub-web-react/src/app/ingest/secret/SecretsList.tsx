@@ -116,7 +116,7 @@ export const SecretsList = () => {
                 setIsCreatingSecret(false);
                 addSecretToListSecretsCache(
                     {
-                        urn: res.data?.createSecret || '',
+                        urn: res?.data?.createSecret || '',
                         name: state.name,
                         description: state.description || '',
                     },

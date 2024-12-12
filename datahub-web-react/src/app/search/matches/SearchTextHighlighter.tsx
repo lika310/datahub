@@ -20,7 +20,7 @@ const StyledHighlight = styled(Highlight).attrs((props) => ({
 
 const SearchTextHighlighter = ({ field, text, enableFullHighlight = false }: Props) => {
     const appConfig = useAppConfig();
-    const enableNameHighlight = appConfig.config.visualConfig.searchResult?.enableNameHighlight;
+    const enableNameHighlight = appConfig?.config?.visualConfig?.searchResult?.enableNameHighlight;
     const matchedFields = useMatchedFieldsByGroup(field);
     const hasMatchedField = !!matchedFields?.length;
     const normalizedSearchQuery = useSearchQuery()?.trim().toLowerCase();

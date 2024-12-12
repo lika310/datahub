@@ -22,8 +22,8 @@ export default function GlossaryRelatedEntity() {
         ]) ||
         [];
 
-    entityData?.isAChildren?.relationships.forEach((term) => {
-        const childUrn = term.entity?.urn;
+    entityData?.isAChildren?.relationships?.forEach((term) => {
+        const childUrn = term?.entity?.urn;
 
         if (childUrn) {
             fixedOrFilters.push({

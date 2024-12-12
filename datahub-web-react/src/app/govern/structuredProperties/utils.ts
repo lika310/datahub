@@ -150,20 +150,20 @@ export const getValueTypeLabel = (valueUrn: string, cardinality: PropertyCardina
 };
 
 export const getNewAllowedTypes = (entity: StructuredPropertyEntity, values: StructuredProp) => {
-    const currentTypeUrns = entity.definition.typeQualifier?.allowedTypes?.map((type) => type.urn);
-    return values.typeQualifier?.allowedTypes?.filter((type) => !currentTypeUrns?.includes(type));
+    const currentTypeUrns = entity?.definition?.typeQualifier?.allowedTypes?.map((type) => type.urn);
+    return values?.typeQualifier?.allowedTypes?.filter((type) => !currentTypeUrns?.includes(type));
 };
 
 export const getNewEntityTypes = (entity: StructuredPropertyEntity, values: StructuredProp) => {
-    const currentTypeUrns = entity.definition.entityTypes?.map((type) => type.urn);
-    return values.entityTypes?.filter((type) => !currentTypeUrns.includes(type));
+    const currentTypeUrns = entity?.definition?.entityTypes?.map((type) => type.urn);
+    return values?.entityTypes?.filter((type) => !currentTypeUrns.includes(type));
 };
 
 export const getNewAllowedValues = (entity: StructuredPropertyEntity, values: StructuredProp) => {
-    const currentAllowedValues = entity.definition.allowedValues?.map(
+    const currentAllowedValues = entity?.definition?.allowedValues?.map(
         (val: any) => val.value.numberValue || val.value.stringValue,
     );
-    return values.allowedValues?.filter(
+    return values?.allowedValues?.filter(
         (val: any) =>
             !(currentAllowedValues?.includes(val.stringValue) || currentAllowedValues?.includes(val.numberValue)),
     );

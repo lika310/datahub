@@ -112,7 +112,7 @@ export class DataJobEntity implements Entity<DataJob> {
                     name: 'Incidents',
                     component: IncidentTab,
                     getDynamicName: (_, dataJob) => {
-                        const activeIncidentCount = dataJob?.dataJob?.activeIncidents.total;
+                        const activeIncidentCount = dataJob?.dataJob?.activeIncidents?.total;
                         return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
                     },
                 },
@@ -165,16 +165,16 @@ export class DataJobEntity implements Entity<DataJob> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.properties?.name || ''}
-                subType={data.subTypes?.typeNames?.[0]}
-                description={data.editableProperties?.description || data.properties?.description}
+                name={data?.properties?.name || ''}
+                subType={data?.subTypes?.typeNames?.[0]}
+                description={data?.editableProperties?.description || data?.properties?.description}
                 platformName={getDataJobPlatformName(data)}
                 platformLogo={data?.dataFlow?.platform?.properties?.logoUrl || ''}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 globalTags={data.globalTags || null}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 health={data.health}
             />
         );
@@ -186,19 +186,19 @@ export class DataJobEntity implements Entity<DataJob> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.properties?.name || ''}
-                subType={data.subTypes?.typeNames?.[0]}
-                description={data.editableProperties?.description || data.properties?.description}
+                name={data?.properties?.name || ''}
+                subType={data?.subTypes?.typeNames?.[0]}
+                description={data?.editableProperties?.description || data?.properties?.description}
                 platformName={getDataJobPlatformName(data)}
                 platformLogo={data?.dataFlow?.platform?.properties?.logoUrl || ''}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
-                owners={data.ownership?.owners}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
+                owners={data?.ownership?.owners}
                 globalTags={data.globalTags}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 deprecation={data.deprecation}
                 insights={result.insights}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 lastRunTimeMs={
                     ((data as any).lastRun?.runs?.length && (data as any).lastRun?.runs[0]?.created?.time) || undefined
                 }
@@ -240,7 +240,7 @@ export class DataJobEntity implements Entity<DataJob> {
     };
 
     displayName = (data: DataJob) => {
-        return data.properties?.name || data.urn;
+        return data?.properties?.name || data.urn;
     };
 
     getGenericEntityProperties = (data: DataJob) => {

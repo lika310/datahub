@@ -68,7 +68,7 @@ export const SearchablePage = ({ onSearch, onAutoComplete, children }: Props) =>
     const userContext = useUserContext();
     const [newSuggestionData, setNewSuggestionData] = useState<GetAutoCompleteMultipleResultsQuery | undefined>();
     const { user } = userContext;
-    const viewUrn = userContext.localState?.selectedViewUrn;
+    const viewUrn = userContext?.localState?.selectedViewUrn;
 
     const { title, updateTitle } = useBrowserTitle();
 

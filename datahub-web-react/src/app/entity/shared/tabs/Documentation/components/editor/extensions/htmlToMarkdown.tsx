@@ -54,7 +54,7 @@ const turndownService = new TurndownService({
     /* Remove unnecessary child <p> tags within tables <th> and <td> */
     .addRule('tableHeadingAndData', {
         filter: (node) =>
-            !!(node.nodeName === 'P' && (node.parentNode?.nodeName === 'TH' || node.parentNode?.nodeName === 'TD')),
+            !!(node.nodeName === 'P' && (node?.parentNode?.nodeName === 'TH' || node?.parentNode?.nodeName === 'TD')),
         replacement: (content, node: any) =>
             node?.previousElementSibling?.nodeName === 'P' ? `${br}${content}` : content,
     })
@@ -77,7 +77,7 @@ const turndownService = new TurndownService({
         replacement: (_, node, options) => {
             invariant(isElementDomNode(node.firstChild), {
                 code: ErrorConstant.EXTENSION,
-                message: `Invalid node \`${node.firstChild?.nodeName}\` encountered for codeblock when converting html to markdown.`,
+                message: `Invalid node \`${node?.firstChild?.nodeName}\` encountered for codeblock when converting html to markdown.`,
             });
 
             const className = node.firstChild.getAttribute('class') ?? '';

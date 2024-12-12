@@ -147,7 +147,7 @@ export const setFieldValues = (
     resourceFieldType: string,
     fieldValues: Array<PolicyMatchCriterionValue>,
 ): PolicyMatchFilter => {
-    const restCriteria = filter.criteria?.filter((criterion) => criterion.field !== resourceFieldType) || [];
+    const restCriteria = filter?.criteria?.filter((criterion) => criterion.field !== resourceFieldType) || [];
     if (fieldValues.length === 0) {
         return { ...filter, criteria: restCriteria };
     }

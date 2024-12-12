@@ -198,8 +198,8 @@ export const getAssertionsSummary = (assertions: Assertion[]): AssertionStatusSu
         totalAssertions: assertions.length,
     };
     assertions.forEach((assertion) => {
-        if ((assertion.runEvents?.runEvents?.length || 0) > 0) {
-            const mostRecentRun = assertion.runEvents?.runEvents?.[0];
+        if ((assertion?.runEvents?.runEvents?.length || 0) > 0) {
+            const mostRecentRun = assertion?.runEvents?.runEvents?.[0];
             const resultType = mostRecentRun?.result?.type;
             if (AssertionResultType.Success === resultType) {
                 summary.passing++;
@@ -231,9 +231,9 @@ export const createAssertionGroups = (assertions: Array<Assertion>): AssertionGr
 
     const typeToAssertions = new Map();
     newAssertions
-        .filter((assertion) => assertion.info?.type)
+        .filter((assertion) => assertion?.info?.type)
         .forEach((assertion) => {
-            const groupType = assertion.info?.type;
+            const groupType = assertion?.info?.type;
             const groupedAssertions = typeToAssertions.get(groupType) || [];
             groupedAssertions.push(assertion);
             typeToAssertions.set(groupType, groupedAssertions);

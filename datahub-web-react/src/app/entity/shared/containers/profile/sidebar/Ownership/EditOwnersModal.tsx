@@ -100,7 +100,7 @@ export const EditOwnersModal = ({
             label: defaultValue.entity ? renderDropdownResult(defaultValue.entity) : defaultValue.urn,
             value: {
                 ownerUrn: defaultValue.urn,
-                ownerEntityType: defaultValue.entity?.type || EntityType.CorpUser,
+                ownerEntityType: defaultValue?.entity?.type || EntityType.CorpUser,
             },
         }));
     };

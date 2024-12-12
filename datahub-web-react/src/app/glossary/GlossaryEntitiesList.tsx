@@ -25,7 +25,7 @@ function GlossaryEntitiesList(props: Props) {
         <EntitiesWrapper>
             {nodes.map((node) => (
                 <GlossaryEntityItem
-                    name={node.properties?.name || ''}
+                    name={node?.properties?.name || ''}
                     urn={node.urn}
                     type={node.type}
                     count={(node as GlossaryNodeFragment).children?.total}

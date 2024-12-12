@@ -138,7 +138,7 @@ export class MLFeatureEntity implements Entity<MlFeature> {
                 name={data.name || ''}
                 featureNamespace={data.featureNamespace || ''}
                 description={data.description}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 platform={platform}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
             />
@@ -156,10 +156,10 @@ export class MLFeatureEntity implements Entity<MlFeature> {
                 name={data.name || ''}
                 featureNamespace={data.featureNamespace || ''}
                 description={data.description || ''}
-                owners={data.ownership?.owners}
+                owners={data?.ownership?.owners}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 platform={platform}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
                 degree={(result as any).degree}
                 paths={(result as any).paths}
             />

@@ -88,7 +88,7 @@ export default function StructuredPropertyPrompt({
         optimisticCompletedTimestamp,
     });
 
-    const structuredProperty = prompt.structuredPropertyParams?.structuredProperty;
+    const structuredProperty = prompt?.structuredPropertyParams?.structuredProperty;
     if (!structuredProperty) return null;
 
     const { displayName, description } = structuredProperty.definition;

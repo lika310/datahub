@@ -74,7 +74,7 @@ export default function ManageLineageModal({
         const payload = buildUpdateLineagePayload(lineageDirection, entitiesToAdd, entitiesToRemove, entityUrn);
         updateLineage({ variables: { input: payload } })
             .then((res) => {
-                if (res.data?.updateLineage) {
+                if (res?.data?.updateLineage) {
                     closeModal();
                     if (showLoading) {
                         message.loading('Loading...');

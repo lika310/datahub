@@ -105,7 +105,7 @@ interface Props {
 function RecipeForm(props: Props) {
     const { state, isEditing, displayRecipe, sourceConfigs, setStagedRecipe, onClickNext, goToPrevious } = props;
     const { type } = state;
-    const version = state.config?.version;
+    const version = state?.config?.version;
     const { fields, advancedFields, filterFields, filterSectionTooltip, advancedSectionTooltip, defaultOpenSections } =
         RECIPE_FIELDS[type as string];
     const allFields = [...fields, ...advancedFields, ...filterFields];
@@ -118,7 +118,7 @@ function RecipeForm(props: Props) {
         },
     });
     const secrets =
-        data?.listSecrets?.secrets.sort((secretA, secretB) => secretA.name.localeCompare(secretB.name)) || [];
+        data?.listSecrets?.secrets?.sort((secretA, secretB) => secretA.name.localeCompare(secretB.name)) || [];
     const [form] = Form.useForm();
 
     function updateFormValues(changedValues: any, allValues: any) {

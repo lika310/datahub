@@ -49,18 +49,18 @@ export const DataQualityContractSummary = ({ contracts, showAction = false }: Pr
             title: () => <ColumnHeader>ASSERTION</ColumnHeader>,
             render: (assertion: Assertion) => (
                 <>
-                    {assertion.info?.datasetAssertion && (
+                    {assertion?.info?.datasetAssertion && (
                         <DatasetAssertionDescription
-                            assertionInfo={assertion.info?.datasetAssertion as DatasetAssertionInfo}
+                            assertionInfo={assertion?.info?.datasetAssertion as DatasetAssertionInfo}
                         />
                     )}
-                    {assertion.info?.volumeAssertion && (
-                        <VolumeAssertionDescription assertionInfo={assertion.info?.volumeAssertion} />
+                    {assertion?.info?.volumeAssertion && (
+                        <VolumeAssertionDescription assertionInfo={assertion?.info?.volumeAssertion} />
                     )}
-                    {assertion.info?.fieldAssertion && (
-                        <FieldAssertionDescription assertionInfo={assertion.info?.fieldAssertion} />
+                    {assertion?.info?.fieldAssertion && (
+                        <FieldAssertionDescription assertionInfo={assertion?.info?.fieldAssertion} />
                     )}
-                    {assertion.info?.sqlAssertion && <SqlAssertionDescription assertionInfo={assertion.info} />}
+                    {assertion?.info?.sqlAssertion && <SqlAssertionDescription assertionInfo={assertion.info} />}
                 </>
             ),
         },

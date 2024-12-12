@@ -23,7 +23,7 @@ export default function useGetSearchQueryInputs(excludedFilterFields?: Array<str
     const activeType = entityRegistry.getTypeOrDefaultFromPathName(useParams<SearchPageParams>().type || '', undefined);
     const page: number = params.page && Number(params.page as string) > 0 ? Number(params.page as string) : 1;
     const unionType: UnionType = Number(params.unionType as any as UnionType) || UnionType.AND;
-    const viewUrn = userContext.localState?.selectedViewUrn;
+    const viewUrn = userContext?.localState?.selectedViewUrn;
     const sortInput = useSortInput();
 
     const filters: Array<FacetFilterInput> = useFilters(params);

@@ -33,7 +33,7 @@ export default function MLFeatureTableHeader({ mlFeatureTable: { platform, descr
     const entityRegistry = useEntityRegistry();
     const isCompact = React.useContext(CompactContext);
 
-    const platformName = platform.properties?.displayName || capitalizeFirstLetterOnly(platform.name);
+    const platformName = platform?.properties?.displayName || capitalizeFirstLetterOnly(platform.name);
 
     return (
         <>
@@ -47,10 +47,10 @@ export default function MLFeatureTableHeader({ mlFeatureTable: { platform, descr
                                 </Typography.Text>
                             </div>
                             <Space direction="horizontal">
-                                {platform.properties?.logoUrl ? (
+                                {platform?.properties?.logoUrl ? (
                                     <PreviewImage
                                         preview={false}
-                                        src={platform.properties?.logoUrl}
+                                        src={platform?.properties?.logoUrl}
                                         placeholder
                                         alt={platformName}
                                     />

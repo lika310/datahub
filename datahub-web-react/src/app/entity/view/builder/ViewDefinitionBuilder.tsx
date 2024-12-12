@@ -50,7 +50,7 @@ export const ViewDefinitionBuilder = ({ mode, state, updateState }: Props) => {
     // Find the filters requiring entity resolution.
     const filtersToResolve = useMemo(
         () =>
-            state.definition?.filter?.filters?.filter((filter) =>
+            state?.definition?.filter?.filters?.filter((filter) =>
                 FIELDS_FOR_ENTITY_RESOLUTION.includes(filter.field),
             ) || [],
         [state],
@@ -81,7 +81,7 @@ export const ViewDefinitionBuilder = ({ mode, state, updateState }: Props) => {
      * all URNs will be missing from the cache.
      */
     useEffect(() => {
-        if (resolvedEntitiesData && resolvedEntitiesData.entities?.length) {
+        if (resolvedEntitiesData && resolvedEntitiesData?.entities?.length) {
             const entities: Entity[] = (resolvedEntitiesData?.entities as Entity[]) || [];
             setEntityCache(buildEntityCache(entities));
         }
@@ -99,8 +99,8 @@ export const ViewDefinitionBuilder = ({ mode, state, updateState }: Props) => {
             })),
     }));
 
-    const operatorType = state.definition?.filter?.operator || LogicalOperator.Or;
-    const selectedFilters = state.definition?.filter?.filters || [];
+    const operatorType = state?.definition?.filter?.operator || LogicalOperator.Or;
+    const selectedFilters = state?.definition?.filter?.filters || [];
     const entityTypeFilter = state?.definition?.entityTypes?.length && {
         field: ENTITY_FILTER_NAME,
         values: state?.definition?.entityTypes,
@@ -112,7 +112,7 @@ export const ViewDefinitionBuilder = ({ mode, state, updateState }: Props) => {
             ...state.definition,
             filter: {
                 operator: newOperatorType,
-                filters: state.definition?.filter?.filters || [],
+                filters: state?.definition?.filter?.filters || [],
             },
         };
         updateState({

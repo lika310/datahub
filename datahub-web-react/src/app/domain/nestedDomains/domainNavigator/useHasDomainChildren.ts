@@ -25,5 +25,5 @@ export default function useHasDomainChildren({ domainUrn, numDomainChildren }: P
         };
     }, [domainUrn, getDomainChildrenCount, parentDomainsToUpdate, setParentDomainsToUpdate]);
 
-    return childrenData ? !!childrenData.domain?.children?.total : !!numDomainChildren;
+    return childrenData ? !!childrenData?.domain?.children?.total : !!numDomainChildren;
 }

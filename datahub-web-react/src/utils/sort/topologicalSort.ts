@@ -13,7 +13,7 @@ function topologicalSortVisit(nodeUrn: string, result: string[], visited: string
         return;
     }
 
-    node.inputOutput?.inputDatajobs?.forEach((inputDatajob) =>
+    node?.inputOutput?.inputDatajobs?.forEach((inputDatajob) =>
         topologicalSortVisit(inputDatajob.urn, result, visited, nodes),
     );
 

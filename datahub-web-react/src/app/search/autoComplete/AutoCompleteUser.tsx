@@ -21,7 +21,7 @@ export default function AutoCompleteUser({ query, user }: Props) {
             <CustomAvatar
                 size={20}
                 name={displayName}
-                photoUrl={user.editableProperties?.pictureLink || undefined}
+                photoUrl={user?.editableProperties?.pictureLink || undefined}
                 useDefaultAvatar={false}
                 style={{
                     marginRight: 0,

@@ -42,15 +42,15 @@ const TableCell = ({ cell }: TableCellProps) => {
         });
     };
 
-    if (cell.linkParams?.searchParams) {
+    if (cell?.linkParams?.searchParams) {
         return (
             <TableLink
                 type="link"
                 onClick={() =>
                     onClickQuery(
-                        cell.linkParams?.searchParams?.query || '',
-                        cell.linkParams?.searchParams?.types || [],
-                        cell.linkParams?.searchParams?.filters || [],
+                        cell?.linkParams?.searchParams?.query || '',
+                        cell?.linkParams?.searchParams?.types || [],
+                        cell?.linkParams?.searchParams?.filters || [],
                     )
                 }
             >
@@ -58,13 +58,13 @@ const TableCell = ({ cell }: TableCellProps) => {
             </TableLink>
         );
     }
-    if (cell.linkParams?.entityProfileParams) {
+    if (cell?.linkParams?.entityProfileParams) {
         return (
             <TableLink
                 type="link"
                 href={entityRegistry.getEntityUrl(
-                    cell.linkParams?.entityProfileParams?.type,
-                    cell.linkParams?.entityProfileParams?.urn,
+                    cell?.linkParams?.entityProfileParams?.type,
+                    cell?.linkParams?.entityProfileParams?.urn,
                 )}
             >
                 {cell.value}
@@ -82,7 +82,7 @@ export const TableChart = ({ chartData }: Props) => {
         render: (cell) => <TableCell cell={cell} />,
     }));
     const tableData = chartData.rows.map(
-        (row) => row.cells?.reduce((acc, cell, i) => ({ ...acc, [chartData.columns[i]]: cell }), {}) || {},
+        (row) => row?.cells?.reduce((acc, cell, i) => ({ ...acc, [chartData.columns[i]]: cell }), {}) || {},
     );
     return <StyledTable columns={columns} dataSource={tableData} pagination={false} size="small" />;
 };

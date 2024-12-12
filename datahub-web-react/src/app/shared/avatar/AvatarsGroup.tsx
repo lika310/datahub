@@ -27,8 +27,8 @@ export default function AvatarsGroup({ owners, entityRegistry, maxCount = 6, siz
                             name={entityRegistry.getDisplayName(EntityType.CorpUser, owner.owner)}
                             url={`/${entityRegistry.getPathName(owner.owner.type)}/${owner.owner.urn}`}
                             photoUrl={
-                                owner.owner?.editableProperties?.pictureLink ||
-                                owner.owner?.editableInfo?.pictureLink ||
+                                owner?.owner?.editableProperties?.pictureLink ||
+                                owner?.owner?.editableInfo?.pictureLink ||
                                 undefined
                             }
                         />

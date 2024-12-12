@@ -142,9 +142,9 @@ export class ChartEntity implements Entity<Chart> {
                     component: EmbedTab,
                     display: {
                         visible: (_, chart: GetChartQuery) =>
-                            !!chart?.chart?.embed?.renderUrl && chart?.chart?.platform.urn === LOOKER_URN,
+                            !!chart?.chart?.embed?.renderUrl && chart?.chart?.platform?.urn === LOOKER_URN,
                         enabled: (_, chart: GetChartQuery) =>
-                            !!chart?.chart?.embed?.renderUrl && chart?.chart?.platform.urn === LOOKER_URN,
+                            !!chart?.chart?.embed?.renderUrl && chart?.chart?.platform?.urn === LOOKER_URN,
                     },
                 },
                 {
@@ -170,7 +170,7 @@ export class ChartEntity implements Entity<Chart> {
                     name: 'Incidents',
                     component: IncidentTab,
                     getDynamicName: (_, chart) => {
-                        const activeIncidentCount = chart?.chart?.activeIncidents.total;
+                        const activeIncidentCount = chart?.chart?.activeIncidents?.total;
                         return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
                     },
                 },
@@ -196,16 +196,16 @@ export class ChartEntity implements Entity<Chart> {
         return (
             <ChartPreview
                 urn={data.urn}
-                subType={data.subTypes?.typeNames?.[0]}
+                subType={data?.subTypes?.typeNames?.[0]}
                 platform={data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)}
-                name={data.properties?.name}
-                description={data.editableProperties?.description || data.properties?.description}
-                access={data.properties?.access}
-                owners={data.ownership?.owners}
+                name={data?.properties?.name}
+                description={data?.editableProperties?.description || data?.properties?.description}
+                access={data?.properties?.access}
+                owners={data?.ownership?.owners}
                 tags={data?.globalTags || undefined}
                 glossaryTerms={data?.glossaryTerms}
                 logoUrl={data?.platform?.properties?.logoUrl}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 parentContainers={data.parentContainers}
                 health={data.health}
@@ -219,24 +219,24 @@ export class ChartEntity implements Entity<Chart> {
         return (
             <ChartPreview
                 urn={data.urn}
-                subType={data.subTypes?.typeNames?.[0]}
+                subType={data?.subTypes?.typeNames?.[0]}
                 platform={data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
-                name={data.properties?.name}
-                description={data.editableProperties?.description || data.properties?.description}
-                access={data.properties?.access}
-                owners={data.ownership?.owners}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
+                name={data?.properties?.name}
+                description={data?.editableProperties?.description || data?.properties?.description}
+                access={data?.properties?.access}
+                owners={data?.ownership?.owners}
                 tags={data?.globalTags || undefined}
                 glossaryTerms={data?.glossaryTerms}
                 insights={result.insights}
                 logoUrl={data?.platform?.properties?.logoUrl || ''}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 deprecation={data.deprecation}
                 statsSummary={data.statsSummary}
-                lastUpdatedMs={data.properties?.lastModified?.time}
-                createdMs={data.properties?.created?.time}
-                externalUrl={data.properties?.externalUrl}
+                lastUpdatedMs={data?.properties?.lastModified?.time}
+                createdMs={data?.properties?.created?.time}
+                externalUrl={data?.properties?.externalUrl}
                 snippet={
                     <MatchedFieldList
                         customFieldRenderer={(matchedField) => matchedInputFieldRenderer(matchedField, data)}
@@ -252,7 +252,7 @@ export class ChartEntity implements Entity<Chart> {
     getLineageVizConfig = (entity: Chart) => {
         return {
             urn: entity.urn,
-            name: entity.properties?.name || entity.urn,
+            name: entity?.properties?.name || entity.urn,
             type: EntityType.Chart,
             icon: entity?.platform?.properties?.logoUrl || undefined,
             platform: entity?.platform,
@@ -262,7 +262,7 @@ export class ChartEntity implements Entity<Chart> {
     };
 
     displayName = (data: Chart) => {
-        return data.properties?.name || data.urn;
+        return data?.properties?.name || data.urn;
     };
 
     getGenericEntityProperties = (data: Chart) => {

@@ -29,7 +29,7 @@ export const EntityTabs = <T,>({ tabs, selectedTab }: Props) => {
     const routeToTab = useRouteToTab();
     const baseEntity = useBaseEntity<T>();
 
-    const enabledTabs = tabs.filter((tab) => tab.display?.enabled(entityData, baseEntity));
+    const enabledTabs = tabs.filter((tab) => tab?.display?.enabled(entityData, baseEntity));
 
     useEffect(() => {
         if (!loading && !selectedTab && enabledTabs[0]) {
@@ -47,7 +47,7 @@ export const EntityTabs = <T,>({ tabs, selectedTab }: Props) => {
         >
             {tabs.map((tab) => {
                 const tabName = (tab.getDynamicName && tab.getDynamicName(entityData, baseEntity)) || tab.name;
-                if (!tab.display?.enabled(entityData, baseEntity)) {
+                if (!tab?.display?.enabled(entityData, baseEntity)) {
                     return <Tab tab={tabName} key={tab.name} disabled />;
                 }
                 return <Tab tab={tabName} key={tab.name} />;

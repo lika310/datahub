@@ -46,7 +46,7 @@ const meta: Meta = {
                 type: 'object',
             },
             table: {
-                defaultValue: { summary: selectDefaults.values?.toString() },
+                defaultValue: { summary: selectDefaults?.values?.toString() },
             },
         },
         showSearch: {
@@ -55,7 +55,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.showSearch?.toString() },
+                defaultValue: { summary: selectDefaults?.showSearch?.toString() },
             },
         },
         isDisabled: {
@@ -64,7 +64,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.isDisabled?.toString() },
+                defaultValue: { summary: selectDefaults?.isDisabled?.toString() },
             },
         },
         isReadOnly: {
@@ -73,7 +73,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.isReadOnly?.toString() },
+                defaultValue: { summary: selectDefaults?.isReadOnly?.toString() },
             },
         },
         isRequired: {
@@ -82,7 +82,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.isRequired?.toString() },
+                defaultValue: { summary: selectDefaults?.isRequired?.toString() },
             },
         },
         size: {
@@ -110,7 +110,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.isMultiSelect?.toString() },
+                defaultValue: { summary: selectDefaults?.isMultiSelect?.toString() },
             },
         },
         placeholder: {
@@ -128,7 +128,7 @@ const meta: Meta = {
                 type: 'object',
             },
             table: {
-                defaultValue: { summary: selectDefaults.disabledValues?.toString() },
+                defaultValue: { summary: selectDefaults?.disabledValues?.toString() },
             },
         },
         showSelectAll: {
@@ -137,7 +137,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.showSelectAll?.toString() },
+                defaultValue: { summary: selectDefaults?.showSelectAll?.toString() },
             },
         },
         selectAllLabel: {
@@ -155,7 +155,7 @@ const meta: Meta = {
                 type: 'boolean',
             },
             table: {
-                defaultValue: { summary: selectDefaults.showDescriptions?.toString() },
+                defaultValue: { summary: selectDefaults?.showDescriptions?.toString() },
             },
         },
     },

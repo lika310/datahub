@@ -41,8 +41,8 @@ const GroupItemButtonGroup = styled.div`
 export default function GroupListItem({ group, onDelete, selectRoleOptions, refetch }: Props) {
     const entityRegistry = useEntityRegistry();
     const displayName = entityRegistry.getDisplayName(EntityType.CorpGroup, group);
-    const isExternalGroup: boolean = group.origin?.type === OriginType.External;
-    const externalGroupType: string = group.origin?.externalType || 'outside DataHub';
+    const isExternalGroup: boolean = group?.origin?.type === OriginType.External;
+    const externalGroupType: string = group?.origin?.externalType || 'outside DataHub';
     const castedCorpUser = group as any;
     const groupRelationships = castedCorpUser?.roles?.relationships;
     const userRole =
@@ -64,7 +64,7 @@ export default function GroupListItem({ group, onDelete, selectRoleOptions, refe
                                 <Typography.Text>{displayName}</Typography.Text>
                             </div>
                             <div>
-                                <Typography.Text type="secondary">{group.properties?.description}</Typography.Text>
+                                <Typography.Text type="secondary">{group?.properties?.description}</Typography.Text>
                             </div>
                         </div>
                         <Tag>{getElasticCappedTotalValueText((group as any).memberCount?.total || 0)} members</Tag>

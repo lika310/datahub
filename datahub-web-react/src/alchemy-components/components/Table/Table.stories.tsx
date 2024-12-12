@@ -37,21 +37,21 @@ const meta = {
             description: 'Whether to show the table header.',
             control: 'boolean',
             table: {
-                defaultValue: { summary: tableDefaults.showHeader?.toString() },
+                defaultValue: { summary: tableDefaults?.showHeader?.toString() },
             },
         },
         isLoading: {
             description: 'Whether the table is in loading state.',
             control: 'boolean',
             table: {
-                defaultValue: { summary: tableDefaults.isLoading?.toString() },
+                defaultValue: { summary: tableDefaults?.isLoading?.toString() },
             },
         },
         isScrollable: {
             description: 'Whether the table is scrollable.',
             control: 'boolean',
             table: {
-                defaultValue: { summary: tableDefaults.isScrollable?.toString() },
+                defaultValue: { summary: tableDefaults?.isScrollable?.toString() },
             },
         },
         maxHeight: {

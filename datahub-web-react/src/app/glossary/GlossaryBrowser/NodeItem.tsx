@@ -80,7 +80,7 @@ function NodeItem(props: Props) {
     });
 
     useEffect(() => {
-        if (openToEntity && entityData && entityData.parentNodes?.nodes.some((parent) => parent.urn === node.urn)) {
+        if (openToEntity && entityData && entityData?.parentNodes?.nodes?.some((parent) => parent.urn === node.urn)) {
             setAreChildrenVisible(true);
         }
     }, [entityData, node.urn, openToEntity]);
@@ -101,7 +101,9 @@ function NodeItem(props: Props) {
     const isOnEntityPage = entityData && entityData.urn === node.urn;
 
     const children =
-        entityData && isOnEntityPage ? entityData.children?.relationships : data?.glossaryNode?.children?.relationships;
+        entityData && isOnEntityPage
+            ? entityData?.children?.relationships
+            : data?.glossaryNode?.children?.relationships;
 
     function handleSelectNode() {
         if (selectNode) {
@@ -112,12 +114,12 @@ function NodeItem(props: Props) {
 
     const childNodes =
         (children as any)
-            ?.filter((child) => child.entity?.type === EntityType.GlossaryNode)
+            ?.filter((child) => child?.entity?.type === EntityType.GlossaryNode)
             .sort((nodeA, nodeB) => sortGlossaryNodes(entityRegistry, nodeA.entity, nodeB.entity))
             .map((child) => child.entity) || [];
     const childTerms =
         (children as any)
-            ?.filter((child) => child.entity?.type === EntityType.GlossaryTerm)
+            ?.filter((child) => child?.entity?.type === EntityType.GlossaryTerm)
             .sort((termA, termB) => sortGlossaryTerms(entityRegistry, termA.entity, termB.entity))
             .map((child) => child.entity) || [];
 

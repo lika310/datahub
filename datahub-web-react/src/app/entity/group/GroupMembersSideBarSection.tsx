@@ -50,7 +50,7 @@ export default function GroupMembersSideBarSection({ total, relationships, onSee
                                 <Link to={`${entityRegistry.getEntityUrl(EntityType.CorpUser, user.urn)}`}>
                                     <CustomAvatar
                                         name={name}
-                                        photoUrl={user.editableProperties?.pictureLink || undefined}
+                                        photoUrl={user?.editableProperties?.pictureLink || undefined}
                                         useDefaultAvatar={false}
                                     />
                                     {name.length > 15 ? (

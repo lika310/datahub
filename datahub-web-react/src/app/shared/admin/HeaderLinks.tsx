@@ -70,16 +70,16 @@ export function HeaderLinks(props: Props) {
 
     const businessAttributesFlag = useBusinessAttributesFlag();
 
-    const isAnalyticsEnabled = config?.analyticsConfig.enabled;
-    const isIngestionEnabled = config?.managedIngestionConfig.enabled;
+    const isAnalyticsEnabled = config?.analyticsConfig?.enabled;
+    const isIngestionEnabled = config?.managedIngestionConfig?.enabled;
 
     const showAnalytics = (isAnalyticsEnabled && me && me?.platformPrivileges?.viewAnalytics) || false;
     const showSettings = true;
     const showIngestion =
-        isIngestionEnabled && me && (me.platformPrivileges?.manageIngestion || me.platformPrivileges?.manageSecrets);
+        isIngestionEnabled && me && (me?.platformPrivileges?.manageIngestion || me?.platformPrivileges?.manageSecrets);
     const showStructuredProperties =
         config?.featureFlags?.showManageStructuredProperties &&
-        (me.platformPrivileges?.manageStructuredProperties || me.platformPrivileges?.viewStructuredPropertiesPage);
+        (me?.platformPrivileges?.manageStructuredProperties || me?.platformPrivileges?.viewStructuredPropertiesPage);
 
     useToggleEducationStepIdsAllowList(!!showIngestion, HOME_PAGE_INGESTION_ID);
 

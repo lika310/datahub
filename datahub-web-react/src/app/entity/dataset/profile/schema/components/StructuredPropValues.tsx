@@ -23,19 +23,19 @@ interface Props {
 const StructuredPropValues = ({ schemaFieldEntity, propColumn }: Props) => {
     const entityRegistry = useEntityRegistry();
 
-    const property = schemaFieldEntity.structuredProperties?.properties?.find(
-        (prop) => prop.structuredProperty.urn === propColumn?.entity.urn,
+    const property = schemaFieldEntity?.structuredProperties?.properties?.find(
+        (prop) => prop.structuredProperty.urn === propColumn?.entity?.urn,
     );
     const propRow = property ? mapStructuredPropertyToPropertyRow(property) : undefined;
     const values = propRow?.values;
-    const isRichText = propRow?.dataType?.info.type === StdDataType.RichText;
+    const isRichText = propRow?.dataType?.info?.type === StdDataType.RichText;
 
     const hasMoreValues = values && values.length > 2;
     const displayedValues = hasMoreValues ? values.slice(0, 1) : values;
     const tooltipContent = values?.map((value) => {
         const title = value.entity
             ? entityRegistry.getDisplayName(value.entity.type, value.entity)
-            : value.value?.toString();
+            : value?.value?.toString();
         return <div>{title}</div>;
     });
 

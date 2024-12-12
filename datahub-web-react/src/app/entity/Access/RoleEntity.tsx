@@ -72,12 +72,12 @@ export class RoleEntity implements Entity<Role> {
     };
 
     displayName = (data: Role) => {
-        return data.properties?.name || data.urn;
+        return data?.properties?.name || data.urn;
     };
 
     getOverridePropertiesFromEntity = (data: Role) => {
         return {
-            name: data.properties?.name,
+            name: data?.properties?.name,
         };
     };
 

@@ -118,7 +118,7 @@ export const DomainsList = () => {
 
     const tableData = domains.map((domain) => {
         const displayName = entityRegistry.getDisplayName(EntityType.Domain, domain);
-        const totalEntitiesText = getElasticCappedTotalValueText(domain.entities?.total || 0);
+        const totalEntitiesText = getElasticCappedTotalValueText(domain?.entities?.total || 0);
         const url = entityRegistry.getEntityUrl(EntityType.Domain, domain.urn);
 
         return {

@@ -153,8 +153,8 @@ export const HomePageHeader = () => {
     const { selectedQuickFilter } = useQuickFiltersContext();
     const showAcrylInfo = useIsShowAcrylInfoEnabled();
     const { user } = userContext;
-    const viewUrn = userContext.localState?.selectedViewUrn;
-    const viewsEnabled = appConfig.config?.viewsConfig?.enabled || false;
+    const viewUrn = userContext?.localState?.selectedViewUrn;
+    const viewsEnabled = appConfig?.config?.viewsConfig?.enabled || false;
 
     useEffect(() => {
         if (suggestionsData !== undefined) {
@@ -221,7 +221,7 @@ export const HomePageHeader = () => {
     const searchResultsToShow = useMemo(() => {
         let result: string[] | undefined = [];
         if (searchResultsData) {
-            const entities = searchResultsData?.searchAcrossEntities?.searchResults.map((searchResult) => {
+            const entities = searchResultsData?.searchAcrossEntities?.searchResults?.map((searchResult) => {
                 return searchResult?.entity;
             });
 

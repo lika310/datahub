@@ -37,7 +37,7 @@ export default function DateRangeMenu({ field, manuallyUpdateFilters }: Props) {
         (open: boolean) => {
             setIsOpen(open);
             if (!open) {
-                ref.current?.blur();
+                ref?.current?.blur();
                 if (startDate && endDate) {
                     manuallyUpdateFilters([
                         {

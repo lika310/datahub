@@ -196,7 +196,7 @@ const transformToStructuredReport = (structuredReportObj: any): StructuredReport
     };
 
     try {
-        const sourceReport = structuredReportObj.source?.report;
+        const sourceReport = structuredReportObj?.source?.report;
 
         if (!sourceReport) {
             return null;

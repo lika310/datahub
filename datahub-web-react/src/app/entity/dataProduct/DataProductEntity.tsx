@@ -133,14 +133,14 @@ export class DataProductEntity implements Entity<DataProduct> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.properties?.name || ''}
-                description={data.properties?.description}
-                owners={data.ownership?.owners}
+                name={data?.properties?.name || ''}
+                description={data?.properties?.description}
+                owners={data?.ownership?.owners}
                 globalTags={data.tags}
                 glossaryTerms={data.glossaryTerms}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 entityCount={data?.entities?.total || undefined}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
             />
         );
     };
@@ -150,14 +150,14 @@ export class DataProductEntity implements Entity<DataProduct> {
         return (
             <Preview
                 urn={data.urn}
-                name={data.properties?.name || ''}
-                description={data.properties?.description}
-                owners={data.ownership?.owners}
+                name={data?.properties?.name || ''}
+                description={data?.properties?.description}
+                owners={data?.ownership?.owners}
                 globalTags={data.tags}
                 glossaryTerms={data.glossaryTerms}
-                domain={data.domain?.domain}
+                domain={data?.domain?.domain}
                 entityCount={data?.entities?.total || undefined}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 degree={(result as any).degree}
                 paths={(result as any).paths}
             />

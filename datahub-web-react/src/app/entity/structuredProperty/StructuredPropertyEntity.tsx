@@ -58,7 +58,7 @@ export class StructuredPropertyEntity implements Entity<StructuredProperty> {
 
     renderPreview = (previewType: PreviewType, data: StructuredProperty) => (
         <DefaultPreviewCard
-            description={data.definition?.description || ''}
+            description={data?.definition?.description || ''}
             name={this.displayName(data)}
             urn={data.urn}
             url={`/${this.getPathName()}/${urlEncodeUrn(data.urn)}`}
@@ -73,7 +73,7 @@ export class StructuredPropertyEntity implements Entity<StructuredProperty> {
     };
 
     displayName = (data: StructuredProperty) => {
-        return data.definition?.displayName || data.definition?.qualifiedName || data.urn;
+        return data?.definition?.displayName || data?.definition?.qualifiedName || data.urn;
     };
 
     getGenericEntityProperties = (entity: StructuredProperty) => {

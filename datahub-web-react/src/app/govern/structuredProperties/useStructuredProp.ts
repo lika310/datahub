@@ -60,7 +60,7 @@ export default function useStructuredProp({
         if (field === 'entityTypes') initialValues = entity.definition.entityTypes.map((type) => type.urn);
 
         if (field.includes('typeQualifier'))
-            initialValues = entity.definition.typeQualifier?.allowedTypes?.map((type) => type.urn) || [];
+            initialValues = entity?.definition?.typeQualifier?.allowedTypes?.map((type) => type.urn) || [];
 
         const updatedValues = [...initialValues, ...values.filter((value) => !initialValues.includes(value))];
 

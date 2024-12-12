@@ -92,7 +92,7 @@ export default function StructuredPropertyValue({ value, isRichText, filterText,
                 <>
                     {isRichText ? (
                         <CompactMarkdownViewer
-                            content={value.value?.toString() ?? ''}
+                            content={value?.value?.toString() ?? ''}
                             lineLimit={isFieldColumn ? 1 : undefined}
                             hideShowMore={isFieldColumn}
                             scrollableY={!isFieldColumn}
@@ -101,11 +101,11 @@ export default function StructuredPropertyValue({ value, isRichText, filterText,
                         <>
                             {truncateText ? (
                                 <Typography.Text ellipsis={{ tooltip: true }}>
-                                    {value.value?.toString() || <div style={{ minHeight: 22 }} />}
+                                    {value?.value?.toString() || <div style={{ minHeight: 22 }} />}
                                 </Typography.Text>
                             ) : (
                                 <StyledHighlight search={filterText} truncateText={truncateText}>
-                                    {value.value?.toString() || <div style={{ minHeight: 22 }} />}
+                                    {value?.value?.toString() || <div style={{ minHeight: 22 }} />}
                                 </StyledHighlight>
                             )}
                         </>

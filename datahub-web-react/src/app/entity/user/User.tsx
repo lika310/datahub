@@ -53,8 +53,8 @@ export class UserEntity implements Entity<CorpUser> {
         <Preview
             urn={data.urn}
             name={this.displayName(data)}
-            title={data.editableProperties?.title || data.info?.title || ''}
-            photoUrl={data.editableInfo?.pictureLink || undefined}
+            title={data?.editableProperties?.title || data?.info?.title || ''}
+            photoUrl={data?.editableInfo?.pictureLink || undefined}
         />
     );
 
@@ -64,11 +64,11 @@ export class UserEntity implements Entity<CorpUser> {
 
     displayName = (data: CorpUser) => {
         return (
-            data.editableProperties?.displayName ||
-            data.properties?.displayName ||
-            data.properties?.fullName ||
-            data.info?.displayName || // Deprecated info field
-            data.info?.fullName || // Deprecated info field
+            data?.editableProperties?.displayName ||
+            data?.properties?.displayName ||
+            data?.properties?.fullName ||
+            data?.info?.displayName || // Deprecated info field
+            data?.info?.fullName || // Deprecated info field
             data.username ||
             data.urn
         );

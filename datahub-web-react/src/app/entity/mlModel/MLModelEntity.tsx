@@ -145,7 +145,7 @@ export class MLModelEntity implements Entity<MlModel> {
             urn: entity.urn,
             name: entity.name,
             type: EntityType.Mlmodel,
-            icon: entity.platform?.properties?.logoUrl || undefined,
+            icon: entity?.platform?.properties?.logoUrl || undefined,
             platform: entity.platform,
         };
     };

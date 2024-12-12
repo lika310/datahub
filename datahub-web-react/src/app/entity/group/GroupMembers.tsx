@@ -152,7 +152,7 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
         });
     };
 
-    const relationships = membersData && membersData.corpGroup?.relationships;
+    const relationships = membersData && membersData?.corpGroup?.relationships;
     const total = relationships?.total || 0;
     const groupMembers = relationships?.relationships?.map((rel) => rel.entity as CorpUser) || [];
 
@@ -201,7 +201,7 @@ export default function GroupMembers({ urn, pageSize, isExternalGroup, onChangeM
                                             <CustomAvatar
                                                 useDefaultAvatar={false}
                                                 size={28}
-                                                photoUrl={item.editableProperties?.pictureLink || ''}
+                                                photoUrl={item?.editableProperties?.pictureLink || ''}
                                                 name={entityRegistry.getDisplayName(EntityType.CorpUser, item)}
                                                 style={AVATAR_STYLE}
                                             />

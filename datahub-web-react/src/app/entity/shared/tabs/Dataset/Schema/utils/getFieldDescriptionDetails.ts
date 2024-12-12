@@ -16,8 +16,8 @@ export function getFieldDescriptionDetails({ schemaFieldEntity, editableFieldInf
 
     if (documentations && documentations.length > 0) {
         latestDocumentation = documentations.reduce((latest, current) => {
-            const latestTime = latest.attribution?.time || 0;
-            const currentTime = current.attribution?.time || 0;
+            const latestTime = latest?.attribution?.time || 0;
+            const currentTime = current?.attribution?.time || 0;
             return currentTime > latestTime ? current : latest;
         });
     }

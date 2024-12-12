@@ -135,7 +135,7 @@ export const PostList = () => {
             description: post.content.description,
             contentType: post.content.contentType,
             link: post.content.link,
-            imageUrl: post.content.media?.location,
+            imageUrl: post?.content?.media?.location,
         };
     });
 

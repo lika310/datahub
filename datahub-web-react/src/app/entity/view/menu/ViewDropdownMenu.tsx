@@ -180,7 +180,7 @@ export const ViewDropdownMenu = ({
                      * Clear the selected view urn from local state,
                      * if the deleted view was that urn.
                      */
-                    if (viewUrn === userContext.localState?.selectedViewUrn) {
+                    if (viewUrn === userContext?.localState?.selectedViewUrn) {
                         userContext.updateLocalState({
                             ...userContext.localState,
                             selectedViewUrn: undefined,
@@ -216,11 +216,11 @@ export const ViewDropdownMenu = ({
         }
     };
 
-    const canManageGlobalViews = userContext.platformPrivileges?.manageGlobalViews;
+    const canManageGlobalViews = userContext?.platformPrivileges?.manageGlobalViews;
     const canManageView = isOwnedByUser || canManageGlobalViews;
 
-    const maybePersonalDefaultViewUrn = userContext.state?.views?.personalDefaultViewUrn;
-    const maybeGlobalDefaultViewUrn = userContext.state?.views?.globalDefaultViewUrn;
+    const maybePersonalDefaultViewUrn = userContext?.state?.views?.personalDefaultViewUrn;
+    const maybeGlobalDefaultViewUrn = userContext?.state?.views?.globalDefaultViewUrn;
 
     const isGlobalView = view.viewType === DataHubViewType.Global;
     const isUserDefault = view.urn === maybePersonalDefaultViewUrn;

@@ -20,7 +20,7 @@ import BusinessAttributeItemMenu from './BusinessAttributeItemMenu';
 
 function BusinessAttributeListMenuColumn(handleDelete: () => void) {
     return (record: BusinessAttribute) => (
-        <BusinessAttributeItemMenu title={record.properties?.name} urn={record.urn} onDelete={() => handleDelete()} />
+        <BusinessAttributeItemMenu title={record?.properties?.name} urn={record.urn} onDelete={() => handleDelete()} />
     );
 }
 

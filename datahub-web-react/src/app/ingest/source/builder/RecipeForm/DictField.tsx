@@ -81,7 +81,7 @@ export default function DictField({ field, removeMargin }: Props) {
                                         <Input placeholder={field.keyField.placeholder} />
                                     </StyledFormItem>
                                 )}
-                                {field.fields?.map((f) => (
+                                {field?.fields?.map((f) => (
                                     <StyledFormItem
                                         {...restField}
                                         name={[name, f.name]}

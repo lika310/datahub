@@ -68,7 +68,7 @@ const StructuredPropsDrawer = ({
     const [form] = Form.useForm();
     const [valuesForm] = Form.useForm();
     const me = useUserContext();
-    const canEditProps = me.platformPrivileges?.manageStructuredProperties;
+    const canEditProps = me?.platformPrivileges?.manageStructuredProperties;
 
     const [createStructuredProperty] = useCreateStructuredPropertyMutation();
     const [updateStructuredProperty] = useUpdateStructuredPropertyMutation();
@@ -145,11 +145,11 @@ const StructuredPropsDrawer = ({
                     ),
                     setCardinalityAsMultiple: cardinality === PropertyCardinality.Multiple,
                     settings: {
-                        isHidden: updateValues.settings?.isHidden ?? false,
-                        showInSearchFilters: updateValues.settings?.showInSearchFilters ?? false,
-                        showAsAssetBadge: updateValues.settings?.showAsAssetBadge ?? false,
-                        showInAssetSummary: updateValues.settings?.showInAssetSummary ?? false,
-                        showInColumnsTable: updateValues.settings?.showInColumnsTable ?? false,
+                        isHidden: updateValues?.settings?.isHidden ?? false,
+                        showInSearchFilters: updateValues?.settings?.showInSearchFilters ?? false,
+                        showAsAssetBadge: updateValues?.settings?.showAsAssetBadge ?? false,
+                        showInAssetSummary: updateValues?.settings?.showInAssetSummary ?? false,
+                        showInColumnsTable: updateValues?.settings?.showInColumnsTable ?? false,
                     },
                 };
 
@@ -229,7 +229,7 @@ const StructuredPropsDrawer = ({
                         });
 
                         showSuccessMessage();
-                        updatePropertiesList(client, inputs, res.data?.createStructuredProperty, searchAcrossEntities);
+                        updatePropertiesList(client, inputs, res?.data?.createStructuredProperty, searchAcrossEntities);
                     })
                     .catch(() => {
                         showErrorMessage();
@@ -257,7 +257,7 @@ const StructuredPropsDrawer = ({
                 valueType: typeValue,
                 entityTypes: entity.definition.entityTypes.map((entityType) => entityType.urn),
                 typeQualifier: {
-                    allowedTypes: entity.definition.typeQualifier?.allowedTypes?.map((entityType) => entityType.urn),
+                    allowedTypes: entity?.definition?.typeQualifier?.allowedTypes?.map((entityType) => entityType.urn),
                 },
                 immutable: entity.definition.immutable,
                 settings: entity.settings,

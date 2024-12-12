@@ -31,7 +31,7 @@ export default function StatsTab() {
 
     // Used for rendering latest stats.
     const latestProfile = datasetProfiles && datasetProfiles[0]; // This is required for showing latest stats.
-    const urn = baseEntity && baseEntity.dataset && baseEntity.dataset?.urn;
+    const urn = baseEntity && baseEntity.dataset && baseEntity?.dataset?.urn;
 
     // Used for rendering operation info.
     const operations = (hasOperations && (baseEntity?.dataset?.operations as Array<Operation>)) || undefined;
@@ -52,7 +52,7 @@ export default function StatsTab() {
         )}`;
 
     const totalSqlQueries = usageStats?.aggregations?.totalSqlQueries;
-    const queryCountLast30Days = baseEntity.dataset?.statsSummary?.queryCountLast30Days;
+    const queryCountLast30Days = baseEntity?.dataset?.statsSummary?.queryCountLast30Days;
 
     const statsHeader = (
         <StatsHeader

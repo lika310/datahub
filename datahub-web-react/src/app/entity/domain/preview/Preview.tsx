@@ -41,7 +41,7 @@ export const Preview = ({
             owners={owners}
             insights={insights}
             logoComponent={logoComponent}
-            parentEntities={domain.parentDomains?.domains}
+            parentEntities={domain?.parentDomains?.domains}
             snippet={<DomainEntitiesSnippet domain={domain} />}
         />
     );

@@ -114,11 +114,11 @@ export class ERModelRelationshipEntity implements Entity<ErModelRelationship> {
                     urn={data.urn}
                     name={
                         <span className="ermodelrelationName">
-                            {data.properties?.name || data.editableProperties?.name || ''}
+                            {data?.properties?.name || data?.editableProperties?.name || ''}
                         </span>
                     }
                     description={data?.editableProperties?.description || ''}
-                    owners={data.ownership?.owners}
+                    owners={data?.ownership?.owners}
                     glossaryTerms={data?.glossaryTerms || undefined}
                     globalTags={data?.tags}
                 />
@@ -131,7 +131,7 @@ export class ERModelRelationshipEntity implements Entity<ErModelRelationship> {
     };
 
     displayName = (data: ErModelRelationship) => {
-        return data.properties?.name || data.editableProperties?.name || data.urn;
+        return data?.properties?.name || data?.editableProperties?.name || data.urn;
     };
 
     getGenericEntityProperties = (data: ErModelRelationship) => {

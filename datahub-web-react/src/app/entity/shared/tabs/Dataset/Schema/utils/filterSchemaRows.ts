@@ -3,23 +3,23 @@ import EntityRegistry from '../../../../../EntityRegistry';
 
 function matchesTagsOrTermsOrDescription(field: SchemaField, filterText: string, entityRegistry: EntityRegistry) {
     return (
-        field.globalTags?.tags?.find((tagAssociation) =>
+        field?.globalTags?.tags?.find((tagAssociation) =>
             entityRegistry.getDisplayName(EntityType.Tag, tagAssociation.tag).toLocaleLowerCase().includes(filterText),
         ) ||
-        field.glossaryTerms?.terms?.find((termAssociation) =>
+        field?.glossaryTerms?.terms?.find((termAssociation) =>
             entityRegistry
                 .getDisplayName(EntityType.GlossaryTerm, termAssociation.term)
                 .toLocaleLowerCase()
                 .includes(filterText),
         ) ||
-        field.description?.toLocaleLowerCase().includes(filterText)
+        field?.description?.toLocaleLowerCase().includes(filterText)
     );
 }
 
 function matchesBusinessAttributesProperties(field: SchemaField, filterText: string, entityRegistry: EntityRegistry) {
-    if (!field.schemaFieldEntity?.businessAttributes) return false;
+    if (!field?.schemaFieldEntity?.businessAttributes) return false;
     const businessAttributeProperties =
-        field.schemaFieldEntity?.businessAttributes?.businessAttribute?.businessAttribute?.properties;
+        field?.schemaFieldEntity?.businessAttributes?.businessAttribute?.businessAttribute?.properties;
     return (
         businessAttributeProperties?.description?.toLocaleLowerCase().includes(filterText) ||
         businessAttributeProperties?.name?.toLocaleLowerCase().includes(filterText) ||

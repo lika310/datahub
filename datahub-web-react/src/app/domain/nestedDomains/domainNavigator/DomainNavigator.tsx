@@ -37,7 +37,7 @@ export default function DomainNavigator({ domainUrnToHide, selectDomainOverride 
                     <DomainNode
                         key={domain.urn}
                         domain={domain as Domain}
-                        numDomainChildren={domain.children?.total || 0}
+                        numDomainChildren={domain?.children?.total || 0}
                         domainUrnToHide={domainUrnToHide}
                         selectDomainOverride={selectDomainOverride}
                     />

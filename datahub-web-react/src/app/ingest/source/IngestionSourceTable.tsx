@@ -108,23 +108,23 @@ function IngestionSourceTable({
         urn: source.urn,
         type: source.type,
         name: source.name,
-        platformUrn: source.platform?.urn,
-        schedule: source.schedule?.interval,
-        timezone: source.schedule?.timezone,
-        execCount: source.executions?.total || 0,
+        platformUrn: source?.platform?.urn,
+        schedule: source?.schedule?.interval,
+        timezone: source?.schedule?.timezone,
+        execCount: source?.executions?.total || 0,
         lastExecUrn:
             source.executions &&
-            source.executions?.executionRequests.length > 0 &&
-            source.executions?.executionRequests[0].urn,
+            source?.executions?.executionRequests?.length > 0 &&
+            source?.executions?.executionRequests[0]?.urn,
         lastExecTime:
             source.executions &&
-            source.executions?.executionRequests.length > 0 &&
-            source.executions?.executionRequests[0].result?.startTimeMs,
+            source?.executions?.executionRequests?.length > 0 &&
+            source?.executions?.executionRequests[0]?.result?.startTimeMs,
         lastExecStatus:
             source.executions &&
-            source.executions?.executionRequests.length > 0 &&
-            getIngestionSourceStatus(source.executions?.executionRequests[0].result),
-        cliIngestion: source.config?.executorId === CLI_EXECUTOR_ID,
+            source?.executions?.executionRequests?.length > 0 &&
+            getIngestionSourceStatus(source?.executions?.executionRequests[0]?.result),
+        cliIngestion: source?.config?.executorId === CLI_EXECUTOR_ID,
     }));
 
     const handleTableChange = (_: any, __: any, sorter: any) => {

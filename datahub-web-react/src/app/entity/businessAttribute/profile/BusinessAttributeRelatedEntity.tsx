@@ -18,8 +18,8 @@ export default function BusinessAttributeRelatedEntity() {
         ]) ||
         [];
 
-    entityData?.isAChildren?.relationships.forEach((businessAttribute) => {
-        const childUrn = businessAttribute.entity?.urn;
+    entityData?.isAChildren?.relationships?.forEach((businessAttribute) => {
+        const childUrn = businessAttribute?.entity?.urn;
 
         if (childUrn) {
             fixedOrFilters.push({

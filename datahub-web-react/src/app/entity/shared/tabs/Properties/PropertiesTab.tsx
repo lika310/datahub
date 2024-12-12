@@ -45,7 +45,7 @@ export const PropertiesTab = () => {
                 <EditColumn
                     structuredProperty={propertyRow.structuredProperty}
                     associatedUrn={propertyRow.associatedUrn}
-                    values={propertyRow.values?.map((v) => v.value) || []}
+                    values={propertyRow?.values?.map((v) => v.value) || []}
                 />
             ),
         } as any);
@@ -53,7 +53,7 @@ export const PropertiesTab = () => {
 
     const { structuredPropertyRows, expandedRowsFromFilter } = useStructuredProperties(entityRegistry, filterText);
     const filteredStructuredPropertyRows = structuredPropertyRows.filter(
-        (row) => !row.structuredProperty?.settings?.isHidden,
+        (row) => !row?.structuredProperty?.settings?.isHidden,
     );
     const customProperties = getFilteredCustomProperties(filterText, entityData) || [];
     const customPropertyRows = mapCustomPropertiesToPropertyRows(customProperties);

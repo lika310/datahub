@@ -15,7 +15,7 @@ const StructuredProperties = () => {
     const [isViewDrawerOpen, setIsViewDrawerOpen] = useState<boolean>(false);
     const [selectedProperty, setSelectedProperty] = useState<SearchResult | undefined>();
     const me = useUserContext();
-    const canEditProps = me.platformPrivileges?.manageStructuredProperties;
+    const canEditProps = me?.platformPrivileges?.manageStructuredProperties;
 
     const handleSearch = (value) => {
         setSearchQuery(value);
@@ -39,7 +39,7 @@ const StructuredProperties = () => {
 
     const searchAcrossEntities = data?.searchAcrossEntities;
     const noOfProperties = searchAcrossEntities?.searchResults?.length;
-    const badgeProperty = searchAcrossEntities?.searchResults.find(
+    const badgeProperty = searchAcrossEntities?.searchResults?.find(
         (prop) => (prop.entity as StructuredPropertyEntity).settings?.showAsAssetBadge,
     )?.entity;
 

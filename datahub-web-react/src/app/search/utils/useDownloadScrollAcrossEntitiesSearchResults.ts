@@ -25,7 +25,7 @@ export function useDownloadScrollAcrossEntitiesSearchResults(params: DownloadSea
         searchResults:
             ((data?.scrollAcrossEntities && {
                 ...data?.scrollAcrossEntities,
-                nextScrollId: data?.scrollAcrossEntities.nextScrollId,
+                nextScrollId: data?.scrollAcrossEntities?.nextScrollId,
             }) as DownloadSearchResults) || undefined,
         loading,
         error,
@@ -42,9 +42,9 @@ export function useDownloadScrollAcrossEntitiesSearchResults(params: DownloadSea
                 },
             }).then(
                 (res) =>
-                    ((res.data?.scrollAcrossEntities && {
-                        ...res.data?.scrollAcrossEntities,
-                        nextScrollId: res.data?.scrollAcrossEntities.nextScrollId,
+                    ((res?.data?.scrollAcrossEntities && {
+                        ...res?.data?.scrollAcrossEntities,
+                        nextScrollId: res?.data?.scrollAcrossEntities?.nextScrollId,
                     }) as DownloadSearchResults) || undefined,
             ),
     };

@@ -133,9 +133,11 @@ export class MLFeatureTableEntity implements Entity<MlFeatureTable> {
                 urn={data.urn}
                 name={data.name || ''}
                 description={data.description}
-                owners={data.ownership?.owners}
-                logoUrl={data.platform?.properties?.logoUrl}
-                platformName={data.platform?.properties?.displayName || capitalizeFirstLetterOnly(data.platform?.name)}
+                owners={data?.ownership?.owners}
+                logoUrl={data?.platform?.properties?.logoUrl}
+                platformName={
+                    data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)
+                }
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
             />
         );
@@ -149,10 +151,12 @@ export class MLFeatureTableEntity implements Entity<MlFeatureTable> {
                 urn={data.urn}
                 name={data.name || ''}
                 description={data.description || ''}
-                owners={data.ownership?.owners}
-                logoUrl={data.platform?.properties?.logoUrl}
-                platformName={data.platform?.properties?.displayName || capitalizeFirstLetterOnly(data.platform?.name)}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
+                owners={data?.ownership?.owners}
+                logoUrl={data?.platform?.properties?.logoUrl}
+                platformName={
+                    data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data?.platform?.name)
+                }
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 degree={(result as any).degree}
                 paths={(result as any).paths}
@@ -165,7 +169,7 @@ export class MLFeatureTableEntity implements Entity<MlFeatureTable> {
             urn: entity.urn,
             name: entity.name,
             type: EntityType.MlfeatureTable,
-            icon: entity.platform.properties?.logoUrl || undefined,
+            icon: entity?.platform?.properties?.logoUrl || undefined,
             platform: entity.platform,
         };
     };

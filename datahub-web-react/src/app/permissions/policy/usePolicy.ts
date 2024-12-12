@@ -49,7 +49,7 @@ export function usePolicy(
     const toFilterInput = (filter: PolicyMatchFilter, state?: string | undefined): PolicyMatchFilterInput => {
         console.log({ state });
         return {
-            criteria: filter.criteria?.map((criterion): PolicyMatchCriterionInput => {
+            criteria: filter?.criteria?.map((criterion): PolicyMatchCriterionInput => {
                 return {
                     field: criterion.field,
                     values: criterion.values.map((criterionValue) =>

@@ -27,8 +27,8 @@ export const renderViewOptionGroup = ({
     onClickEditView,
     onClickPreviewView,
 }: Args) => {
-    const maybePersonalDefaultViewUrn = userContext.state?.views?.personalDefaultViewUrn;
-    const maybeGlobalDefaultViewUrn = userContext.state?.views?.globalDefaultViewUrn;
+    const maybePersonalDefaultViewUrn = userContext?.state?.views?.personalDefaultViewUrn;
+    const maybeGlobalDefaultViewUrn = userContext?.state?.views?.globalDefaultViewUrn;
 
     return (
         <Select.OptGroup label={label} key={label}>

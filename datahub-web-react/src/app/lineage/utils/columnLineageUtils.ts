@@ -80,7 +80,7 @@ export function getPopulatedColumnsByUrn(
                 ...populatedColumnsByUrn,
                 [urn]: convertFieldsToV1FieldPath(fetchedEntity.schemaMetadata.fields),
             };
-        } else if (fetchedEntity.inputFields?.fields && !columnsByUrn[urn]) {
+        } else if (fetchedEntity?.inputFields?.fields && !columnsByUrn[urn]) {
             populatedColumnsByUrn = {
                 ...populatedColumnsByUrn,
                 [urn]: convertFieldsToV1FieldPath(
@@ -93,7 +93,7 @@ export function getPopulatedColumnsByUrn(
             // full column paths from upstream dataset fields to downstream dataset fields.
             const fields: SchemaField[] = [];
             fetchedEntity.fineGrainedLineages.forEach((fineGrainedLineage) => {
-                fineGrainedLineage.upstreams?.forEach((upstream) => {
+                fineGrainedLineage?.upstreams?.forEach((upstream) => {
                     if (!fields.some((field) => field.fieldPath === upstream.path)) {
                         fields.push({
                             fieldPath: downgradeV2FieldPath(upstream.path) || '',
@@ -103,7 +103,7 @@ export function getPopulatedColumnsByUrn(
                         });
                     }
                 });
-                fineGrainedLineage.downstreams?.forEach((downstream) => {
+                fineGrainedLineage?.downstreams?.forEach((downstream) => {
                     if (!fields.some((field) => field.fieldPath === downstream.path)) {
                         fields.push({
                             fieldPath: downgradeV2FieldPath(downstream.path) || '',
@@ -149,7 +149,7 @@ export function filterColumns(
     setColumnsByUrn: (value: React.SetStateAction<Record<string, SchemaField[]>>) => void,
 ) {
     const formattedFilterText = filterText.toLocaleLowerCase();
-    const filteredFields = node.data.schemaMetadata?.fields.filter((field) =>
+    const filteredFields = node?.data?.schemaMetadata?.fields?.filter((field) =>
         field.fieldPath.toLocaleLowerCase().includes(formattedFilterText),
     );
     if (filteredFields) {

@@ -18,7 +18,7 @@ function matchesName(name: string, filterText: string) {
 function matchesAnyFromValues(values: ValueColumnData[], filterText: string, entityRegistry: EntityRegistry) {
     return values.some(
         (value) =>
-            matchesName(value.value?.toString() || '', filterText) ||
+            matchesName(value?.value?.toString() || '', filterText) ||
             matchesName(value.entity ? entityRegistry.getDisplayName(value.entity.type, value.entity) : '', filterText),
     );
 }

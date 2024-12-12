@@ -71,7 +71,7 @@ export const SearchHeader = ({
     const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
     const showAcrylInfo = useIsShowAcrylInfoEnabled();
     const appConfig = useAppConfig();
-    const viewsEnabled = appConfig.config?.viewsConfig?.enabled || false;
+    const viewsEnabled = appConfig?.config?.viewsConfig?.enabled || false;
 
     return (
         <Header style={styles.header as any}>

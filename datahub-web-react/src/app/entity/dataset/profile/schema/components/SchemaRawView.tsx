@@ -18,11 +18,14 @@ const SchemaContainer = styled.div`
 `;
 
 export default function SchemaRawView({ schemaDiff, editMode, showKeySchema }: Props) {
-    const currentSchemaRaw = formatRawSchema(getRawSchema(schemaDiff.current?.platformSchema, showKeySchema));
+    const currentSchemaRaw = formatRawSchema(getRawSchema(schemaDiff?.current?.platformSchema, showKeySchema));
 
     const schemaRawDiff = editMode
         ? currentSchemaRaw
-        : diffJson(formatRawSchema(getRawSchema(schemaDiff.previous?.platformSchema, showKeySchema)), currentSchemaRaw);
+        : diffJson(
+              formatRawSchema(getRawSchema(schemaDiff?.previous?.platformSchema, showKeySchema)),
+              currentSchemaRaw,
+          );
 
     return (
         <SchemaContainer>

@@ -105,17 +105,17 @@ describe('form prompt utils', () => {
 
 describe('useIsUserAssigned utils tests', () => {
     it('should return true if user is an owner and the form is assigned to owners', () => {
-        const isAssigned = isAssignedToForm(mockEntityData.forms?.incompleteForms[0] as FormAssociation, true);
+        const isAssigned = isAssignedToForm(mockEntityData?.forms?.incompleteForms[0] as FormAssociation, true);
         expect(isAssigned).toBe(true);
     });
 
     it('should return false if user is not an owner and the form is assigned to owners', () => {
-        const isAssigned = isAssignedToForm(mockEntityData.forms?.incompleteForms[0] as FormAssociation, false);
+        const isAssigned = isAssignedToForm(mockEntityData?.forms?.incompleteForms[0] as FormAssociation, false);
         expect(isAssigned).toBe(false);
     });
 
     it('should return true if the user is explicitly assigned', () => {
-        const isAssigned = isAssignedToForm(mockEntityData.forms?.completedForms[0] as FormAssociation, false);
+        const isAssigned = isAssignedToForm(mockEntityData?.forms?.completedForms[0] as FormAssociation, false);
         expect(isAssigned).toBe(true);
     });
 });

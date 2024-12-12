@@ -26,7 +26,7 @@ export type Props = {
 export default function DataProfileView({ profile }: Props) {
     const columnStatsTableData = useMemo(
         () =>
-            profile.fieldProfiles?.map((doc) => ({
+            profile?.fieldProfiles?.map((doc) => ({
                 name: doc.fieldPath,
                 min: doc.min,
                 max: doc.max,

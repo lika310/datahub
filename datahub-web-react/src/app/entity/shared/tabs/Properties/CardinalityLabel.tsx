@@ -30,7 +30,7 @@ export default function CardinalityLabel({ structuredProperty }: Props) {
                 <>
                     <Header>Property Options</Header>
                     <List>
-                        {structuredProperty.definition.allowedValues?.map((value) => (
+                        {structuredProperty?.definition?.allowedValues?.map((value) => (
                             <li>{getStructuredPropertyValue(value.value)}</li>
                         ))}
                     </List>

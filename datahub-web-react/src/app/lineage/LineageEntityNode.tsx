@@ -136,16 +136,16 @@ export default function LineageEntityNode({
     );
 
     let platformDisplayText =
-        node.data.platform?.properties?.displayName || capitalizeFirstLetterOnly(node.data.platform?.name);
+        node?.data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(node?.data?.platform?.name);
     if (node.data.siblingPlatforms && !isHideSiblingMode) {
         platformDisplayText = node.data.siblingPlatforms
-            .map((platform) => platform.properties?.displayName || capitalizeFirstLetterOnly(platform.name))
+            .map((platform) => platform?.properties?.displayName || capitalizeFirstLetterOnly(platform.name))
             .join(' & ');
     }
 
     const nodeHeight = nodeHeightFromTitleLength(
         expandTitles ? node.data.expandedName || node.data.name : undefined,
-        node.data.schemaMetadata?.fields || convertInputFieldsToSchemaFields(node.data.inputFields),
+        node?.data?.schemaMetadata?.fields || convertInputFieldsToSchemaFields(node.data.inputFields),
         showColumns,
         areColumnsCollapsed,
     );
@@ -303,7 +303,7 @@ export default function LineageEntityNode({
                             y={0}
                             height={iconHeight * (3 / 4)}
                             width={iconWidth * (3 / 4)}
-                            href={node.data.siblingPlatforms[0]?.properties?.logoUrl || ''}
+                            href={node?.data?.siblingPlatforms[0]?.properties?.logoUrl || ''}
                             clipPath="url(#clipPolygonTop)"
                         />
                         <image
@@ -312,7 +312,7 @@ export default function LineageEntityNode({
                             height={iconHeight * (3 / 4)}
                             width={iconWidth * (3 / 4)}
                             clipPath="url(#clipPolygon)"
-                            href={node.data.siblingPlatforms[1]?.properties?.logoUrl || ''}
+                            href={node?.data?.siblingPlatforms[1]?.properties?.logoUrl || ''}
                         />
                     </svg>
                 )}
@@ -349,7 +349,7 @@ export default function LineageEntityNode({
                             disableDownstream={!isCenterNode && direction === Direction.Upstream}
                             centerEntity={() => onEntityCenter({ urn: node.data.urn, type: node.data.type })}
                             entityType={node.data.type}
-                            entityPlatform={node.data.platform?.name}
+                            entityPlatform={node?.data?.platform?.name}
                             canEditLineage={node.data.canEditLineage}
                         />
                     </foreignObject>

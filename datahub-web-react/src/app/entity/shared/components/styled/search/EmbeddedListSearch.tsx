@@ -173,7 +173,7 @@ export const EmbeddedListSearch = ({
     });
 
     const userContext = useUserContext();
-    const selectedViewUrn = userContext.localState?.selectedViewUrn;
+    const selectedViewUrn = userContext?.localState?.selectedViewUrn;
 
     let searchInput: SearchAcrossEntitiesInput = {
         types: entityTypes || [],

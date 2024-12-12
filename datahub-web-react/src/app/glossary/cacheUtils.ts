@@ -16,7 +16,7 @@ export function removeTermFromGlossaryNode(
     const newTermChildren = {
         relationships: [
             ...(currData?.glossaryNode?.children?.relationships || []).filter(
-                (relationship) => relationship.entity?.urn !== glossaryTermUrn,
+                (relationship) => relationship?.entity?.urn !== glossaryTermUrn,
             ),
         ],
         total: (currData?.glossaryNode?.children?.total || 1) - 1,

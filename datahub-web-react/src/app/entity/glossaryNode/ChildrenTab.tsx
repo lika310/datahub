@@ -14,11 +14,11 @@ function ChildrenTab() {
     if (!entityData) return <></>;
 
     const childNodes = entityData?.children?.relationships
-        .filter((child) => child.entity?.type === EntityType.GlossaryNode)
+        .filter((child) => child?.entity?.type === EntityType.GlossaryNode)
         .sort((nodeA, nodeB) => sortGlossaryNodes(entityRegistry, nodeA.entity, nodeB.entity))
         .map((child) => child.entity);
     const childTerms = entityData?.children?.relationships
-        .filter((child) => child.entity?.type === EntityType.GlossaryTerm)
+        .filter((child) => child?.entity?.type === EntityType.GlossaryTerm)
         .sort((termA, termB) => sortGlossaryTerms(entityRegistry, termA.entity, termB.entity))
         .map((child) => child.entity);
 

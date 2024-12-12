@@ -107,7 +107,7 @@ export const HomePageRecommendations = ({ user }: Props) => {
     const userUrn = user?.urn;
 
     const userContext = useUserContext();
-    const viewUrn = userContext.localState?.selectedViewUrn;
+    const viewUrn = userContext?.localState?.selectedViewUrn;
 
     const businessAttributesFlag = useBusinessAttributesFlag();
 

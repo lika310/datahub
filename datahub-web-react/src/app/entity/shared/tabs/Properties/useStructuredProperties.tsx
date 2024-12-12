@@ -17,7 +17,7 @@ export function mapStructuredPropertyValues(structuredPropertiesEntry: Structure
         .map((value) => ({
             value: getStructuredPropertyValue(value as PropertyValue),
             entity:
-                structuredPropertiesEntry.valueEntities?.find(
+                structuredPropertiesEntry?.valueEntities?.find(
                     (entity) => entity?.urn === getStructuredPropertyValue(value as PropertyValue),
                 ) || null,
         }));

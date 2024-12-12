@@ -149,17 +149,17 @@ export class ContainerEntity implements Entity<Container> {
             <Preview
                 urn={data.urn}
                 name={this.displayName(data)}
-                platformName={data.platform.properties?.displayName || capitalizeFirstLetterOnly(data.platform.name)}
-                platformLogo={data.platform.properties?.logoUrl}
-                description={data.properties?.description}
-                owners={data.ownership?.owners}
+                platformName={data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data.platform.name)}
+                platformLogo={data?.platform?.properties?.logoUrl}
+                description={data?.properties?.description}
+                owners={data?.ownership?.owners}
                 subTypes={data.subTypes}
                 container={data.container}
-                entityCount={data.entities?.total}
-                domain={data.domain?.domain}
+                entityCount={data?.entities?.total}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 tags={data.tags}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
             />
         );
     };
@@ -171,18 +171,18 @@ export class ContainerEntity implements Entity<Container> {
             <Preview
                 urn={data.urn}
                 name={this.displayName(data)}
-                platformName={data.platform.properties?.displayName || capitalizeFirstLetterOnly(data.platform.name)}
-                platformLogo={data.platform.properties?.logoUrl}
-                platformInstanceId={data.dataPlatformInstance?.instanceId}
-                description={data.editableProperties?.description || data.properties?.description}
-                owners={data.ownership?.owners}
+                platformName={data?.platform?.properties?.displayName || capitalizeFirstLetterOnly(data.platform.name)}
+                platformLogo={data?.platform?.properties?.logoUrl}
+                platformInstanceId={data?.dataPlatformInstance?.instanceId}
+                description={data?.editableProperties?.description || data?.properties?.description}
+                owners={data?.ownership?.owners}
                 subTypes={data.subTypes}
                 container={data.container}
-                entityCount={data.entities?.total}
-                domain={data.domain?.domain}
+                entityCount={data?.entities?.total}
+                domain={data?.domain?.domain}
                 dataProduct={getDataProduct(genericProperties?.dataProduct)}
                 parentContainers={data.parentContainers}
-                externalUrl={data.properties?.externalUrl}
+                externalUrl={data?.properties?.externalUrl}
                 tags={data.tags}
                 glossaryTerms={data.glossaryTerms}
                 degree={(result as any).degree}
@@ -198,8 +198,8 @@ export class ContainerEntity implements Entity<Container> {
     getOverridePropertiesFromEntity = (data: Container) => {
         return {
             name: this.displayName(data),
-            externalUrl: data.properties?.externalUrl,
-            entityCount: data.entities?.total,
+            externalUrl: data?.properties?.externalUrl,
+            entityCount: data?.entities?.total,
         };
     };
 

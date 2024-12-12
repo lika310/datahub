@@ -51,7 +51,7 @@ export default function CreateTokenModal({ currentUserUrn, open, onClose, onCrea
 
     // Check and show the modal once the data for createAccessToken will generate
     useEffect(() => {
-        if (data && data.createAccessToken?.accessToken) {
+        if (data && data?.createAccessToken?.accessToken) {
             setShowModal(true);
         }
     }, [data, setShowModal]);
@@ -99,7 +99,7 @@ export default function CreateTokenModal({ currentUserUrn, open, onClose, onCrea
         onModalClose();
     };
 
-    const accessToken = data && data.createAccessToken?.accessToken;
+    const accessToken = data && data?.createAccessToken?.accessToken;
     const selectedExpiresInText = selectedTokenDuration && getTokenExpireDate(selectedTokenDuration);
 
     // Handle the Enter press

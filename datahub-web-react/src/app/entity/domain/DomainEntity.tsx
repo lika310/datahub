@@ -124,8 +124,8 @@ export class DomainEntity implements Entity<Domain> {
                 domain={data}
                 urn={data.urn}
                 name={this.displayName(data)}
-                description={data.properties?.description}
-                owners={data.ownership?.owners}
+                description={data?.properties?.description}
+                owners={data?.ownership?.owners}
                 logoComponent={this.icon(12, IconStyleType.ACCENT)}
             />
         );
@@ -138,8 +138,8 @@ export class DomainEntity implements Entity<Domain> {
                 domain={data}
                 urn={data.urn}
                 name={this.displayName(data)}
-                description={data.properties?.description}
-                owners={data.ownership?.owners}
+                description={data?.properties?.description}
+                owners={data?.ownership?.owners}
                 logoComponent={this.icon(12, IconStyleType.ACCENT)}
             />
         );
@@ -151,7 +151,7 @@ export class DomainEntity implements Entity<Domain> {
 
     getOverridePropertiesFromEntity = (data: Domain) => {
         return {
-            name: data.properties?.name,
+            name: data?.properties?.name,
         };
     };
 

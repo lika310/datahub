@@ -38,7 +38,7 @@ export function convertNestedSubTypeFilter(filters: Array<FacetFilterInput>) {
     if (nestedSubTypeFilter) {
         const entityTypeFilterValues: string[] = [];
         const subTypeFilterValues: string[] = [];
-        nestedSubTypeFilter.values?.forEach((value) => {
+        nestedSubTypeFilter?.values?.forEach((value) => {
             if (!value.includes(FILTER_DELIMITER)) {
                 entityTypeFilterValues.push(value);
             } else {

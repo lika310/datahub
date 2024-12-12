@@ -110,8 +110,8 @@ function CreateGlossaryEntityModal(props: Props) {
                     if (props.isCloning) {
                         const redirectUrn =
                             entityType === EntityType.GlossaryTerm
-                                ? res.data?.createGlossaryTerm
-                                : res.data?.createGlossaryNode;
+                                ? res?.data?.createGlossaryTerm
+                                : res?.data?.createGlossaryNode;
                         history.push(getEntityPath(entityType, redirectUrn, entityRegistry, false, false));
                     }
                 }, 2000);

@@ -14,8 +14,8 @@ type Props = {
 
 export default function EditDataProductModal({ dataProduct, onUpdateDataProduct, onClose }: Props) {
     const [builderState, updateBuilderState] = useState<DataProductBuilderState>({
-        name: dataProduct.properties?.name || '',
-        description: dataProduct.properties?.description || '',
+        name: dataProduct?.properties?.name || '',
+        description: dataProduct?.properties?.description || '',
     });
     const [updateDataProductMutation] = useUpdateDataProductMutation();
 
@@ -47,7 +47,7 @@ export default function EditDataProductModal({ dataProduct, onUpdateDataProduct,
 
     return (
         <Modal
-            title={`Update ${dataProduct.properties?.name || 'Data Product'}`}
+            title={`Update ${dataProduct?.properties?.name || 'Data Product'}`}
             onCancel={onClose}
             style={MODAL_BODY_STYLE}
             width={MODAL_WIDTH}

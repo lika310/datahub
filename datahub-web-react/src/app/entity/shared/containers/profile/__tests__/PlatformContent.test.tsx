@@ -120,7 +120,7 @@ describe('getParentContainerNames', () => {
 
     it('should return the name of the parent container if there is only one', () => {
         const parentContainerNames = getParentContainerNames([container1]);
-        expect(parentContainerNames).toBe(container1.properties?.name);
+        expect(parentContainerNames).toBe(container1?.properties?.name);
     });
 
     it('should return the names of the parents in reverse order, separated by cright arrows if there are multiple without manipulating the original array', () => {
@@ -128,7 +128,7 @@ describe('getParentContainerNames', () => {
         const parentContainersCopy = [...parentContainers];
         const parentContainerNames = getParentContainerNames(parentContainers);
 
-        expect(parentContainerNames).toBe(`${container2.properties?.name} > ${container1.properties?.name}`);
+        expect(parentContainerNames).toBe(`${container2?.properties?.name} > ${container1?.properties?.name}`);
         expect(parentContainers).toMatchObject(parentContainersCopy);
     });
 });

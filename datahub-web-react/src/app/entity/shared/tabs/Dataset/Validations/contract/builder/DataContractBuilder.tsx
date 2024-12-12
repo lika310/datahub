@@ -137,7 +137,7 @@ export const DataContractBuilder = ({ entityUrn, initialState, onSubmit, onCance
                         assertions={freshnessAssertions}
                         multiple={false}
                         selectedUrns={
-                            (builderState.freshness?.assertionUrn && [builderState.freshness?.assertionUrn]) || []
+                            (builderState?.freshness?.assertionUrn && [builderState?.freshness?.assertionUrn]) || []
                         }
                         onSelect={(selectedUrn: string) => onSelectFreshnessOrSchemaAssertion(selectedUrn, 'freshness')}
                     />
@@ -148,7 +148,9 @@ export const DataContractBuilder = ({ entityUrn, initialState, onSubmit, onCance
                         category={DataContractCategoryType.SCHEMA}
                         assertions={schemaAssertions}
                         multiple={false}
-                        selectedUrns={(builderState.schema?.assertionUrn && [builderState.schema?.assertionUrn]) || []}
+                        selectedUrns={
+                            (builderState?.schema?.assertionUrn && [builderState?.schema?.assertionUrn]) || []
+                        }
                         onSelect={(selectedUrn: string) => onSelectFreshnessOrSchemaAssertion(selectedUrn, 'schema')}
                     />
                 )) ||
@@ -157,7 +159,7 @@ export const DataContractBuilder = ({ entityUrn, initialState, onSubmit, onCance
                     <DataContractAssertionGroupSelect
                         category={DataContractCategoryType.DATA_QUALITY}
                         assertions={dataQualityAssertions}
-                        selectedUrns={builderState.dataQuality?.map((c) => c.assertionUrn) || []}
+                        selectedUrns={builderState?.dataQuality?.map((c) => c.assertionUrn) || []}
                         onSelect={(selectedUrn: string) => onSelectDataAssertion(selectedUrn, 'dataQuality')}
                     />
                 )) ||

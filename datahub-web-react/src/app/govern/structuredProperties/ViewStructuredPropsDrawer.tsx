@@ -40,9 +40,9 @@ const ViewStructuredPropsDrawer = ({
 
     const selectedPropEntity = selectedProperty && (selectedProperty?.entity as StructuredPropertyEntity);
 
-    const allowedValues = selectedPropEntity?.definition.allowedValues;
+    const allowedValues = selectedPropEntity?.definition?.allowedValues;
 
-    const allowedTypes = selectedPropEntity?.definition.typeQualifier?.allowedTypes;
+    const allowedTypes = selectedPropEntity?.definition?.typeQualifier?.allowedTypes;
 
     const propType = getValueTypeLabel(
         selectedPropEntity.definition.valueType.urn,
@@ -120,11 +120,11 @@ const ViewStructuredPropsDrawer = ({
                 <RowContainer>
                     <StyledLabel>Applies To</StyledLabel>
                     <ItemsList>
-                        {selectedPropEntity.definition.entityTypes?.map((type, index) => {
+                        {selectedPropEntity?.definition?.entityTypes?.map((type, index) => {
                             return (
                                 <>
                                     <Text color="gray">{entityRegistry.getEntityName(type.info.type)}</Text>
-                                    {index < selectedPropEntity.definition.entityTypes?.length - 1 && (
+                                    {index < selectedPropEntity?.definition?.entityTypes?.length - 1 && (
                                         <VerticalDivider type="vertical" />
                                     )}
                                 </>
