@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-18T13:50:05.574345+00:00",
+                        "end_time": "2024-12-18T23:05:14.077218+00:00",
                         "start_time": "2024-12-17T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-18T13:50:05.021378+00:00",
+                        "end_time": "2024-12-18T23:05:13.516459+00:00",
                         "start_time": "2024-12-17T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -11194,7 +11194,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-18T13:49:49.100544+00:00",
+                        "end_time": "2024-12-18T23:04:57.509213+00:00",
                         "start_time": "2024-12-17T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -14779,7 +14779,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-18T13:49:55.023092+00:00",
+                        "end_time": "2024-12-18T23:05:03.496772+00:00",
                         "start_time": "2024-12-17T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -15929,6 +15929,11 @@
                     "title": "Model Name Separator",
                     "description": "A string which separates model name from its version (e.g. model_1 or model-1)",
                     "default": "_",
+                    "type": "string"
+                },
+                "base_external_url": {
+                    "title": "Base External Url",
+                    "description": "Base URL to use when constructing external URLs to MLflow. If not set, tracking_uri is used if it's an HTTP URL. If neither is set, external URLs are not generated.",
                     "type": "string"
                 }
             },
