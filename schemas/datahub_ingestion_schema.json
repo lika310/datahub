@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-20T16:53:59.736626+00:00",
+                        "end_time": "2024-12-20T19:24:21.920235+00:00",
                         "start_time": "2024-12-19T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-20T16:53:59.178349+00:00",
+                        "end_time": "2024-12-20T19:24:21.228596+00:00",
                         "start_time": "2024-12-19T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -7473,12 +7473,6 @@
                     "title": "Page Size",
                     "description": "[advanced] Number of metadata objects (e.g. CustomSQLTable, PublishedDatasource, etc) to query at a time using the Tableau API.",
                     "default": 10,
-                    "type": "integer"
-                },
-                "fetch_size": {
-                    "title": "Fetch Size",
-                    "description": "Specifies the number of records to retrieve in each batch during a query execution.",
-                    "default": 250,
                     "type": "integer"
                 },
                 "workbook_page_size": {
@@ -11210,7 +11204,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-20T16:53:43.263020+00:00",
+                        "end_time": "2024-12-20T19:24:03.225581+00:00",
                         "start_time": "2024-12-19T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -14795,7 +14789,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-20T16:53:49.151251+00:00",
+                        "end_time": "2024-12-20T19:24:09.934277+00:00",
                         "start_time": "2024-12-19T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
