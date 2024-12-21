@@ -2970,7 +2970,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-21T06:51:38.980923+00:00",
+                        "end_time": "2024-12-21T08:04:35.860548+00:00",
                         "start_time": "2024-12-20T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -4230,7 +4230,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-21T06:51:38.375724+00:00",
+                        "end_time": "2024-12-21T08:04:35.327648+00:00",
                         "start_time": "2024-12-20T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -10674,12 +10674,6 @@
                     "default": true,
                     "type": "boolean"
                 },
-                "include_table_location_lineage": {
-                    "title": "Include Table Location Lineage",
-                    "description": "If the source supports it, include table lineage to the underlying storage location.",
-                    "default": true,
-                    "type": "boolean"
-                },
                 "include_view_lineage": {
                     "title": "Include View Lineage",
                     "description": "Populates view->view and table->view lineage using DataHub's sql parser.",
@@ -10788,6 +10782,29 @@
                             "$ref": "#/definitions/AllowDenyPattern"
                         }
                     ]
+                },
+                "emit_storage_lineage": {
+                    "title": "Emit Storage Lineage",
+                    "description": "Whether to emit storage-to-Hive lineage",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "hive_storage_lineage_direction": {
+                    "title": "Hive Storage Lineage Direction",
+                    "description": "If 'upstream', storage is upstream to Hive. If 'downstream' storage is downstream to Hive",
+                    "default": "upstream",
+                    "type": "string"
+                },
+                "include_column_lineage": {
+                    "title": "Include Column Lineage",
+                    "description": "When enabled, column-level lineage will be extracted from storage",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "storage_platform_instance": {
+                    "title": "Storage Platform Instance",
+                    "description": "Platform instance for the storage system",
+                    "type": "string"
                 }
             },
             "required": [
@@ -11204,7 +11221,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-21T06:51:22.625266+00:00",
+                        "end_time": "2024-12-21T08:04:19.447448+00:00",
                         "start_time": "2024-12-20T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
@@ -14789,7 +14806,7 @@
                     "description": "The usage config to use when generating usage statistics",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2024-12-21T06:51:28.450968+00:00",
+                        "end_time": "2024-12-21T08:04:25.333066+00:00",
                         "start_time": "2024-12-20T00:00:00+00:00",
                         "queries_character_limit": 24000,
                         "top_n_queries": 10,
