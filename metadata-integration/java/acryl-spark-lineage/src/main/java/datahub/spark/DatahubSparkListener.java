@@ -91,10 +91,23 @@ public class DatahubSparkListener extends SparkListener {
     return appContext;
   }
 
-  public void onApplicationStart(SparkListenerApplicationStart applicationStart) {
+  private static String getAppNameShort(String name) {
+    return (name.length() > 11) ? name.substring(0, name.length() - 11) : name;
+  }
+
+  public void onApplicationStart(SparkListenerApplicationStart as) {
     long startTime = System.currentTimeMillis();
 
     log.info("Application start called");
+    SparkListenerApplicationStart applicationStart = new SparkListenerApplicationStart(
+            getAppNameShort(as.appName()),
+            as.appId(),
+            as.time(),
+            as.sparkUser(),
+            as.appAttemptId(),
+            as.driverLogs(),
+            as.driverAttributes()
+    );
     this.appContext = getSparkAppContext(applicationStart);
     initializeContextFactoryIfNotInitialized();
     listener.onApplicationStart(applicationStart);
