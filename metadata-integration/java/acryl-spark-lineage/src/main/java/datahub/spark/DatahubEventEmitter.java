@@ -24,6 +24,7 @@ import datahub.spark.conf.KafkaDatahubEmitterConfig;
 import datahub.spark.conf.RestDatahubEmitterConfig;
 import datahub.spark.conf.S3DatahubEmitterConfig;
 import datahub.spark.conf.SparkLineageConf;
+import io.datahubproject.openlineage.config.DatahubOpenlineageConfig;
 import io.datahubproject.openlineage.converter.OpenLineageToDataHub;
 import io.datahubproject.openlineage.dataset.DatahubDataset;
 import io.datahubproject.openlineage.dataset.DatahubJob;
@@ -54,6 +55,7 @@ import java.util.stream.Stream;
 
 import io.openlineage.spark.api.naming.NameNormalizer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.streaming.StreamingQueryProgress;
 
 @Slf4j
@@ -116,8 +118,9 @@ public class DatahubEventEmitter extends EventEmitter {
     try {
       log.debug("Emitting lineage: {}", OpenLineageClientUtils.toJson(event));
       if (!isStreaming()) {
+        DatahubOpenlineageConfig openLineageConf = datahubConf.getOpenLineageConf();
         datahubJob =
-            Optional.ofNullable(convertRunEventToJob(event, datahubConf.getOpenLineageConf()));
+            Optional.ofNullable(convertRunEventToJob(event, openLineageConf));
         if (!datahubJob.isPresent()) {
           return datahubJob;
         }
@@ -139,7 +142,7 @@ public class DatahubEventEmitter extends EventEmitter {
   }
 
   private String substituteAppName(String eventJson) {
-    String appName = datahubConf.getSparkAppContext().getAppName();
+    String appName = SparkSession.getActiveSession().get().sparkContext().appName();
     String normalizedAppName = NameNormalizer.normalize(appName);
     return eventJson.replace(appName, getAppNameShort(appName))
             .replace(normalizedAppName, getAppNameShort(normalizedAppName));
