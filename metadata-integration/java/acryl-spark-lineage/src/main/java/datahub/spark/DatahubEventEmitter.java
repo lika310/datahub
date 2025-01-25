@@ -24,7 +24,6 @@ import datahub.spark.conf.KafkaDatahubEmitterConfig;
 import datahub.spark.conf.RestDatahubEmitterConfig;
 import datahub.spark.conf.S3DatahubEmitterConfig;
 import datahub.spark.conf.SparkLineageConf;
-import io.datahubproject.openlineage.config.DatahubOpenlineageConfig;
 import io.datahubproject.openlineage.converter.OpenLineageToDataHub;
 import io.datahubproject.openlineage.dataset.DatahubDataset;
 import io.datahubproject.openlineage.dataset.DatahubJob;
@@ -118,9 +117,8 @@ public class DatahubEventEmitter extends EventEmitter {
     try {
       log.debug("Emitting lineage: {}", OpenLineageClientUtils.toJson(event));
       if (!isStreaming()) {
-        DatahubOpenlineageConfig openLineageConf = datahubConf.getOpenLineageConf();
         datahubJob =
-            Optional.ofNullable(convertRunEventToJob(event, openLineageConf));
+            Optional.ofNullable(convertRunEventToJob(event, datahubConf.getOpenLineageConf()));
         if (!datahubJob.isPresent()) {
           return datahubJob;
         }
