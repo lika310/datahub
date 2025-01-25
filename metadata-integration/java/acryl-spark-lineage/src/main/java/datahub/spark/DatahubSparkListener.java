@@ -102,7 +102,7 @@ public class DatahubSparkListener extends SparkListener {
 
     log.info("Application start called");
     SparkListenerApplicationStart applicationStart = new SparkListenerApplicationStart(
-            as.appName(),
+            getAppNameShort(as.appName()),
             as.appId(),
             as.time(),
             as.sparkUser(),
@@ -407,7 +407,7 @@ public class DatahubSparkListener extends SparkListener {
       return;
     }
     asJavaOptional(activeSparkContext.apply())
-        .ifPresent(context -> initializeContextFactoryIfNotInitialized(context.appName()));
+        .ifPresent(context -> initializeContextFactoryIfNotInitialized(getAppNameShort(context.appName())));
   }
 
   private void initializeContextFactoryIfNotInitialized(String appName) {
