@@ -140,7 +140,7 @@ public class DatahubEventEmitter extends EventEmitter {
   }
 
   private String substituteAppName(String eventJson) {
-    String appName = SparkSession.getActiveSession().get().sparkContext().appName();
+    String appName = datahubConf.getSparkAppContext().getAppName();
     String normalizedAppName = NameNormalizer.normalize(appName);
     return eventJson.replace(appName, getAppNameShort(appName))
             .replace(normalizedAppName, getAppNameShort(normalizedAppName));
