@@ -51,6 +51,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import io.openlineage.spark.api.naming.NameNormalizer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.sql.streaming.StreamingQueryProgress;
 
@@ -130,11 +132,25 @@ public class DatahubEventEmitter extends EventEmitter {
     return datahubJob;
   }
 
+  private static String getAppNameShort(String name) {
+    String appShortName = (name.length() > 11) ? name.substring(0, name.length() - 11) : name;
+    log.debug("getAppNameShort completed successfully with {}", appShortName);
+    return appShortName;
+  }
+
+  private String substituteAppName(String eventJson) {
+    String appName = datahubConf.getSparkAppContext().getAppName();
+    String normalizedAppName = NameNormalizer.normalize(appName);
+    return eventJson.replace(appName, getAppNameShort(appName))
+            .replace(normalizedAppName, getAppNameShort(normalizedAppName));
+  }
+
   public void emit(OpenLineage.RunEvent event) {
     long startTime = System.currentTimeMillis();
     // We have to serialize and deserialize the event to make sure the event is in the correct
     // format
-    event = OpenLineageClientUtils.runEventFromJson(OpenLineageClientUtils.toJson(event));
+    String eventJson = substituteAppName(OpenLineageClientUtils.toJson(event));
+    event = OpenLineageClientUtils.runEventFromJson(eventJson);
     Optional<DatahubJob> job = convertOpenLineageRunEventToDatahubJob(event);
     if (!job.isPresent()) {
       return;
