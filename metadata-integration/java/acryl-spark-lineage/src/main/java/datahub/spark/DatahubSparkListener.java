@@ -407,7 +407,7 @@ public class DatahubSparkListener extends SparkListener {
       return;
     }
     asJavaOptional(activeSparkContext.apply())
-        .ifPresent(context -> initializeContextFactoryIfNotInitialized(getAppNameShort(context.appName())));
+        .ifPresent(context -> initializeContextFactoryIfNotInitialized(context.appName()));
   }
 
   private void initializeContextFactoryIfNotInitialized(String appName) {
