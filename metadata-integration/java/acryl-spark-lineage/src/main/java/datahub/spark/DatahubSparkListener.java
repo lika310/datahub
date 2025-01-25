@@ -102,7 +102,7 @@ public class DatahubSparkListener extends SparkListener {
 
     log.info("Application start called");
     SparkListenerApplicationStart applicationStart = new SparkListenerApplicationStart(
-            getAppNameShort(as.appName()),
+            as.appName(),
             as.appId(),
             as.time(),
             as.sparkUser(),
