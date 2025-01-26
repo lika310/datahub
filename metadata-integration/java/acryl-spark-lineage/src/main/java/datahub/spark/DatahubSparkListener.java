@@ -407,10 +407,11 @@ public class DatahubSparkListener extends SparkListener {
       return;
     }
     asJavaOptional(activeSparkContext.apply())
-        .ifPresent(context -> initializeContextFactoryIfNotInitialized(getAppNameShort(context.appName())));
+        .ifPresent(context ->
+                initializeContextFactoryIfNotInitialized(getAppNameShort(context.appName()), context.appName()));
   }
 
-  private void initializeContextFactoryIfNotInitialized(String appName) {
+  private void initializeContextFactoryIfNotInitialized(String appName, String originalAppName) {
     if (contextFactory != null || isDisabled) {
       return;
     }
@@ -421,10 +422,10 @@ public class DatahubSparkListener extends SparkListener {
               + "Lineage events will not be collected");
       return;
     }
-    initializeContextFactoryIfNotInitialized(sparkEnv.conf(), appName);
+    initializeContextFactoryIfNotInitialized(sparkEnv.conf(), appName, originalAppName);
   }
 
-  private void initializeContextFactoryIfNotInitialized(SparkConf sparkConf, String appName) {
+  private void initializeContextFactoryIfNotInitialized(SparkConf sparkConf, String appName, String originalAppName) {
     if (contextFactory != null || isDisabled) {
       return;
     }
@@ -433,7 +434,7 @@ public class DatahubSparkListener extends SparkListener {
       SparkOpenLineageConfig config = ArgumentParser.parse(sparkConf);
       // Needs to be done before initializing OpenLineageClient
       initializeMetrics(config);
-      emitter = new DatahubEventEmitter(config, appName);
+      emitter = new DatahubEventEmitter(config, appName, originalAppName);
       emitter.setConfig(datahubConfig);
       contextFactory = new ContextFactory(emitter, meterRegistry, config);
       circuitBreaker = new CircuitBreakerFactory(config.getCircuitBreaker()).build();

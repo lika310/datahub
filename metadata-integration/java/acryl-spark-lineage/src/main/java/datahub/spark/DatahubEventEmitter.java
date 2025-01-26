@@ -59,6 +59,8 @@ import org.apache.spark.sql.streaming.StreamingQueryProgress;
 
 @Slf4j
 public class DatahubEventEmitter extends EventEmitter {
+  private String originalAppName;
+  private String normalizedOriginalAppName;
   private final AtomicBoolean streaming = new AtomicBoolean(false);
 
   private final List<DatahubJob> _datahubJobs = new LinkedList<>();
@@ -68,9 +70,11 @@ public class DatahubEventEmitter extends EventEmitter {
 
   private final EventFormatter eventFormatter = new EventFormatter();
 
-  public DatahubEventEmitter(SparkOpenLineageConfig config, String applicationJobName)
+  public DatahubEventEmitter(SparkOpenLineageConfig config, String applicationJobName, String originalAppName)
       throws URISyntaxException {
     super(config, applicationJobName);
+    this.originalAppName = originalAppName;
+    this.normalizedOriginalAppName = NameNormalizer.normalize(originalAppName);
   }
 
   private Optional<Emitter> getEmitter() {
@@ -140,10 +144,8 @@ public class DatahubEventEmitter extends EventEmitter {
   }
 
   private String substituteAppName(String eventJson) {
-    String appName = datahubConf.getSparkAppContext().getAppName();
-    String normalizedAppName = NameNormalizer.normalize(appName);
-    return eventJson.replace(appName, getAppNameShort(appName))
-            .replace(normalizedAppName, getAppNameShort(normalizedAppName));
+    return eventJson.replace(originalAppName, getAppNameShort(originalAppName))
+            .replace(normalizedOriginalAppName, getAppNameShort(normalizedOriginalAppName));
   }
 
   public void emit(OpenLineage.RunEvent event) {
