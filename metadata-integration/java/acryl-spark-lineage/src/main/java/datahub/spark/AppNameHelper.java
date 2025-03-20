@@ -3,17 +3,22 @@ package datahub.spark;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkEnv$;
+import scala.Option;
 
 @Slf4j
 public class AppNameHelper {
     public static String getAppNameShort(String name) {
         SparkConf config = SparkEnv$.MODULE$.get().conf();
-        String splitReg = config.get("spark.datahub.appname.split_regex");
-        String appnamePattern = config.get("spark.datahub.appname.pattern");
+        String splitReg = config.getOption("spark.datahub.appname.split_regex").getOrElse(() -> null);
+        String appnamePattern = config.getOption("spark.datahub.appname.pattern").getOrElse(() -> null);
 
-        String appShortName = name.replaceAll(splitReg, appnamePattern);
+        String appShortName;
+        if (splitReg != null && appnamePattern != null)
+            appShortName = name.replaceAll(splitReg.replace("\\\\", "\\"), appnamePattern);
+        else
+            appShortName = name;
 
-        log.debug("getAppNameShort completed successfully with {}", appShortName);
+        log.debug("For appname \"{}\" getAppNameShort returned \"{}\"", name, appShortName);
         return appShortName;
     }
 }
