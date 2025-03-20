@@ -1,5 +1,6 @@
 package datahub.spark;
 
+import static datahub.spark.AppNameHelper.getAppNameShort;
 import static datahub.spark.converter.SparkStreamingEventToDatahub.*;
 import static io.datahubproject.openlineage.converter.OpenLineageToDataHub.*;
 import static io.datahubproject.openlineage.utils.DatahubUtils.*;
@@ -54,7 +55,6 @@ import java.util.stream.Stream;
 
 import io.openlineage.spark.api.naming.NameNormalizer;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.streaming.StreamingQueryProgress;
 
 @Slf4j
@@ -137,11 +137,6 @@ public class DatahubEventEmitter extends EventEmitter {
     return datahubJob;
   }
 
-  private static String getAppNameShort(String name) {
-    String appShortName = (name.length() > 11) ? name.substring(0, name.length() - 11) : name;
-    log.debug("getAppNameShort completed successfully with {}", appShortName);
-    return appShortName;
-  }
 
   private String substituteAppName(String eventJson) {
     return eventJson.replace(originalAppName, getAppNameShort(originalAppName))

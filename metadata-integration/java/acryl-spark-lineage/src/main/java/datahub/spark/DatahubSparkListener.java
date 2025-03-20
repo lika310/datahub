@@ -1,5 +1,6 @@
 package datahub.spark;
 
+import static datahub.spark.AppNameHelper.getAppNameShort;
 import static datahub.spark.conf.SparkConfigParser.*;
 import static io.openlineage.spark.agent.util.ScalaConversionUtils.*;
 
@@ -89,12 +90,6 @@ public class DatahubSparkListener extends SparkListener {
     appContext.setStartTime(applicationStart.time());
     appContext.setAppId(applicationStart.appId().get());
     return appContext;
-  }
-
-  private static String getAppNameShort(String name) {
-    String appShortName = (name.length() > 11) ? name.substring(0, name.length() - 11) : name;
-    log.debug("getAppNameShort completed successfully with {}", appShortName);
-    return appShortName;
   }
 
   public void onApplicationStart(SparkListenerApplicationStart as) {
