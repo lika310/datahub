@@ -9,11 +9,12 @@ import scala.Option;
 public class AppNameHelper {
     public static String getAppNameShort(String name) {
         SparkConf config = SparkEnv$.MODULE$.get().conf();
+        boolean isFlowNameDefined = config.getOption("spark.datahub.flow_name").isDefined();
         String splitReg = config.getOption("spark.datahub.appname.split_regex").getOrElse(() -> null);
         String appnamePattern = config.getOption("spark.datahub.appname.pattern").getOrElse(() -> null);
 
         String appShortName;
-        if (splitReg != null && appnamePattern != null)
+        if (!isFlowNameDefined && splitReg != null && appnamePattern != null)
             appShortName = name.replaceAll(splitReg.replace("\\\\", "\\"), appnamePattern);
         else
             appShortName = name;
