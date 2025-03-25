@@ -35,13 +35,14 @@ dependencies {
 
 //  provided(externalDependency.sparkSql)
 //  provided(externalDependency.sparkHive)
-  implementation 'org.slf4j:slf4j-log4j12:2.0.7'
+//  implementation 'org.slf4j:slf4j-log4j12:2.0.7'
+  implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.20.0")
   implementation externalDependency.httpClient
-  implementation externalDependency.logbackClassicJava8
+//  implementation externalDependency.logbackClassicJava8
   implementation externalDependency.typesafeConfig
   implementation externalDependency.commonsLang
 
-  implementation externalDependency.slf4jApi
+  compileOnly externalDependency.slf4jApi
   compileOnly externalDependency.lombok
   annotationProcessor externalDependency.lombok
 
@@ -124,7 +125,7 @@ shadowJar {
   relocate 'com.sun.codemodel', 'io.acryl.shaded.com.sun.codemodel'
   relocate 'com.sun.mail', 'io.acryl.shaded.com.sun.mail'
   relocate 'com.fasterxml.jackson', 'datahub.shaded.jackson'
-  relocate 'org.slf4j', 'datahub.spark2.shaded.org.slf4j'
+  //relocate 'org.slf4j', 'datahub.spark2.shaded.org.slf4j'
   //
   relocate 'org.apache.hc', 'io.acryl.shaded.http'
   relocate 'org.apache.commons.codec', 'datahub.spark2.shaded.o.a.c.codec'
@@ -150,7 +151,7 @@ shadowJar {
   relocate 'st4hidden', 'io.acryl.shaded.st4hidden'
   relocate 'org.stringtemplate', 'io.acryl.shaded.org.stringtemplate'
   relocate 'org.abego.treelayout', 'io.acryl.shaded.treelayout'
-  relocate 'org.slf4j', 'io.acryl.shaded.slf4j'
+  //relocate 'org.slf4j', 'io.acryl.shaded.slf4j'
   relocate 'javax.annotation', 'io.acryl.shaded.javax.annotation'
   relocate 'com.github.benmanes.caffeine', 'io.acryl.shaded.com.github.benmanes.caffeine'
   relocate 'org.checkerframework', 'io.acryl.shaded.org.checkerframework'
