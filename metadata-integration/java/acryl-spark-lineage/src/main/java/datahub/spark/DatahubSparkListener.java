@@ -107,6 +107,7 @@ public class DatahubSparkListener extends SparkListener {
     );
     this.appContext = getSparkAppContext(applicationStart);
     initializeContextFactoryIfNotInitialized();
+    contextFactory.getConfig().setOverriddenAppName(getAppNameShort(as.appName()));
     listener.onApplicationStart(applicationStart);
     long elapsedTime = System.currentTimeMillis() - startTime;
     log.info("onApplicationStart completed successfully in {} ms", elapsedTime);
