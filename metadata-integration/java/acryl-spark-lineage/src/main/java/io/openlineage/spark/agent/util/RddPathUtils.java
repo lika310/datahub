@@ -103,7 +103,7 @@ public class RddPathUtils {
                       .get()
                       .getParent();
                 } else {
-                  return parentOf(f.filePath());
+                  return parentOf(f.filePath().toString());
                 }
               });
     }
