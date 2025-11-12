@@ -118,6 +118,8 @@ shadowJar {
     })
     exclude(dependency("org.slf4j::"))
     exclude("org/apache/commons/logging/**")
+    exclude(dependency("org.apache.kafka::"))
+    exclude (dependency("io.confluent::"))
   }
 
   // preventing java multi-release JAR leakage
@@ -164,7 +166,7 @@ shadowJar {
   relocate 'org.checkerframework', 'io.acryl.shaded.org.checkerframework'
   relocate 'com.google.errorprone', 'io.acryl.shaded.com.google.errorprone'
   relocate 'com.sun.jna', 'io.acryl.shaded.com.sun.jna'
-
+//  relocate 'org.apache.kafka', 'io.acryl.shaded.org.apache.kafka'
 }
 
 checkShadowJar {
