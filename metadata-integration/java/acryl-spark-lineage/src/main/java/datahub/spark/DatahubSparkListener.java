@@ -284,6 +284,7 @@ public class DatahubSparkListener extends SparkListener {
     }
     if (emitter != null) {
       emitter.emitCoalesced();
+      emitter.emitAirflowProposals();
     } else {
       log.warn("Emitter is not initialized, unable to emit coalesced events");
     }
@@ -426,7 +427,8 @@ public class DatahubSparkListener extends SparkListener {
       SparkOpenLineageConfig config = ArgumentParser.parse(sparkConf);
       // Needs to be done before initializing OpenLineageClient
       initializeMetrics(config);
-      emitter = new DatahubEventEmitter(config, appName);
+      AirflowMetadata amd = new AirflowMetadata(sparkConf);
+      emitter = new DatahubEventEmitter(config, appName, amd);
       emitter.setConfig(datahubConfig);
       contextFactory = new ContextFactory(emitter, meterRegistry, config);
       circuitBreaker = new CircuitBreakerFactory(config.getCircuitBreaker()).build();

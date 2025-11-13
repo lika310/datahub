@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linkedin.common.GlobalTags;
 import com.linkedin.common.UrnArray;
 import com.linkedin.common.urn.DataJobUrn;
+import com.linkedin.common.urn.Urn;
+import com.linkedin.container.Container;
 import com.linkedin.data.DataMap;
 import com.linkedin.data.template.JacksonDataTemplateCodec;
 import com.linkedin.data.template.StringMap;
@@ -73,9 +75,12 @@ public class DatahubEventEmitter extends EventEmitter {
 
   private final EventFormatter eventFormatter = new EventFormatter();
 
-  public DatahubEventEmitter(SparkOpenLineageConfig config, String applicationJobName)
+  private final AirflowMetadata airflowMetadata;
+
+  public DatahubEventEmitter(SparkOpenLineageConfig config, String applicationJobName, AirflowMetadata airflowMetadata)
       throws URISyntaxException {
     super(config, applicationJobName);
+    this.airflowMetadata = airflowMetadata;
     objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
     int maxSize =
         Integer.parseInt(
@@ -467,5 +472,49 @@ public class DatahubEventEmitter extends EventEmitter {
 
   public void setStreaming(boolean enabled) {
     streaming.set(enabled);
+  }
+
+  private List<MetadataChangeProposal> generateAirflowContainerProposals() {
+    List<MetadataChangeProposal> proposals = new ArrayList<>();
+
+    try {
+      List<MetadataChangeProposalWrapper> proposalWrappers = new ArrayList<>();
+
+      if (airflowMetadata.isDagIdDefined()) {
+        proposalWrappers.add(airflowMetadata.generateDagContainerKeyMCPW());
+        proposalWrappers.add(airflowMetadata.generateDagContainerPropertiesMCPW());
+
+        if (airflowMetadata.isTaskIdDefined()) {
+          proposalWrappers.add(airflowMetadata.generateTaskContainerKeyMCPW());
+          proposalWrappers.add(airflowMetadata.generateTaskContainerPropertiesMCPW());
+          proposalWrappers.add(airflowMetadata.generateDagTaskRelationMCPW());
+        }
+
+        Urn sparkAppUrn  =_datahubJobs.get(0).getFlowUrn();
+        proposalWrappers.add(
+                MetadataChangeProposalWrapper.builder()
+                        .entityType("dataFlow")
+                        .entityUrn(sparkAppUrn)
+                        .upsert()
+                        .aspect(new Container().setContainer(new Urn(
+                                airflowMetadata.isTaskIdDefined() ? airflowMetadata.createTaskContainerUrn()
+                                        : airflowMetadata.createDagContainerUrn()
+                        )))
+                        .build()
+        );
+      }
+
+      for (MetadataChangeProposalWrapper mcpw : proposalWrappers) {
+        proposals.add(eventFormatter.convert(mcpw));
+      }
+    } catch (Exception e) {
+      log.error("Error creating airflow container", e);
+    }
+
+    return proposals;
+  }
+
+  public void emitAirflowProposals() {
+    emitMcps(generateAirflowContainerProposals());
   }
 }
